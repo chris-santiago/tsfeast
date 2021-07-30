@@ -16,7 +16,7 @@ class ARMARegressor(SciKitContainer):
             self, estimator: LinearModel = LinearRegression(),
             order: Tuple[int, int, int] = (1, 0, 0)
     ):
-        """Constructor"""
+        """Instantiate ARMARegressor object."""
         super().__init__()
         self.estimator = estimator
         self.order = order
@@ -33,7 +33,7 @@ class ARMARegressor(SciKitContainer):
         self.resid_ = np.ravel(y) - self.fitted_values_
         return self
 
-    def _predict(self, X: Data) -> np.ndarray:
+    def _predict(self, X: Data) -> Data:
         """Predict the response."""
         estimator_pred = self.estimator.predict(X)
         arma_pred = self.arma_.forecast(steps=estimator_pred.shape[0])
@@ -41,7 +41,9 @@ class ARMARegressor(SciKitContainer):
 
 
 class TSARegressor(StatsModelsContainer):
+    """Estimator for StatsModels TSA model."""
     def __init__(self, model, use_exog=False, **kwargs):
+        """Instantiate TSARegressor object."""
         super().__init__()
         self.model = model
         self.use_exog = use_exog
@@ -56,6 +58,6 @@ class TSARegressor(StatsModelsContainer):
         self.summary_ = self.fitted_model_.summary()
         return self
 
-    def _predict(self, X: Data) -> np.ndarray:
+    def _predict(self, X: Data) -> Data:
         """Predict the response."""
         return self.fitted_model_.forecast(steps=X.shape[0])

@@ -1,17 +1,20 @@
+"""Time series features module."""
 from sklearn.compose import ColumnTransformer
 from sklearn.pipeline import FeatureUnion
 from statsmodels.tsa.tsatools import add_trend
 
-from tsfeast.transformers import *
+from tsfeast.transformers import *  # pylint: disable=wildcard-import
 
 
 class TimeSeriesFeatures(BaseTransformer):
+    """Generate multiple time series feature in one transformer."""
     def __init__(
             self, datetime: str, trend: str = 'n', lags: Optional[int] = None,
             rolling: Optional[List[int]] = None, ewma: Optional[List[int]] = None,
             pct_chg: Optional[List[int]] = None, diffs: Optional[int] = None,
             polynomial: Optional[int] = None, interactions: bool = True
     ):
+        """Instanatiate transformer object."""
         super().__init__()
         self.datetime = datetime
         self.trend = trend
@@ -24,6 +27,7 @@ class TimeSeriesFeatures(BaseTransformer):
         self.interactions = interactions
 
     def _fit(self, X, y=None):
+        """Fit transformer to data."""
         transforms = {
             'lags': LagFeatures(self.lags),
             'rolling': RollingFeatures(self.rolling),

@@ -20,6 +20,8 @@ from typing import List, Optional
 
 import pandas as pd
 
+# pylint: disable=missing-docstring
+
 
 class TimeSeriesWindows:
     def __init__(self, train_length: int, test_length: int, gap_length: int = 0) -> None:
@@ -47,7 +49,7 @@ class TimeSeriesWindows:
 class EndogSeriesWindows(TimeSeriesWindows):
     def __init__(
             self, min_train_length: int, test_length: int, max_train_length: Optional[int] = None,
-            gap_length: Optional[int] = None) -> None:
+            gap_length: int = 0) -> None:
         super().__init__(min_train_length, test_length, gap_length)
         self.min_train_length = min_train_length
         self.max_train_length = max_train_length
