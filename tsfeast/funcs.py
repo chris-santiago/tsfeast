@@ -29,8 +29,7 @@ def get_busdays_in_month(dt: pd.Timestamp) -> int:
     month_begin = chooser[dt.is_month_start]
     month_end = dt + pd.tseries.offsets.MonthBegin(1)  # np.busday_count end date is exclusive
     us_holidays = list(holidays.US(years=dt.year).keys())
-    busdays: int = np.busday_count(month_begin.date(), month_end.date(), holidays=us_holidays)
-    return busdays
+    return np.busday_count(month_begin.date(), month_end.date(), holidays=us_holidays)  # type: ignore
 
 
 def get_datetime_features(
