@@ -2,46 +2,50 @@
 <html class="no-js">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="prev" title="tsfeast" href="modules.html" />
+    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="prev" title="tsfeast" href="modules.html" />
 
-    <meta name="generator" content="sphinx-4.1.2, furo 2021.07.31.beta41"/>
+    <meta name="generator" content="sphinx-4.1.2, furo 2021.07.05.beta38"/>
         <title>tsfeast package - tsfeast</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=daa650a7760fac3eee23aa959745d2c866b74cb3" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=93475b62d1c3bc01323a0eefdc14a62d77b12690" />
-
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css" />
 
 
 
 <style>
-  body {
+  :root {
     --color-code-background: #f8f8f8;
   --color-code-foreground: black;
 
   }
-  body[data-theme="dark"] {
-    --color-code-background: #202020;
-  --color-code-foreground: #d0d0d0;
-
-  }
   @media (prefers-color-scheme: dark) {
-    body:not([data-theme="light"]) {
+    :root {
       --color-code-background: #202020;
   --color-code-foreground: #d0d0d0;
 
     }
   }
-</style>
-    <link media="(prefers-color-scheme: dark)" rel="stylesheet" href="_static/pygments_dark.css"></head>
-  <body>
+
+  /* For allowing end-user-specific overrides */
+  .override-light {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+
+  }
+  .override-dark {
+    --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+
+  }
+</style><link media="(prefers-color-scheme: dark)" rel="stylesheet" href="_static/pygments_dark.css"></head>
+  <body dir="">
 
 <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
   <symbol id="svg-toc" viewBox="0 0 24 24">
     <title>Contents</title>
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-      <path stroke="none" d="M0 0h24v24H0z" />
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke-width="1.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z"/>
       <line x1="4" y1="6" x2="20" y2="6" />
       <line x1="10" y1="12" x2="20" y2="12" />
       <line x1="6" y1="18" x2="20" y2="18" />
@@ -49,8 +53,9 @@
   </symbol>
   <symbol id="svg-menu" viewBox="0 0 24 24">
     <title>Menu</title>
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+      class="feather feather-menu">
       <line x1="3" y1="12" x2="21" y2="12"></line>
       <line x1="3" y1="6" x2="21" y2="6"></line>
       <line x1="3" y1="18" x2="21" y2="18"></line>
@@ -58,57 +63,18 @@
   </symbol>
   <symbol id="svg-arrow-right" viewBox="0 0 24 24">
     <title>Expand</title>
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+      class="feather feather-chevron-right">
       <polyline points="9 18 15 12 9 6"></polyline>
-    </svg>
-  </symbol>
-  <symbol id="svg-sun" viewBox="0 0 24 24">
-    <title>Light mode</title>
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
-      <circle cx="12" cy="12" r="5"></circle>
-      <line x1="12" y1="1" x2="12" y2="3"></line>
-      <line x1="12" y1="21" x2="12" y2="23"></line>
-      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-      <line x1="1" y1="12" x2="3" y2="12"></line>
-      <line x1="21" y1="12" x2="23" y2="12"></line>
-      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-    </svg>
-  </symbol>
-  <symbol id="svg-moon" viewBox="0 0 24 24">
-    <title>Dark mode</title>
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
-      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
-    </svg>
-  </symbol>
-  <symbol id="svg-sun-half" viewBox="0 0 24 24">
-    <title>Auto light/dark mode</title>
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
-      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-      <circle cx="12" cy="12" r="9" />
-      <path d="M13 12h5" />
-      <path d="M13 15h4" />
-      <path d="M13 18h1" />
-      <path d="M13 9h4" />
-      <path d="M13 6h1" />
     </svg>
   </symbol>
 </svg>
 
 <input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
 <input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
-<label class="overlay sidebar-overlay" for="__navigation">
-  <div class="visually-hidden">Hide navigation sidebar</div>
-</label>
-<label class="overlay toc-overlay" for="__toc">
-  <div class="visually-hidden">Hide table of contents sidebar</div>
-</label>
+<label class="overlay sidebar-overlay" for="__navigation"></label>
+<label class="overlay toc-overlay" for="__toc"></label>
 
 
 
@@ -116,7 +82,6 @@
   <header class="mobile-header">
     <div class="header-left">
       <label class="nav-overlay-icon" for="__navigation">
-        <div class="visually-hidden">Toggle site navigation sidebar</div>
         <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
       </label>
     </div>
@@ -124,16 +89,7 @@
       <a href="index.html"><div class="brand">tsfeast</div></a>
     </div>
     <div class="header-right">
-      <div class="theme-toggle-container theme-toggle-header">
-        <button class="theme-toggle">
-          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
-          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
-          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
-          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
-        </button>
-      </div>
       <label class="toc-overlay-icon toc-header-icon" for="__toc">
-        <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
     </div>
@@ -146,17 +102,16 @@
 
   <span class="sidebar-brand-text">tsfeast</span>
 
-</a><form class="sidebar-search-container" method="get" action="search.html" role="search">
-  <input class="sidebar-search" placeholder=Search name="q" aria-label="Search">
+</a><form class="sidebar-search-container" method="get" action="search.html">
+  <input class="sidebar-search" placeholder=Search name="q">
   <input type="hidden" name="check_keywords" value="yes">
   <input type="hidden" name="area" value="default">
-</form>
-<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+</form><div class="sidebar-scroll"><div class="sidebar-tree">
   <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quickstart</a></li>
 <li class="toctree-l1"><a class="reference internal" href="quickstart.html#tsfeast">tsfeast</a></li>
-<li class="toctree-l1 current has-children"><a class="reference internal" href="modules.html">tsfeast</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l1 current has-children"><a class="reference internal" href="modules.html">tsfeast</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label for="toctree-checkbox-1"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
 <li class="toctree-l2 current current-page"><a class="current reference internal" href="#">tsfeast package</a></li>
 </ul>
 </li>
@@ -169,29 +124,18 @@
 
     </div>
   </aside>
-  <div class="main">
+  <main class="main">
     <div class="content">
       <article role="main">
-        <div class="content-icon-container">
-          <div class="theme-toggle-container theme-toggle-content">
-            <button class="theme-toggle">
-              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
-              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
-              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
-              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
-            </button>
-          </div>
-          <label class="toc-overlay-icon toc-content-icon" for="__toc">
-            <div class="visually-hidden">Toggle table of contents sidebar</div>
-            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
-          </label>
-        </div>
-        <section id="tsfeast-package">
+        <label class="toc-overlay-icon toc-content-icon" for="__toc">
+          <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+        </label>
+        <div class="section" id="tsfeast-package">
 <h1>tsfeast package<a class="headerlink" href="#tsfeast-package" title="Permalink to this headline">¶</a></h1>
-<section id="submodules">
+<div class="section" id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
-</section>
-<section id="module-tsfeast.funcs">
+</div>
+<div class="section" id="module-tsfeast.funcs">
 <span id="tsfeast-funcs-module"></span><h2>tsfeast.funcs module<a class="headerlink" href="#module-tsfeast.funcs" title="Permalink to this headline">¶</a></h2>
 <p>Time series feature generator functions.</p>
 <dl class="py function">
@@ -203,29 +147,7 @@
 <dd class="field-odd"><p><strong>dt</strong> (<em>pd.Timestamp</em>) – Desired month.</p>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>Number of business days in the month.</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>int</p>
-</dd>
-</dl>
-</dd></dl>
-<dl class="py function">
-<dt class="sig sig-object py" id="tsfeast.funcs.get_change_features">
-<span class="sig-prename descclassname"><span class="pre">tsfeast.funcs.</span></span><span class="sig-name descname"><span class="pre">get_change_features</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">period_lengths</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">pandas.core.frame.DataFrame</span></span></span><a class="reference internal" href="_modules/tsfeast/funcs.html#get_change_features"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tsfeast.funcs.get_change_features" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get percent change for all features for each specified period length.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>data</strong> (<em>pd.DataFrame</em>) – Original data.</p></li>
-<li><p><strong>period_lengths</strong> (<em>List</em><em>[</em><em>int</em><em>]</em>) – A list of period lengths to generate.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>Percent changes for all features.</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>pd.DataFrame</p>
+<dd class="field-even"><p><em>int</em> – Number of business days in the month.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -237,54 +159,13 @@ month, business days in month and leap year.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>data</strong> (<em>pd.DataFrame</em><em>, </em><em>pd.Series</em>) – Original data.</p></li>
-<li><p><strong>date_col</strong> (<em>Optional</em><em>[</em><em>str</em><em>]</em>) – Column name containing date/timestamp.</p></li>
-<li><p><strong>dt_format</strong> (<em>Optional</em><em>[</em><em>str</em><em>]</em>) – Date/timestamp format, e.g. <cite>%Y-%m-%d</cite> for <cite>2020-01-31</cite>.</p></li>
+<li><p><strong>data</strong> (<em>pd.DataFrame, pd.Series</em>) – Original data.</p></li>
+<li><p><strong>date_col</strong> (<em>Optional[str]</em>) – Column name containing date/timestamp.</p></li>
+<li><p><strong>dt_format</strong> (<em>Optional[str]</em>) – Date/timestamp format, e.g. <cite>%Y-%m-%d</cite> for <cite>2020-01-31</cite>.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>Date features.</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>pd.DataFrame</p>
-</dd>
-</dl>
-</dd></dl>
-<dl class="py function">
-<dt class="sig sig-object py" id="tsfeast.funcs.get_difference_features">
-<span class="sig-prename descclassname"><span class="pre">tsfeast.funcs.</span></span><span class="sig-name descname"><span class="pre">get_difference_features</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_diffs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">pandas.core.frame.DataFrame</span></span></span><a class="reference internal" href="_modules/tsfeast/funcs.html#get_difference_features"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tsfeast.funcs.get_difference_features" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get n differences for all features.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>data</strong> (<em>pd.DataFrame</em>) – Original data.</p></li>
-<li><p><strong>n_diffs</strong> (<em>int</em>) – Number of differences to return.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>N-differenced data.</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>pd.DataFrame</p>
-</dd>
-</dl>
-</dd></dl>
-<dl class="py function">
-<dt class="sig sig-object py" id="tsfeast.funcs.get_ewma_features">
-<span class="sig-prename descclassname"><span class="pre">tsfeast.funcs.</span></span><span class="sig-name descname"><span class="pre">get_ewma_features</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">window_lengths</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">pandas.core.frame.DataFrame</span></span></span><a class="reference internal" href="_modules/tsfeast/funcs.html#get_ewma_features"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tsfeast.funcs.get_ewma_features" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get an exponentially-weighted moving average for each specified window length.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>data</strong> (<em>pd.DataFrame</em>) – Original data.</p></li>
-<li><p><strong>window_lengths</strong> (<em>List</em><em>[</em><em>int</em><em>]</em>) – List of window lengths to generate.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>Exponentially-weighted moving average for each specified window length.</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>pd.DataFrame</p>
+<dd class="field-even"><p><em>pd.DataFrame</em> – Date features.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -300,10 +181,7 @@ month, business days in month and leap year.</p>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>Lagged values of specified dataset.</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>pd.DataFrame</p>
+<dd class="field-even"><p><em>pd.DataFrame</em> – Lagged values of specified dataset.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -315,19 +193,64 @@ month, business days in month and leap year.</p>
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>data</strong> (<em>pd.DataFrame</em>) – Original data.</p></li>
-<li><p><strong>window_lengths</strong> (<em>List</em><em>[</em><em>int</em><em>]</em>) – List of window lengths to generate.</p></li>
+<li><p><strong>window_lengths</strong> (<em>List[int]</em>) – List of window lengths to generate.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>Rolling mean, std, min and max for each specified window length.</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>pd.DataFrame</p>
+<dd class="field-even"><p><em>pd.DataFrame</em> – Rolling mean, std, min and max for each specified window length.</p>
 </dd>
 </dl>
 </dd></dl>
-</section>
-<section id="module-tsfeast.metrics">
+<dl class="py function">
+<dt class="sig sig-object py" id="tsfeast.funcs.get_ewma_features">
+<span class="sig-prename descclassname"><span class="pre">tsfeast.funcs.</span></span><span class="sig-name descname"><span class="pre">get_ewma_features</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">window_lengths</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">pandas.core.frame.DataFrame</span></span></span><a class="reference internal" href="_modules/tsfeast/funcs.html#get_ewma_features"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tsfeast.funcs.get_ewma_features" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get an exponentially-weighted moving average for each specified window length.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>pd.DataFrame</em>) – Original data.</p></li>
+<li><p><strong>window_lengths</strong> (<em>List[int]</em>) – List of window lengths to generate.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><em>pd.DataFrame</em> – Exponentially-weighted moving average for each specified window length.</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="tsfeast.funcs.get_change_features">
+<span class="sig-prename descclassname"><span class="pre">tsfeast.funcs.</span></span><span class="sig-name descname"><span class="pre">get_change_features</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">period_lengths</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">pandas.core.frame.DataFrame</span></span></span><a class="reference internal" href="_modules/tsfeast/funcs.html#get_change_features"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tsfeast.funcs.get_change_features" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get percent change for all features for each specified period length.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>pd.DataFrame</em>) – Original data.</p></li>
+<li><p><strong>period_lengths</strong> (<em>List[int]</em>) – A list of period lengths to generate.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><em>pd.DataFrame</em> – Percent changes for all features.</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="tsfeast.funcs.get_difference_features">
+<span class="sig-prename descclassname"><span class="pre">tsfeast.funcs.</span></span><span class="sig-name descname"><span class="pre">get_difference_features</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_diffs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">pandas.core.frame.DataFrame</span></span></span><a class="reference internal" href="_modules/tsfeast/funcs.html#get_difference_features"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tsfeast.funcs.get_difference_features" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get n differences for all features.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>pd.DataFrame</em>) – Original data.</p></li>
+<li><p><strong>n_diffs</strong> (<em>int</em>) – Number of differences to return.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><em>pd.DataFrame</em> – N-differenced data.</p>
+</dd>
+</dl>
+</dd></dl>
+</div>
+<div class="section" id="module-tsfeast.metrics">
 <span id="tsfeast-metrics-module"></span><h2>tsfeast.metrics module<a class="headerlink" href="#module-tsfeast.metrics" title="Permalink to this headline">¶</a></h2>
 <p>Custom scoring metrics.</p>
 <dl class="py function">
@@ -343,10 +266,7 @@ month, business days in month and leap year.</p>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>BIC value.</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>float</p>
+<dd class="field-even"><p><em>float</em> – BIC value.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -355,8 +275,8 @@ month, business days in month and leap year.</p>
 <span class="sig-prename descclassname"><span class="pre">tsfeast.metrics.</span></span><span class="sig-name descname"><span class="pre">bic_scorer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">estimator</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tsfeast/metrics.html#bic_scorer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tsfeast.metrics.bic_scorer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Score SciKit-Learn estimator using BIC.</p>
 </dd></dl>
-</section>
-<section id="module-tsfeast.models">
+</div>
+<div class="section" id="module-tsfeast.models">
 <span id="tsfeast-models-module"></span><h2>tsfeast.models module<a class="headerlink" href="#module-tsfeast.models" title="Permalink to this headline">¶</a></h2>
 <p>Module for Scikit-Learn Regressor with ARMA Residuals.</p>
 <dl class="py class">
@@ -364,6 +284,7 @@ month, business days in month and leap year.</p>
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">tsfeast.models.</span></span><span class="sig-name descname"><span class="pre">ARMARegressor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">estimator</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">sklearn.linear_model._base.LinearModel</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">LinearRegression()</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">order</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">(1,</span> <span class="pre">0,</span> <span class="pre">0)</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tsfeast/models.html#ARMARegressor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tsfeast.models.ARMARegressor" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">tsfeast._base.SciKitContainer</span></code></p>
 <p>Estimator for Scikit-Learn estimator with ARMA residuals.</p>
+<p>Instantiate ARMARegressor object.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="tsfeast.models.ARMARegressor.__init__">
 <span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">estimator</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">sklearn.linear_model._base.LinearModel</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">LinearRegression()</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">order</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">(1,</span> <span class="pre">0,</span> <span class="pre">0)</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tsfeast/models.html#ARMARegressor.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tsfeast.models.ARMARegressor.__init__" title="Permalink to this definition">¶</a></dt>
@@ -375,38 +296,30 @@ month, business days in month and leap year.</p>
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">tsfeast.models.</span></span><span class="sig-name descname"><span class="pre">TSARegressor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_exog</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tsfeast/models.html#TSARegressor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tsfeast.models.TSARegressor" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">tsfeast._base.StatsModelsContainer</span></code></p>
 <p>Estimator for StatsModels TSA model.</p>
+<p>Instantiate TSARegressor object.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="tsfeast.models.TSARegressor.__init__">
 <span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_exog</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tsfeast/models.html#TSARegressor.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tsfeast.models.TSARegressor.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Instantiate TSARegressor object.</p>
 </dd></dl>
 </dd></dl>
-</section>
-<section id="module-tsfeast.splitter">
+</div>
+<div class="section" id="module-tsfeast.splitter">
 <span id="tsfeast-splitter-module"></span><h2>tsfeast.splitter module<a class="headerlink" href="#module-tsfeast.splitter" title="Permalink to this headline">¶</a></h2>
 <p>Time Series Windows Module.</p>
 <p><em>Note</em> These classes split data into n, equal-length, sliding training/test windows.  This differs
 from Scikit-Learn’s TimeSeriesSplit implementation where windows are accumulated:</p>
-<section id="scikit-learn">
+<div class="section" id="scikit-learn">
 <h3>Scikit-Learn<a class="headerlink" href="#scikit-learn" title="Permalink to this headline">¶</a></h3>
 <p>Win 0   <a href="#id1"><span class="problematic" id="id2">|----|</span></a>
 Win 1   <a href="#id3"><span class="problematic" id="id4">|--------|</span></a>
 Win2    <a href="#id5"><span class="problematic" id="id6">|------------|</span></a></p>
-</section>
-<section id="timeserieswindows">
+</div>
+<div class="section" id="timeserieswindows">
 <h3>TimeSeriesWindows<a class="headerlink" href="#timeserieswindows" title="Permalink to this headline">¶</a></h3>
 <p>Win 0   <a href="#id7"><span class="problematic" id="id8">|----|</span></a>——–
 Win 1   -<a href="#id9"><span class="problematic" id="id10">|----|</span></a>——-
 Win2    –<a href="#id11"><span class="problematic" id="id12">|----|</span></a>——</p>
-<dl class="py class">
-<dt class="sig sig-object py" id="tsfeast.splitter.EndogSeriesWindows">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">tsfeast.splitter.</span></span><span class="sig-name descname"><span class="pre">EndogSeriesWindows</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">min_train_length</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">test_length</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_train_length</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gap_length</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tsfeast/splitter.html#EndogSeriesWindows"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tsfeast.splitter.EndogSeriesWindows" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#tsfeast.splitter.TimeSeriesWindows" title="tsfeast.splitter.TimeSeriesWindows"><code class="xref py py-class docutils literal notranslate"><span class="pre">tsfeast.splitter.TimeSeriesWindows</span></code></a></p>
-<dl class="py method">
-<dt class="sig sig-object py" id="tsfeast.splitter.EndogSeriesWindows.split">
-<span class="sig-name descname"><span class="pre">split</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">pandas.core.frame.DataFrame</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/tsfeast/splitter.html#EndogSeriesWindows.split"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tsfeast.splitter.EndogSeriesWindows.split" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-</dd></dl>
 <dl class="py class">
 <dt class="sig sig-object py" id="tsfeast.splitter.TimeSeriesWindows">
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">tsfeast.splitter.</span></span><span class="sig-name descname"><span class="pre">TimeSeriesWindows</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">train_length</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">test_length</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gap_length</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tsfeast/splitter.html#TimeSeriesWindows"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tsfeast.splitter.TimeSeriesWindows" title="Permalink to this definition">¶</a></dt>
@@ -416,9 +329,18 @@ Win2    –<a href="#id11"><span class="problematic" id="id12">|----|</span></a>
 <span class="sig-name descname"><span class="pre">split</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">pandas.core.frame.DataFrame</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/tsfeast/splitter.html#TimeSeriesWindows.split"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tsfeast.splitter.TimeSeriesWindows.split" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 </dd></dl>
-</section>
-</section>
-<section id="module-tsfeast.transformers">
+<dl class="py class">
+<dt class="sig sig-object py" id="tsfeast.splitter.EndogSeriesWindows">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">tsfeast.splitter.</span></span><span class="sig-name descname"><span class="pre">EndogSeriesWindows</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">min_train_length</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">test_length</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_train_length</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gap_length</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tsfeast/splitter.html#EndogSeriesWindows"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tsfeast.splitter.EndogSeriesWindows" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#tsfeast.splitter.TimeSeriesWindows" title="tsfeast.splitter.TimeSeriesWindows"><code class="xref py py-class docutils literal notranslate"><span class="pre">tsfeast.splitter.TimeSeriesWindows</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="tsfeast.splitter.EndogSeriesWindows.split">
+<span class="sig-name descname"><span class="pre">split</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">pandas.core.frame.DataFrame</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/tsfeast/splitter.html#EndogSeriesWindows.split"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tsfeast.splitter.EndogSeriesWindows.split" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+</dd></dl>
+</div>
+</div>
+<div class="section" id="module-tsfeast.transformers">
 <span id="tsfeast-transformers-module"></span><h2>tsfeast.transformers module<a class="headerlink" href="#module-tsfeast.transformers" title="Permalink to this headline">¶</a></h2>
 <p>Time series feature generators as Scikit-Learn compatible transformers.</p>
 <dl class="py class">
@@ -426,15 +348,16 @@ Win2    –<a href="#id11"><span class="problematic" id="id12">|----|</span></a>
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">tsfeast.transformers.</span></span><span class="sig-name descname"><span class="pre">BaseTransformer</span></span><a class="reference internal" href="_modules/tsfeast/transformers.html#BaseTransformer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tsfeast.transformers.BaseTransformer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sklearn.base.BaseEstimator</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">sklearn.base.TransformerMixin</span></code></p>
 <p>Base transformer object.</p>
+<p>Instantiate transformer object.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="tsfeast.transformers.BaseTransformer.__init__">
 <span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tsfeast/transformers.html#BaseTransformer.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tsfeast.transformers.BaseTransformer.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Instantiate transformer object.</p>
 </dd></dl>
 <dl class="py method">
-<dt class="sig sig-object py" id="tsfeast.transformers.BaseTransformer.fit">
-<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference internal" href="#tsfeast.transformers.BaseTransformer" title="tsfeast.transformers.BaseTransformer"><span class="pre">tsfeast.transformers.BaseTransformer</span></a></span></span><a class="reference internal" href="_modules/tsfeast/transformers.html#BaseTransformer.fit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tsfeast.transformers.BaseTransformer.fit" title="Permalink to this definition">¶</a></dt>
-<dd><p>Fit transformer object to data.</p>
+<dt class="sig sig-object py" id="tsfeast.transformers.BaseTransformer.transform">
+<span class="sig-name descname"><span class="pre">transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tsfeast/transformers.html#BaseTransformer.transform"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tsfeast.transformers.BaseTransformer.transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transform fitted data.</p>
 </dd></dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="tsfeast.transformers.BaseTransformer.get_feature_names">
@@ -442,70 +365,9 @@ Win2    –<a href="#id11"><span class="problematic" id="id12">|----|</span></a>
 <dd><p>Get list of feature names.</p>
 </dd></dl>
 <dl class="py method">
-<dt class="sig sig-object py" id="tsfeast.transformers.BaseTransformer.transform">
-<span class="sig-name descname"><span class="pre">transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tsfeast/transformers.html#BaseTransformer.transform"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tsfeast.transformers.BaseTransformer.transform" title="Permalink to this definition">¶</a></dt>
-<dd><p>Transform fitted data.</p>
-</dd></dl>
-</dd></dl>
-<dl class="py class">
-<dt class="sig sig-object py" id="tsfeast.transformers.ChangeFeatures">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">tsfeast.transformers.</span></span><span class="sig-name descname"><span class="pre">ChangeFeatures</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">period_lengths</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tsfeast/transformers.html#ChangeFeatures"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tsfeast.transformers.ChangeFeatures" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#tsfeast.transformers.BaseTransformer" title="tsfeast.transformers.BaseTransformer"><code class="xref py py-class docutils literal notranslate"><span class="pre">tsfeast.transformers.BaseTransformer</span></code></a></p>
-<p>Generate period change features.</p>
-<dl class="py method">
-<dt class="sig sig-object py" id="tsfeast.transformers.ChangeFeatures.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">period_lengths</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tsfeast/transformers.html#ChangeFeatures.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tsfeast.transformers.ChangeFeatures.__init__" title="Permalink to this definition">¶</a></dt>
-<dd><p>Instantiate transformer object.</p>
-</dd></dl>
-</dd></dl>
-<dl class="py class">
-<dt class="sig sig-object py" id="tsfeast.transformers.DateTimeFeatures">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">tsfeast.transformers.</span></span><span class="sig-name descname"><span class="pre">DateTimeFeatures</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">date_col</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dt_format</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tsfeast/transformers.html#DateTimeFeatures"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tsfeast.transformers.DateTimeFeatures" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#tsfeast.transformers.BaseTransformer" title="tsfeast.transformers.BaseTransformer"><code class="xref py py-class docutils literal notranslate"><span class="pre">tsfeast.transformers.BaseTransformer</span></code></a></p>
-<p>Generate datetime features.</p>
-<dl class="py method">
-<dt class="sig sig-object py" id="tsfeast.transformers.DateTimeFeatures.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">date_col</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dt_format</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tsfeast/transformers.html#DateTimeFeatures.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tsfeast.transformers.DateTimeFeatures.__init__" title="Permalink to this definition">¶</a></dt>
-<dd><p>Instantiate transformer object.</p>
-</dd></dl>
-</dd></dl>
-<dl class="py class">
-<dt class="sig sig-object py" id="tsfeast.transformers.DifferenceFeatures">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">tsfeast.transformers.</span></span><span class="sig-name descname"><span class="pre">DifferenceFeatures</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_diffs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tsfeast/transformers.html#DifferenceFeatures"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tsfeast.transformers.DifferenceFeatures" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#tsfeast.transformers.BaseTransformer" title="tsfeast.transformers.BaseTransformer"><code class="xref py py-class docutils literal notranslate"><span class="pre">tsfeast.transformers.BaseTransformer</span></code></a></p>
-<p>Generate difference features.</p>
-<dl class="py method">
-<dt class="sig sig-object py" id="tsfeast.transformers.DifferenceFeatures.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_diffs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tsfeast/transformers.html#DifferenceFeatures.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tsfeast.transformers.DifferenceFeatures.__init__" title="Permalink to this definition">¶</a></dt>
-<dd><p>Instantiate transformer object.</p>
-</dd></dl>
-</dd></dl>
-<dl class="py class">
-<dt class="sig sig-object py" id="tsfeast.transformers.EwmaFeatures">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">tsfeast.transformers.</span></span><span class="sig-name descname"><span class="pre">EwmaFeatures</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">window_lengths</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tsfeast/transformers.html#EwmaFeatures"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tsfeast.transformers.EwmaFeatures" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#tsfeast.transformers.BaseTransformer" title="tsfeast.transformers.BaseTransformer"><code class="xref py py-class docutils literal notranslate"><span class="pre">tsfeast.transformers.BaseTransformer</span></code></a></p>
-<p>Generate exponentially-weighted moving-average features.</p>
-<dl class="py method">
-<dt class="sig sig-object py" id="tsfeast.transformers.EwmaFeatures.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">window_lengths</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tsfeast/transformers.html#EwmaFeatures.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tsfeast.transformers.EwmaFeatures.__init__" title="Permalink to this definition">¶</a></dt>
-<dd><p>Instantiate transformer object.</p>
-</dd></dl>
-</dd></dl>
-<dl class="py class">
-<dt class="sig sig-object py" id="tsfeast.transformers.InteractionFeatures">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">tsfeast.transformers.</span></span><span class="sig-name descname"><span class="pre">InteractionFeatures</span></span><a class="reference internal" href="_modules/tsfeast/transformers.html#InteractionFeatures"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tsfeast.transformers.InteractionFeatures" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#tsfeast.transformers.BaseTransformer" title="tsfeast.transformers.BaseTransformer"><code class="xref py py-class docutils literal notranslate"><span class="pre">tsfeast.transformers.BaseTransformer</span></code></a></p>
-<p>Wrap PolynomialFeatures to extract interactions and keep column names.</p>
-</dd></dl>
-<dl class="py class">
-<dt class="sig sig-object py" id="tsfeast.transformers.LagFeatures">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">tsfeast.transformers.</span></span><span class="sig-name descname"><span class="pre">LagFeatures</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_lags</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tsfeast/transformers.html#LagFeatures"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tsfeast.transformers.LagFeatures" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#tsfeast.transformers.BaseTransformer" title="tsfeast.transformers.BaseTransformer"><code class="xref py py-class docutils literal notranslate"><span class="pre">tsfeast.transformers.BaseTransformer</span></code></a></p>
-<p>Generate lag features.</p>
-<dl class="py method">
-<dt class="sig sig-object py" id="tsfeast.transformers.LagFeatures.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_lags</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tsfeast/transformers.html#LagFeatures.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tsfeast.transformers.LagFeatures.__init__" title="Permalink to this definition">¶</a></dt>
-<dd><p>Instantiate transformer object.</p>
+<dt class="sig sig-object py" id="tsfeast.transformers.BaseTransformer.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference internal" href="#tsfeast.transformers.BaseTransformer" title="tsfeast.transformers.BaseTransformer"><span class="pre">tsfeast.transformers.BaseTransformer</span></a></span></span><a class="reference internal" href="_modules/tsfeast/transformers.html#BaseTransformer.fit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tsfeast.transformers.BaseTransformer.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fit transformer object to data.</p>
 </dd></dl>
 </dd></dl>
 <dl class="py class">
@@ -513,34 +375,14 @@ Win2    –<a href="#id11"><span class="problematic" id="id12">|----|</span></a>
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">tsfeast.transformers.</span></span><span class="sig-name descname"><span class="pre">OriginalFeatures</span></span><a class="reference internal" href="_modules/tsfeast/transformers.html#OriginalFeatures"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tsfeast.transformers.OriginalFeatures" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#tsfeast.transformers.BaseTransformer" title="tsfeast.transformers.BaseTransformer"><code class="xref py py-class docutils literal notranslate"><span class="pre">tsfeast.transformers.BaseTransformer</span></code></a></p>
 <p>Return original features.</p>
-</dd></dl>
-<dl class="py class">
-<dt class="sig sig-object py" id="tsfeast.transformers.PolyFeatures">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">tsfeast.transformers.</span></span><span class="sig-name descname"><span class="pre">PolyFeatures</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">degree</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tsfeast/transformers.html#PolyFeatures"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tsfeast.transformers.PolyFeatures" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#tsfeast.transformers.BaseTransformer" title="tsfeast.transformers.BaseTransformer"><code class="xref py py-class docutils literal notranslate"><span class="pre">tsfeast.transformers.BaseTransformer</span></code></a></p>
-<p>Generate polynomial features.</p>
-<dl class="py method">
-<dt class="sig sig-object py" id="tsfeast.transformers.PolyFeatures.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">degree</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tsfeast/transformers.html#PolyFeatures.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tsfeast.transformers.PolyFeatures.__init__" title="Permalink to this definition">¶</a></dt>
-<dd><p>Instantiate transformer object.</p>
-</dd></dl>
-</dd></dl>
-<dl class="py class">
-<dt class="sig sig-object py" id="tsfeast.transformers.RollingFeatures">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">tsfeast.transformers.</span></span><span class="sig-name descname"><span class="pre">RollingFeatures</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">window_lengths</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tsfeast/transformers.html#RollingFeatures"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tsfeast.transformers.RollingFeatures" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#tsfeast.transformers.BaseTransformer" title="tsfeast.transformers.BaseTransformer"><code class="xref py py-class docutils literal notranslate"><span class="pre">tsfeast.transformers.BaseTransformer</span></code></a></p>
-<p>Generate rolling features.</p>
-<dl class="py method">
-<dt class="sig sig-object py" id="tsfeast.transformers.RollingFeatures.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">window_lengths</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tsfeast/transformers.html#RollingFeatures.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tsfeast.transformers.RollingFeatures.__init__" title="Permalink to this definition">¶</a></dt>
-<dd><p>Instantiate transformer object.</p>
-</dd></dl>
+<p>Instantiate transformer object.</p>
 </dd></dl>
 <dl class="py class">
 <dt class="sig sig-object py" id="tsfeast.transformers.Scaler">
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">tsfeast.transformers.</span></span><span class="sig-name descname"><span class="pre">Scaler</span></span><a class="reference internal" href="_modules/tsfeast/transformers.html#Scaler"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tsfeast.transformers.Scaler" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#tsfeast.transformers.BaseTransformer" title="tsfeast.transformers.BaseTransformer"><code class="xref py py-class docutils literal notranslate"><span class="pre">tsfeast.transformers.BaseTransformer</span></code></a></p>
 <p>Wrap StandardScaler to maintain column names.</p>
+<p>Instantiate transformer object.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="tsfeast.transformers.Scaler.__init__">
 <span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tsfeast/transformers.html#Scaler.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tsfeast.transformers.Scaler.__init__" title="Permalink to this definition">¶</a></dt>
@@ -552,8 +394,99 @@ Win2    –<a href="#id11"><span class="problematic" id="id12">|----|</span></a>
 <dd><p>Transform scaled data into original feature space.</p>
 </dd></dl>
 </dd></dl>
-</section>
-<section id="module-tsfeast.tsfeatures">
+<dl class="py class">
+<dt class="sig sig-object py" id="tsfeast.transformers.DateTimeFeatures">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">tsfeast.transformers.</span></span><span class="sig-name descname"><span class="pre">DateTimeFeatures</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">date_col</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dt_format</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tsfeast/transformers.html#DateTimeFeatures"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tsfeast.transformers.DateTimeFeatures" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#tsfeast.transformers.BaseTransformer" title="tsfeast.transformers.BaseTransformer"><code class="xref py py-class docutils literal notranslate"><span class="pre">tsfeast.transformers.BaseTransformer</span></code></a></p>
+<p>Generate datetime features.</p>
+<p>Instantiate transformer object.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="tsfeast.transformers.DateTimeFeatures.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">date_col</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dt_format</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tsfeast/transformers.html#DateTimeFeatures.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tsfeast.transformers.DateTimeFeatures.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Instantiate transformer object.</p>
+</dd></dl>
+</dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="tsfeast.transformers.LagFeatures">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">tsfeast.transformers.</span></span><span class="sig-name descname"><span class="pre">LagFeatures</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_lags</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tsfeast/transformers.html#LagFeatures"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tsfeast.transformers.LagFeatures" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#tsfeast.transformers.BaseTransformer" title="tsfeast.transformers.BaseTransformer"><code class="xref py py-class docutils literal notranslate"><span class="pre">tsfeast.transformers.BaseTransformer</span></code></a></p>
+<p>Generate lag features.</p>
+<p>Instantiate transformer object.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="tsfeast.transformers.LagFeatures.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_lags</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tsfeast/transformers.html#LagFeatures.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tsfeast.transformers.LagFeatures.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Instantiate transformer object.</p>
+</dd></dl>
+</dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="tsfeast.transformers.RollingFeatures">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">tsfeast.transformers.</span></span><span class="sig-name descname"><span class="pre">RollingFeatures</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">window_lengths</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tsfeast/transformers.html#RollingFeatures"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tsfeast.transformers.RollingFeatures" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#tsfeast.transformers.BaseTransformer" title="tsfeast.transformers.BaseTransformer"><code class="xref py py-class docutils literal notranslate"><span class="pre">tsfeast.transformers.BaseTransformer</span></code></a></p>
+<p>Generate rolling features.</p>
+<p>Instantiate transformer object.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="tsfeast.transformers.RollingFeatures.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">window_lengths</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tsfeast/transformers.html#RollingFeatures.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tsfeast.transformers.RollingFeatures.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Instantiate transformer object.</p>
+</dd></dl>
+</dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="tsfeast.transformers.EwmaFeatures">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">tsfeast.transformers.</span></span><span class="sig-name descname"><span class="pre">EwmaFeatures</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">window_lengths</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tsfeast/transformers.html#EwmaFeatures"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tsfeast.transformers.EwmaFeatures" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#tsfeast.transformers.BaseTransformer" title="tsfeast.transformers.BaseTransformer"><code class="xref py py-class docutils literal notranslate"><span class="pre">tsfeast.transformers.BaseTransformer</span></code></a></p>
+<p>Generate exponentially-weighted moving-average features.</p>
+<p>Instantiate transformer object.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="tsfeast.transformers.EwmaFeatures.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">window_lengths</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tsfeast/transformers.html#EwmaFeatures.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tsfeast.transformers.EwmaFeatures.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Instantiate transformer object.</p>
+</dd></dl>
+</dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="tsfeast.transformers.ChangeFeatures">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">tsfeast.transformers.</span></span><span class="sig-name descname"><span class="pre">ChangeFeatures</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">period_lengths</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tsfeast/transformers.html#ChangeFeatures"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tsfeast.transformers.ChangeFeatures" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#tsfeast.transformers.BaseTransformer" title="tsfeast.transformers.BaseTransformer"><code class="xref py py-class docutils literal notranslate"><span class="pre">tsfeast.transformers.BaseTransformer</span></code></a></p>
+<p>Generate period change features.</p>
+<p>Instantiate transformer object.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="tsfeast.transformers.ChangeFeatures.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">period_lengths</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tsfeast/transformers.html#ChangeFeatures.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tsfeast.transformers.ChangeFeatures.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Instantiate transformer object.</p>
+</dd></dl>
+</dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="tsfeast.transformers.DifferenceFeatures">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">tsfeast.transformers.</span></span><span class="sig-name descname"><span class="pre">DifferenceFeatures</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_diffs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tsfeast/transformers.html#DifferenceFeatures"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tsfeast.transformers.DifferenceFeatures" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#tsfeast.transformers.BaseTransformer" title="tsfeast.transformers.BaseTransformer"><code class="xref py py-class docutils literal notranslate"><span class="pre">tsfeast.transformers.BaseTransformer</span></code></a></p>
+<p>Generate difference features.</p>
+<p>Instantiate transformer object.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="tsfeast.transformers.DifferenceFeatures.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_diffs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tsfeast/transformers.html#DifferenceFeatures.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tsfeast.transformers.DifferenceFeatures.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Instantiate transformer object.</p>
+</dd></dl>
+</dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="tsfeast.transformers.PolyFeatures">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">tsfeast.transformers.</span></span><span class="sig-name descname"><span class="pre">PolyFeatures</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">degree</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tsfeast/transformers.html#PolyFeatures"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tsfeast.transformers.PolyFeatures" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#tsfeast.transformers.BaseTransformer" title="tsfeast.transformers.BaseTransformer"><code class="xref py py-class docutils literal notranslate"><span class="pre">tsfeast.transformers.BaseTransformer</span></code></a></p>
+<p>Generate polynomial features.</p>
+<p>Instantiate transformer object.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="tsfeast.transformers.PolyFeatures.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">degree</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tsfeast/transformers.html#PolyFeatures.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tsfeast.transformers.PolyFeatures.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Instantiate transformer object.</p>
+</dd></dl>
+</dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="tsfeast.transformers.InteractionFeatures">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">tsfeast.transformers.</span></span><span class="sig-name descname"><span class="pre">InteractionFeatures</span></span><a class="reference internal" href="_modules/tsfeast/transformers.html#InteractionFeatures"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tsfeast.transformers.InteractionFeatures" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#tsfeast.transformers.BaseTransformer" title="tsfeast.transformers.BaseTransformer"><code class="xref py py-class docutils literal notranslate"><span class="pre">tsfeast.transformers.BaseTransformer</span></code></a></p>
+<p>Wrap PolynomialFeatures to extract interactions and keep column names.</p>
+<p>Instantiate transformer object.</p>
+</dd></dl>
+</div>
+<div class="section" id="module-tsfeast.tsfeatures">
 <span id="tsfeast-tsfeatures-module"></span><h2>tsfeast.tsfeatures module<a class="headerlink" href="#module-tsfeast.tsfeatures" title="Permalink to this headline">¶</a></h2>
 <p>Time series features module.</p>
 <dl class="py class">
@@ -561,16 +494,22 @@ Win2    –<a href="#id11"><span class="problematic" id="id12">|----|</span></a>
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">tsfeast.tsfeatures.</span></span><span class="sig-name descname"><span class="pre">TimeSeriesFeatures</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">datetime</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">trend</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'n'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lags</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rolling</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ewma</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pct_chg</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">diffs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">polynomial</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interactions</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tsfeast/tsfeatures.html#TimeSeriesFeatures"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tsfeast.tsfeatures.TimeSeriesFeatures" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#tsfeast.transformers.BaseTransformer" title="tsfeast.transformers.BaseTransformer"><code class="xref py py-class docutils literal notranslate"><span class="pre">tsfeast.transformers.BaseTransformer</span></code></a></p>
 <p>Generate multiple time series feature in one transformer.</p>
+<p>Instanatiate transformer object.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="tsfeast.tsfeatures.TimeSeriesFeatures.__init__">
 <span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">datetime</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">trend</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'n'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lags</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rolling</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ewma</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pct_chg</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">diffs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">polynomial</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interactions</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tsfeast/tsfeatures.html#TimeSeriesFeatures.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tsfeast.tsfeatures.TimeSeriesFeatures.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Instanatiate transformer object.</p>
 </dd></dl>
 </dd></dl>
-</section>
-<section id="module-tsfeast.utils">
+</div>
+<div class="section" id="module-tsfeast.utils">
 <span id="tsfeast-utils-module"></span><h2>tsfeast.utils module<a class="headerlink" href="#module-tsfeast.utils" title="Permalink to this headline">¶</a></h2>
 <p>Miscellaneous utility functions.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="tsfeast.utils.to_list">
+<span class="sig-prename descclassname"><span class="pre">tsfeast.utils.</span></span><span class="sig-name descname"><span class="pre">to_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">List</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/tsfeast/utils.html#to_list"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tsfeast.utils.to_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>Ensure parameter is list of integer(s).</p>
+</dd></dl>
 <dl class="py function">
 <dt class="sig sig-object py" id="tsfeast.utils.array_to_dataframe">
 <span class="sig-prename descclassname"><span class="pre">tsfeast.utils.</span></span><span class="sig-name descname"><span class="pre">array_to_dataframe</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">pandas.core.frame.DataFrame</span></span></span><a class="reference internal" href="_modules/tsfeast/utils.html#array_to_dataframe"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tsfeast.utils.array_to_dataframe" title="Permalink to this definition">¶</a></dt>
@@ -581,16 +520,11 @@ Win2    –<a href="#id11"><span class="problematic" id="id12">|----|</span></a>
 <span class="sig-prename descclassname"><span class="pre">tsfeast.utils.</span></span><span class="sig-name descname"><span class="pre">array_to_series</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">pandas.core.series.Series</span></span></span><a class="reference internal" href="_modules/tsfeast/utils.html#array_to_series"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tsfeast.utils.array_to_series" title="Permalink to this definition">¶</a></dt>
 <dd><p>Convert Numpy array to Pandas Series with default name.</p>
 </dd></dl>
-<dl class="py function">
-<dt class="sig sig-object py" id="tsfeast.utils.to_list">
-<span class="sig-prename descclassname"><span class="pre">tsfeast.utils.</span></span><span class="sig-name descname"><span class="pre">to_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">List</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/tsfeast/utils.html#to_list"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tsfeast.utils.to_list" title="Permalink to this definition">¶</a></dt>
-<dd><p>Ensure parameter is list of integer(s).</p>
-</dd></dl>
-</section>
-<section id="module-tsfeast">
+</div>
+<div class="section" id="module-tsfeast">
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-tsfeast" title="Permalink to this headline">¶</a></h2>
-</section>
-</section>
+</div>
+</div>
 
       </article>
       <footer>
@@ -662,7 +596,7 @@ Win2    –<a href="#id11"><span class="problematic" id="id12">|----|</span></a>
 
 
     </aside>
-  </div>
+  </main>
 </div><script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
