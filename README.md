@@ -1,5 +1,7 @@
 # tsfeast
 
+A collection of Scikit-Learn compatible time series transformers and tools.
+
 ## Install
 
 Create a virtual environment with Python 3.8 and install from git:
