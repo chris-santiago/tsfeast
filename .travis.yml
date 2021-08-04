@@ -6,12 +6,12 @@ python:
 
 # command to install dependencies
 install:
-  - pip install pytest coverage pytest-cov codecov
+  - pip install pytest coverage pytest-cov
   - pip install .
 
 # command to run tests
 script:
-  - coverage run -m pytest
+  - pytest --cov-report=xml
 
 after_success:
-  - codecov
+  - bash <(curl -s https://codecov.io/bash)
