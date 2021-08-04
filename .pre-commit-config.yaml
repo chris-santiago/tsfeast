@@ -19,6 +19,7 @@ repos:
     rev: v2.9.5
     hooks:
     -   id: pylint
+        entry: pylint tsfeast
 ################## Flake8 ##################
 #-   repo: https://github.com/PyCQA/flake8
 #    rev: 3.8.3
@@ -29,6 +30,7 @@ repos:
     rev: v0.910
     hooks:
     -   id: mypy
+        exclude: (^tests/|^docs/)
 ################## Check-Manifest ##################
 -   repo: https://github.com/mgedmin/check-manifest
     rev: '0.46'
