@@ -290,6 +290,501 @@ month, business days in month and leap year.</p>
 <span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">estimator</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">sklearn.linear_model._base.LinearModel</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">LinearRegression()</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">order</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">(1,</span> <span class="pre">0,</span> <span class="pre">0)</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tsfeast/models.html#ARMARegressor.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tsfeast.models.ARMARegressor.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Instantiate ARMARegressor object.</p>
 </dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="tsfeast.models.ARMARegressor.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tsfeast.models.ARMARegressor.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fit the estimator.</p>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="tsfeast.models.ARMARegressor.get_params">
+<span class="sig-name descname"><span class="pre">get_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">deep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tsfeast.models.ARMARegressor.get_params" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get parameters for this estimator.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>deep</strong> (<em>bool, default=True</em>) – If True, will return the parameters for this estimator and
+contained subobjects that are estimators.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>params</strong> (<em>dict</em>) – Parameter names mapped to their values.</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="tsfeast.models.ARMARegressor.predict">
+<span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tsfeast.models.ARMARegressor.predict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Make predictions with fitted estimator.</p>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="tsfeast.models.ARMARegressor.score">
+<span class="sig-name descname"><span class="pre">score</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_weight</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tsfeast.models.ARMARegressor.score" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the coefficient of determination <div class="system-message">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">R^2</span>)</p>
+<p>latex exited with error
+[stdout]
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=latex)
+ restricted \write18 enabled.
+entering extended mode
+(./math.tex
+LaTeX2e &lt;2020-10-01&gt;
+L3 programming layer &lt;2020-09-24&gt; xparse &lt;2020-03-03&gt;
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/base/article.c
+ls
+Document Class: article 2020/04/10 v1.4m Standard LaTeX document class
+
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/base/size12.cl
+o))
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/base/inputenc.
+sty)
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsmat
+h.sty
+For additional information on amsmath, use the `?' option.
+
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amstex
+t.sty
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsgen
+.sty))
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsbsy
+.sty)
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsopn
+.sty))
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amscls/amsthm.
+sty)
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/amssy
+mb.sty
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/amsfo
+nts.sty))
+
+! LaTeX Error: File `anyfontsize.sty' not found.
+
+Type X to quit or &lt;RETURN&gt; to proceed,
+or enter new name. (Default extension: sty)
+
+Enter file name:
+! Emergency stop.
+&lt;read *&gt;
+
+l.8 \usepackage
+               {bm}^^M
+No pages of output.
+Transcript written on math.log.
+</p>
+</div>
+ of the
+prediction.</p>
+<p>The coefficient <div class="system-message">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">R^2</span>)</p>
+<p>latex exited with error
+[stdout]
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=latex)
+ restricted \write18 enabled.
+entering extended mode
+(./math.tex
+LaTeX2e &lt;2020-10-01&gt;
+L3 programming layer &lt;2020-09-24&gt; xparse &lt;2020-03-03&gt;
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/base/article.c
+ls
+Document Class: article 2020/04/10 v1.4m Standard LaTeX document class
+
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/base/size12.cl
+o))
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/base/inputenc.
+sty)
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsmat
+h.sty
+For additional information on amsmath, use the `?' option.
+
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amstex
+t.sty
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsgen
+.sty))
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsbsy
+.sty)
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsopn
+.sty))
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amscls/amsthm.
+sty)
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/amssy
+mb.sty
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/amsfo
+nts.sty))
+
+! LaTeX Error: File `anyfontsize.sty' not found.
+
+Type X to quit or &lt;RETURN&gt; to proceed,
+or enter new name. (Default extension: sty)
+
+Enter file name:
+! Emergency stop.
+&lt;read *&gt;
+
+l.8 \usepackage
+               {bm}^^M
+No pages of output.
+Transcript written on math.log.
+</p>
+</div>
+ is defined as <div class="system-message">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">(1 - \frac{u}{v})</span>)</p>
+<p>latex exited with error
+[stdout]
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=latex)
+ restricted \write18 enabled.
+entering extended mode
+(./math.tex
+LaTeX2e &lt;2020-10-01&gt;
+L3 programming layer &lt;2020-09-24&gt; xparse &lt;2020-03-03&gt;
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/base/article.c
+ls
+Document Class: article 2020/04/10 v1.4m Standard LaTeX document class
+
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/base/size12.cl
+o))
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/base/inputenc.
+sty)
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsmat
+h.sty
+For additional information on amsmath, use the `?' option.
+
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amstex
+t.sty
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsgen
+.sty))
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsbsy
+.sty)
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsopn
+.sty))
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amscls/amsthm.
+sty)
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/amssy
+mb.sty
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/amsfo
+nts.sty))
+
+! LaTeX Error: File `anyfontsize.sty' not found.
+
+Type X to quit or &lt;RETURN&gt; to proceed,
+or enter new name. (Default extension: sty)
+
+Enter file name:
+! Emergency stop.
+&lt;read *&gt;
+
+l.8 \usepackage
+               {bm}^^M
+No pages of output.
+Transcript written on math.log.
+</p>
+</div>
+,
+where <div class="system-message">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">u</span>)</p>
+<p>latex exited with error
+[stdout]
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=latex)
+ restricted \write18 enabled.
+entering extended mode
+(./math.tex
+LaTeX2e &lt;2020-10-01&gt;
+L3 programming layer &lt;2020-09-24&gt; xparse &lt;2020-03-03&gt;
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/base/article.c
+ls
+Document Class: article 2020/04/10 v1.4m Standard LaTeX document class
+
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/base/size12.cl
+o))
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/base/inputenc.
+sty)
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsmat
+h.sty
+For additional information on amsmath, use the `?' option.
+
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amstex
+t.sty
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsgen
+.sty))
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsbsy
+.sty)
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsopn
+.sty))
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amscls/amsthm.
+sty)
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/amssy
+mb.sty
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/amsfo
+nts.sty))
+
+! LaTeX Error: File `anyfontsize.sty' not found.
+
+Type X to quit or &lt;RETURN&gt; to proceed,
+or enter new name. (Default extension: sty)
+
+Enter file name:
+! Emergency stop.
+&lt;read *&gt;
+
+l.8 \usepackage
+               {bm}^^M
+No pages of output.
+Transcript written on math.log.
+</p>
+</div>
+ is the residual sum of squares <code class="docutils literal notranslate"><span class="pre">((y_true</span> <span class="pre">-</span> <span class="pre">y_pred)</span>
+<span class="pre">**</span> <span class="pre">2).sum()</span></code> and <div class="system-message">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">v</span>)</p>
+<p>latex exited with error
+[stdout]
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=latex)
+ restricted \write18 enabled.
+entering extended mode
+(./math.tex
+LaTeX2e &lt;2020-10-01&gt;
+L3 programming layer &lt;2020-09-24&gt; xparse &lt;2020-03-03&gt;
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/base/article.c
+ls
+Document Class: article 2020/04/10 v1.4m Standard LaTeX document class
+
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/base/size12.cl
+o))
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/base/inputenc.
+sty)
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsmat
+h.sty
+For additional information on amsmath, use the `?' option.
+
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amstex
+t.sty
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsgen
+.sty))
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsbsy
+.sty)
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsopn
+.sty))
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amscls/amsthm.
+sty)
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/amssy
+mb.sty
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/amsfo
+nts.sty))
+
+! LaTeX Error: File `anyfontsize.sty' not found.
+
+Type X to quit or &lt;RETURN&gt; to proceed,
+or enter new name. (Default extension: sty)
+
+Enter file name:
+! Emergency stop.
+&lt;read *&gt;
+
+l.8 \usepackage
+               {bm}^^M
+No pages of output.
+Transcript written on math.log.
+</p>
+</div>
+ is the total sum of squares <code class="docutils literal notranslate"><span class="pre">((y_true</span> <span class="pre">-</span>
+<span class="pre">y_true.mean())</span> <span class="pre">**</span> <span class="pre">2).sum()</span></code>. The best possible score is 1.0 and it
+can be negative (because the model can be arbitrarily worse). A
+constant model that always predicts the expected value of <cite>y</cite>,
+disregarding the input features, would get a <div class="system-message">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">R^2</span>)</p>
+<p>latex exited with error
+[stdout]
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=latex)
+ restricted \write18 enabled.
+entering extended mode
+(./math.tex
+LaTeX2e &lt;2020-10-01&gt;
+L3 programming layer &lt;2020-09-24&gt; xparse &lt;2020-03-03&gt;
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/base/article.c
+ls
+Document Class: article 2020/04/10 v1.4m Standard LaTeX document class
+
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/base/size12.cl
+o))
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/base/inputenc.
+sty)
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsmat
+h.sty
+For additional information on amsmath, use the `?' option.
+
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amstex
+t.sty
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsgen
+.sty))
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsbsy
+.sty)
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsopn
+.sty))
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amscls/amsthm.
+sty)
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/amssy
+mb.sty
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/amsfo
+nts.sty))
+
+! LaTeX Error: File `anyfontsize.sty' not found.
+
+Type X to quit or &lt;RETURN&gt; to proceed,
+or enter new name. (Default extension: sty)
+
+Enter file name:
+! Emergency stop.
+&lt;read *&gt;
+
+l.8 \usepackage
+               {bm}^^M
+No pages of output.
+Transcript written on math.log.
+</p>
+</div>
+ score of
+0.0.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>array-like of shape (n_samples, n_features)</em>) – Test samples. For some estimators this may be a precomputed
+kernel matrix or a list of generic objects instead with shape
+<code class="docutils literal notranslate"><span class="pre">(n_samples,</span> <span class="pre">n_samples_fitted)</span></code>, where <code class="docutils literal notranslate"><span class="pre">n_samples_fitted</span></code>
+is the number of samples used in the fitting for the estimator.</p></li>
+<li><p><strong>y</strong> (<em>array-like of shape (n_samples,) or (n_samples, n_outputs)</em>) – True values for <cite>X</cite>.</p></li>
+<li><p><strong>sample_weight</strong> (<em>array-like of shape (n_samples,), default=None</em>) – Sample weights.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>score</strong> (<em>float</em>) – <div class="system-message">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">R^2</span>)</p>
+<p>latex exited with error
+[stdout]
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=latex)
+ restricted \write18 enabled.
+entering extended mode
+(./math.tex
+LaTeX2e &lt;2020-10-01&gt;
+L3 programming layer &lt;2020-09-24&gt; xparse &lt;2020-03-03&gt;
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/base/article.c
+ls
+Document Class: article 2020/04/10 v1.4m Standard LaTeX document class
+
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/base/size12.cl
+o))
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/base/inputenc.
+sty)
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsmat
+h.sty
+For additional information on amsmath, use the `?' option.
+
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amstex
+t.sty
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsgen
+.sty))
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsbsy
+.sty)
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsopn
+.sty))
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amscls/amsthm.
+sty)
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/amssy
+mb.sty
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/amsfo
+nts.sty))
+
+! LaTeX Error: File `anyfontsize.sty' not found.
+
+Type X to quit or &lt;RETURN&gt; to proceed,
+or enter new name. (Default extension: sty)
+
+Enter file name:
+! Emergency stop.
+&lt;read *&gt;
+
+l.8 \usepackage
+               {bm}^^M
+No pages of output.
+Transcript written on math.log.
+</p>
+</div>
+ of <code class="docutils literal notranslate"><span class="pre">self.predict(X)</span></code> wrt. <cite>y</cite>.</p>
+</dd>
+</dl>
+<div class="admonition-notes admonition">
+<p class="admonition-title">Notes</p>
+<p>The <div class="system-message">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">R^2</span>)</p>
+<p>latex exited with error
+[stdout]
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=latex)
+ restricted \write18 enabled.
+entering extended mode
+(./math.tex
+LaTeX2e &lt;2020-10-01&gt;
+L3 programming layer &lt;2020-09-24&gt; xparse &lt;2020-03-03&gt;
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/base/article.c
+ls
+Document Class: article 2020/04/10 v1.4m Standard LaTeX document class
+
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/base/size12.cl
+o))
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/base/inputenc.
+sty)
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsmat
+h.sty
+For additional information on amsmath, use the `?' option.
+
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amstex
+t.sty
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsgen
+.sty))
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsbsy
+.sty)
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsopn
+.sty))
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amscls/amsthm.
+sty)
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/amssy
+mb.sty
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/amsfo
+nts.sty))
+
+! LaTeX Error: File `anyfontsize.sty' not found.
+
+Type X to quit or &lt;RETURN&gt; to proceed,
+or enter new name. (Default extension: sty)
+
+Enter file name:
+! Emergency stop.
+&lt;read *&gt;
+
+l.8 \usepackage
+               {bm}^^M
+No pages of output.
+Transcript written on math.log.
+</p>
+</div>
+ score used when calling <code class="docutils literal notranslate"><span class="pre">score</span></code> on a regressor uses
+<code class="docutils literal notranslate"><span class="pre">multioutput='uniform_average'</span></code> from version 0.23 to keep consistent
+with default value of <code class="xref py py-func docutils literal notranslate"><span class="pre">r2_score()</span></code>.
+This influences the <code class="docutils literal notranslate"><span class="pre">score</span></code> method of all the multioutput
+regressors (except for
+<code class="xref py py-class docutils literal notranslate"><span class="pre">MultiOutputRegressor</span></code>).</p>
+</div>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="tsfeast.models.ARMARegressor.set_params">
+<span class="sig-name descname"><span class="pre">set_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tsfeast.models.ARMARegressor.set_params" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the parameters of this estimator.</p>
+<p>The method works on simple estimators as well as on nested objects
+(such as <code class="xref py py-class docutils literal notranslate"><span class="pre">Pipeline</span></code>). The latter have
+parameters of the form <code class="docutils literal notranslate"><span class="pre">&lt;component&gt;__&lt;parameter&gt;</span></code> so that it’s
+possible to update each component of a nested object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>**params</strong> (<em>dict</em>) – Estimator parameters.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>self</strong> (<em>estimator instance</em>) – Estimator instance.</p>
+</dd>
+</dl>
+</dd></dl>
 </dd></dl>
 <dl class="py class">
 <dt class="sig sig-object py" id="tsfeast.models.TSARegressor">
@@ -301,6 +796,501 @@ month, business days in month and leap year.</p>
 <dt class="sig sig-object py" id="tsfeast.models.TSARegressor.__init__">
 <span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_exog</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tsfeast/models.html#TSARegressor.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tsfeast.models.TSARegressor.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Instantiate TSARegressor object.</p>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="tsfeast.models.TSARegressor.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tsfeast.models.TSARegressor.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fit the estimator.</p>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="tsfeast.models.TSARegressor.get_params">
+<span class="sig-name descname"><span class="pre">get_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">deep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tsfeast.models.TSARegressor.get_params" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get parameters for this estimator.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>deep</strong> (<em>bool, default=True</em>) – If True, will return the parameters for this estimator and
+contained subobjects that are estimators.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>params</strong> (<em>dict</em>) – Parameter names mapped to their values.</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="tsfeast.models.TSARegressor.predict">
+<span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tsfeast.models.TSARegressor.predict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Make predictions with fitted estimator.</p>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="tsfeast.models.TSARegressor.score">
+<span class="sig-name descname"><span class="pre">score</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_weight</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tsfeast.models.TSARegressor.score" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the coefficient of determination <div class="system-message">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">R^2</span>)</p>
+<p>latex exited with error
+[stdout]
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=latex)
+ restricted \write18 enabled.
+entering extended mode
+(./math.tex
+LaTeX2e &lt;2020-10-01&gt;
+L3 programming layer &lt;2020-09-24&gt; xparse &lt;2020-03-03&gt;
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/base/article.c
+ls
+Document Class: article 2020/04/10 v1.4m Standard LaTeX document class
+
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/base/size12.cl
+o))
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/base/inputenc.
+sty)
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsmat
+h.sty
+For additional information on amsmath, use the `?' option.
+
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amstex
+t.sty
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsgen
+.sty))
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsbsy
+.sty)
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsopn
+.sty))
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amscls/amsthm.
+sty)
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/amssy
+mb.sty
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/amsfo
+nts.sty))
+
+! LaTeX Error: File `anyfontsize.sty' not found.
+
+Type X to quit or &lt;RETURN&gt; to proceed,
+or enter new name. (Default extension: sty)
+
+Enter file name:
+! Emergency stop.
+&lt;read *&gt;
+
+l.8 \usepackage
+               {bm}^^M
+No pages of output.
+Transcript written on math.log.
+</p>
+</div>
+ of the
+prediction.</p>
+<p>The coefficient <div class="system-message">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">R^2</span>)</p>
+<p>latex exited with error
+[stdout]
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=latex)
+ restricted \write18 enabled.
+entering extended mode
+(./math.tex
+LaTeX2e &lt;2020-10-01&gt;
+L3 programming layer &lt;2020-09-24&gt; xparse &lt;2020-03-03&gt;
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/base/article.c
+ls
+Document Class: article 2020/04/10 v1.4m Standard LaTeX document class
+
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/base/size12.cl
+o))
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/base/inputenc.
+sty)
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsmat
+h.sty
+For additional information on amsmath, use the `?' option.
+
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amstex
+t.sty
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsgen
+.sty))
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsbsy
+.sty)
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsopn
+.sty))
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amscls/amsthm.
+sty)
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/amssy
+mb.sty
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/amsfo
+nts.sty))
+
+! LaTeX Error: File `anyfontsize.sty' not found.
+
+Type X to quit or &lt;RETURN&gt; to proceed,
+or enter new name. (Default extension: sty)
+
+Enter file name:
+! Emergency stop.
+&lt;read *&gt;
+
+l.8 \usepackage
+               {bm}^^M
+No pages of output.
+Transcript written on math.log.
+</p>
+</div>
+ is defined as <div class="system-message">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">(1 - \frac{u}{v})</span>)</p>
+<p>latex exited with error
+[stdout]
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=latex)
+ restricted \write18 enabled.
+entering extended mode
+(./math.tex
+LaTeX2e &lt;2020-10-01&gt;
+L3 programming layer &lt;2020-09-24&gt; xparse &lt;2020-03-03&gt;
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/base/article.c
+ls
+Document Class: article 2020/04/10 v1.4m Standard LaTeX document class
+
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/base/size12.cl
+o))
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/base/inputenc.
+sty)
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsmat
+h.sty
+For additional information on amsmath, use the `?' option.
+
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amstex
+t.sty
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsgen
+.sty))
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsbsy
+.sty)
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsopn
+.sty))
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amscls/amsthm.
+sty)
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/amssy
+mb.sty
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/amsfo
+nts.sty))
+
+! LaTeX Error: File `anyfontsize.sty' not found.
+
+Type X to quit or &lt;RETURN&gt; to proceed,
+or enter new name. (Default extension: sty)
+
+Enter file name:
+! Emergency stop.
+&lt;read *&gt;
+
+l.8 \usepackage
+               {bm}^^M
+No pages of output.
+Transcript written on math.log.
+</p>
+</div>
+,
+where <div class="system-message">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">u</span>)</p>
+<p>latex exited with error
+[stdout]
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=latex)
+ restricted \write18 enabled.
+entering extended mode
+(./math.tex
+LaTeX2e &lt;2020-10-01&gt;
+L3 programming layer &lt;2020-09-24&gt; xparse &lt;2020-03-03&gt;
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/base/article.c
+ls
+Document Class: article 2020/04/10 v1.4m Standard LaTeX document class
+
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/base/size12.cl
+o))
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/base/inputenc.
+sty)
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsmat
+h.sty
+For additional information on amsmath, use the `?' option.
+
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amstex
+t.sty
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsgen
+.sty))
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsbsy
+.sty)
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsopn
+.sty))
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amscls/amsthm.
+sty)
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/amssy
+mb.sty
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/amsfo
+nts.sty))
+
+! LaTeX Error: File `anyfontsize.sty' not found.
+
+Type X to quit or &lt;RETURN&gt; to proceed,
+or enter new name. (Default extension: sty)
+
+Enter file name:
+! Emergency stop.
+&lt;read *&gt;
+
+l.8 \usepackage
+               {bm}^^M
+No pages of output.
+Transcript written on math.log.
+</p>
+</div>
+ is the residual sum of squares <code class="docutils literal notranslate"><span class="pre">((y_true</span> <span class="pre">-</span> <span class="pre">y_pred)</span>
+<span class="pre">**</span> <span class="pre">2).sum()</span></code> and <div class="system-message">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">v</span>)</p>
+<p>latex exited with error
+[stdout]
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=latex)
+ restricted \write18 enabled.
+entering extended mode
+(./math.tex
+LaTeX2e &lt;2020-10-01&gt;
+L3 programming layer &lt;2020-09-24&gt; xparse &lt;2020-03-03&gt;
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/base/article.c
+ls
+Document Class: article 2020/04/10 v1.4m Standard LaTeX document class
+
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/base/size12.cl
+o))
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/base/inputenc.
+sty)
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsmat
+h.sty
+For additional information on amsmath, use the `?' option.
+
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amstex
+t.sty
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsgen
+.sty))
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsbsy
+.sty)
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsopn
+.sty))
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amscls/amsthm.
+sty)
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/amssy
+mb.sty
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/amsfo
+nts.sty))
+
+! LaTeX Error: File `anyfontsize.sty' not found.
+
+Type X to quit or &lt;RETURN&gt; to proceed,
+or enter new name. (Default extension: sty)
+
+Enter file name:
+! Emergency stop.
+&lt;read *&gt;
+
+l.8 \usepackage
+               {bm}^^M
+No pages of output.
+Transcript written on math.log.
+</p>
+</div>
+ is the total sum of squares <code class="docutils literal notranslate"><span class="pre">((y_true</span> <span class="pre">-</span>
+<span class="pre">y_true.mean())</span> <span class="pre">**</span> <span class="pre">2).sum()</span></code>. The best possible score is 1.0 and it
+can be negative (because the model can be arbitrarily worse). A
+constant model that always predicts the expected value of <cite>y</cite>,
+disregarding the input features, would get a <div class="system-message">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">R^2</span>)</p>
+<p>latex exited with error
+[stdout]
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=latex)
+ restricted \write18 enabled.
+entering extended mode
+(./math.tex
+LaTeX2e &lt;2020-10-01&gt;
+L3 programming layer &lt;2020-09-24&gt; xparse &lt;2020-03-03&gt;
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/base/article.c
+ls
+Document Class: article 2020/04/10 v1.4m Standard LaTeX document class
+
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/base/size12.cl
+o))
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/base/inputenc.
+sty)
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsmat
+h.sty
+For additional information on amsmath, use the `?' option.
+
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amstex
+t.sty
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsgen
+.sty))
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsbsy
+.sty)
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsopn
+.sty))
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amscls/amsthm.
+sty)
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/amssy
+mb.sty
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/amsfo
+nts.sty))
+
+! LaTeX Error: File `anyfontsize.sty' not found.
+
+Type X to quit or &lt;RETURN&gt; to proceed,
+or enter new name. (Default extension: sty)
+
+Enter file name:
+! Emergency stop.
+&lt;read *&gt;
+
+l.8 \usepackage
+               {bm}^^M
+No pages of output.
+Transcript written on math.log.
+</p>
+</div>
+ score of
+0.0.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>array-like of shape (n_samples, n_features)</em>) – Test samples. For some estimators this may be a precomputed
+kernel matrix or a list of generic objects instead with shape
+<code class="docutils literal notranslate"><span class="pre">(n_samples,</span> <span class="pre">n_samples_fitted)</span></code>, where <code class="docutils literal notranslate"><span class="pre">n_samples_fitted</span></code>
+is the number of samples used in the fitting for the estimator.</p></li>
+<li><p><strong>y</strong> (<em>array-like of shape (n_samples,) or (n_samples, n_outputs)</em>) – True values for <cite>X</cite>.</p></li>
+<li><p><strong>sample_weight</strong> (<em>array-like of shape (n_samples,), default=None</em>) – Sample weights.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>score</strong> (<em>float</em>) – <div class="system-message">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">R^2</span>)</p>
+<p>latex exited with error
+[stdout]
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=latex)
+ restricted \write18 enabled.
+entering extended mode
+(./math.tex
+LaTeX2e &lt;2020-10-01&gt;
+L3 programming layer &lt;2020-09-24&gt; xparse &lt;2020-03-03&gt;
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/base/article.c
+ls
+Document Class: article 2020/04/10 v1.4m Standard LaTeX document class
+
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/base/size12.cl
+o))
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/base/inputenc.
+sty)
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsmat
+h.sty
+For additional information on amsmath, use the `?' option.
+
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amstex
+t.sty
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsgen
+.sty))
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsbsy
+.sty)
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsopn
+.sty))
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amscls/amsthm.
+sty)
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/amssy
+mb.sty
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/amsfo
+nts.sty))
+
+! LaTeX Error: File `anyfontsize.sty' not found.
+
+Type X to quit or &lt;RETURN&gt; to proceed,
+or enter new name. (Default extension: sty)
+
+Enter file name:
+! Emergency stop.
+&lt;read *&gt;
+
+l.8 \usepackage
+               {bm}^^M
+No pages of output.
+Transcript written on math.log.
+</p>
+</div>
+ of <code class="docutils literal notranslate"><span class="pre">self.predict(X)</span></code> wrt. <cite>y</cite>.</p>
+</dd>
+</dl>
+<div class="admonition-notes admonition">
+<p class="admonition-title">Notes</p>
+<p>The <div class="system-message">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">R^2</span>)</p>
+<p>latex exited with error
+[stdout]
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=latex)
+ restricted \write18 enabled.
+entering extended mode
+(./math.tex
+LaTeX2e &lt;2020-10-01&gt;
+L3 programming layer &lt;2020-09-24&gt; xparse &lt;2020-03-03&gt;
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/base/article.c
+ls
+Document Class: article 2020/04/10 v1.4m Standard LaTeX document class
+
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/base/size12.cl
+o))
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/base/inputenc.
+sty)
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsmat
+h.sty
+For additional information on amsmath, use the `?' option.
+
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amstex
+t.sty
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsgen
+.sty))
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsbsy
+.sty)
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsopn
+.sty))
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amscls/amsthm.
+sty)
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/amssy
+mb.sty
+(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/amsfo
+nts.sty))
+
+! LaTeX Error: File `anyfontsize.sty' not found.
+
+Type X to quit or &lt;RETURN&gt; to proceed,
+or enter new name. (Default extension: sty)
+
+Enter file name:
+! Emergency stop.
+&lt;read *&gt;
+
+l.8 \usepackage
+               {bm}^^M
+No pages of output.
+Transcript written on math.log.
+</p>
+</div>
+ score used when calling <code class="docutils literal notranslate"><span class="pre">score</span></code> on a regressor uses
+<code class="docutils literal notranslate"><span class="pre">multioutput='uniform_average'</span></code> from version 0.23 to keep consistent
+with default value of <code class="xref py py-func docutils literal notranslate"><span class="pre">r2_score()</span></code>.
+This influences the <code class="docutils literal notranslate"><span class="pre">score</span></code> method of all the multioutput
+regressors (except for
+<code class="xref py py-class docutils literal notranslate"><span class="pre">MultiOutputRegressor</span></code>).</p>
+</div>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="tsfeast.models.TSARegressor.set_params">
+<span class="sig-name descname"><span class="pre">set_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tsfeast.models.TSARegressor.set_params" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the parameters of this estimator.</p>
+<p>The method works on simple estimators as well as on nested objects
+(such as <code class="xref py py-class docutils literal notranslate"><span class="pre">Pipeline</span></code>). The latter have
+parameters of the form <code class="docutils literal notranslate"><span class="pre">&lt;component&gt;__&lt;parameter&gt;</span></code> so that it’s
+possible to update each component of a nested object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>**params</strong> (<em>dict</em>) – Estimator parameters.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>self</strong> (<em>estimator instance</em>) – Estimator instance.</p>
+</dd>
+</dl>
 </dd></dl>
 </dd></dl>
 </div>
@@ -369,6 +1359,56 @@ Win2    –<a href="#id11"><span class="problematic" id="id12">|----|</span></a>
 <span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference internal" href="#tsfeast.transformers.BaseTransformer" title="tsfeast.transformers.BaseTransformer"><span class="pre">tsfeast.transformers.BaseTransformer</span></a></span></span><a class="reference internal" href="_modules/tsfeast/transformers.html#BaseTransformer.fit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tsfeast.transformers.BaseTransformer.fit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Fit transformer object to data.</p>
 </dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="tsfeast.transformers.BaseTransformer.fit_transform">
+<span class="sig-name descname"><span class="pre">fit_transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">fit_params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tsfeast.transformers.BaseTransformer.fit_transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fit to data, then transform it.</p>
+<p>Fits transformer to <cite>X</cite> and <cite>y</cite> with optional parameters <cite>fit_params</cite>
+and returns a transformed version of <cite>X</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>array-like of shape (n_samples, n_features)</em>) – Input samples.</p></li>
+<li><p><strong>y</strong> (<em>array-like of shape (n_samples,) or (n_samples, n_outputs),                 default=None</em>) – Target values (None for unsupervised transformations).</p></li>
+<li><p><strong>**fit_params</strong> (<em>dict</em>) – Additional fit parameters.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>X_new</strong> (<em>ndarray array of shape (n_samples, n_features_new)</em>) – Transformed array.</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="tsfeast.transformers.BaseTransformer.get_params">
+<span class="sig-name descname"><span class="pre">get_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">deep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tsfeast.transformers.BaseTransformer.get_params" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get parameters for this estimator.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>deep</strong> (<em>bool, default=True</em>) – If True, will return the parameters for this estimator and
+contained subobjects that are estimators.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>params</strong> (<em>dict</em>) – Parameter names mapped to their values.</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="tsfeast.transformers.BaseTransformer.set_params">
+<span class="sig-name descname"><span class="pre">set_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tsfeast.transformers.BaseTransformer.set_params" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the parameters of this estimator.</p>
+<p>The method works on simple estimators as well as on nested objects
+(such as <code class="xref py py-class docutils literal notranslate"><span class="pre">Pipeline</span></code>). The latter have
+parameters of the form <code class="docutils literal notranslate"><span class="pre">&lt;component&gt;__&lt;parameter&gt;</span></code> so that it’s
+possible to update each component of a nested object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>**params</strong> (<em>dict</em>) – Estimator parameters.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>self</strong> (<em>estimator instance</em>) – Estimator instance.</p>
+</dd>
+</dl>
+</dd></dl>
 </dd></dl>
 <dl class="py class">
 <dt class="sig sig-object py" id="tsfeast.transformers.OriginalFeatures">
@@ -376,6 +1416,76 @@ Win2    –<a href="#id11"><span class="problematic" id="id12">|----|</span></a>
 <dd><p>Bases: <a class="reference internal" href="#tsfeast.transformers.BaseTransformer" title="tsfeast.transformers.BaseTransformer"><code class="xref py py-class docutils literal notranslate"><span class="pre">tsfeast.transformers.BaseTransformer</span></code></a></p>
 <p>Return original features.</p>
 <p>Instantiate transformer object.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="tsfeast.transformers.OriginalFeatures.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tsfeast.transformers.OriginalFeatures.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Instantiate transformer object.</p>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="tsfeast.transformers.OriginalFeatures.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference internal" href="#tsfeast.transformers.BaseTransformer" title="tsfeast.transformers.BaseTransformer"><span class="pre">tsfeast.transformers.BaseTransformer</span></a></span></span><a class="headerlink" href="#tsfeast.transformers.OriginalFeatures.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fit transformer object to data.</p>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="tsfeast.transformers.OriginalFeatures.fit_transform">
+<span class="sig-name descname"><span class="pre">fit_transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">fit_params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tsfeast.transformers.OriginalFeatures.fit_transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fit to data, then transform it.</p>
+<p>Fits transformer to <cite>X</cite> and <cite>y</cite> with optional parameters <cite>fit_params</cite>
+and returns a transformed version of <cite>X</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>array-like of shape (n_samples, n_features)</em>) – Input samples.</p></li>
+<li><p><strong>y</strong> (<em>array-like of shape (n_samples,) or (n_samples, n_outputs),                 default=None</em>) – Target values (None for unsupervised transformations).</p></li>
+<li><p><strong>**fit_params</strong> (<em>dict</em>) – Additional fit parameters.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>X_new</strong> (<em>ndarray array of shape (n_samples, n_features_new)</em>) – Transformed array.</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="tsfeast.transformers.OriginalFeatures.get_feature_names">
+<span class="sig-name descname"><span class="pre">get_feature_names</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#tsfeast.transformers.OriginalFeatures.get_feature_names" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get list of feature names.</p>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="tsfeast.transformers.OriginalFeatures.get_params">
+<span class="sig-name descname"><span class="pre">get_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">deep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tsfeast.transformers.OriginalFeatures.get_params" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get parameters for this estimator.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>deep</strong> (<em>bool, default=True</em>) – If True, will return the parameters for this estimator and
+contained subobjects that are estimators.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>params</strong> (<em>dict</em>) – Parameter names mapped to their values.</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="tsfeast.transformers.OriginalFeatures.set_params">
+<span class="sig-name descname"><span class="pre">set_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tsfeast.transformers.OriginalFeatures.set_params" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the parameters of this estimator.</p>
+<p>The method works on simple estimators as well as on nested objects
+(such as <code class="xref py py-class docutils literal notranslate"><span class="pre">Pipeline</span></code>). The latter have
+parameters of the form <code class="docutils literal notranslate"><span class="pre">&lt;component&gt;__&lt;parameter&gt;</span></code> so that it’s
+possible to update each component of a nested object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>**params</strong> (<em>dict</em>) – Estimator parameters.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>self</strong> (<em>estimator instance</em>) – Estimator instance.</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="tsfeast.transformers.OriginalFeatures.transform">
+<span class="sig-name descname"><span class="pre">transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tsfeast.transformers.OriginalFeatures.transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transform fitted data.</p>
+</dd></dl>
 </dd></dl>
 <dl class="py class">
 <dt class="sig sig-object py" id="tsfeast.transformers.Scaler">
@@ -393,6 +1503,71 @@ Win2    –<a href="#id11"><span class="problematic" id="id12">|----|</span></a>
 <span class="sig-name descname"><span class="pre">inverse_transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">copy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tsfeast/transformers.html#Scaler.inverse_transform"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tsfeast.transformers.Scaler.inverse_transform" title="Permalink to this definition">¶</a></dt>
 <dd><p>Transform scaled data into original feature space.</p>
 </dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="tsfeast.transformers.Scaler.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference internal" href="#tsfeast.transformers.BaseTransformer" title="tsfeast.transformers.BaseTransformer"><span class="pre">tsfeast.transformers.BaseTransformer</span></a></span></span><a class="headerlink" href="#tsfeast.transformers.Scaler.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fit transformer object to data.</p>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="tsfeast.transformers.Scaler.fit_transform">
+<span class="sig-name descname"><span class="pre">fit_transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">fit_params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tsfeast.transformers.Scaler.fit_transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fit to data, then transform it.</p>
+<p>Fits transformer to <cite>X</cite> and <cite>y</cite> with optional parameters <cite>fit_params</cite>
+and returns a transformed version of <cite>X</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>array-like of shape (n_samples, n_features)</em>) – Input samples.</p></li>
+<li><p><strong>y</strong> (<em>array-like of shape (n_samples,) or (n_samples, n_outputs),                 default=None</em>) – Target values (None for unsupervised transformations).</p></li>
+<li><p><strong>**fit_params</strong> (<em>dict</em>) – Additional fit parameters.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>X_new</strong> (<em>ndarray array of shape (n_samples, n_features_new)</em>) – Transformed array.</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="tsfeast.transformers.Scaler.get_feature_names">
+<span class="sig-name descname"><span class="pre">get_feature_names</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#tsfeast.transformers.Scaler.get_feature_names" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get list of feature names.</p>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="tsfeast.transformers.Scaler.get_params">
+<span class="sig-name descname"><span class="pre">get_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">deep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tsfeast.transformers.Scaler.get_params" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get parameters for this estimator.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>deep</strong> (<em>bool, default=True</em>) – If True, will return the parameters for this estimator and
+contained subobjects that are estimators.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>params</strong> (<em>dict</em>) – Parameter names mapped to their values.</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="tsfeast.transformers.Scaler.set_params">
+<span class="sig-name descname"><span class="pre">set_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tsfeast.transformers.Scaler.set_params" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the parameters of this estimator.</p>
+<p>The method works on simple estimators as well as on nested objects
+(such as <code class="xref py py-class docutils literal notranslate"><span class="pre">Pipeline</span></code>). The latter have
+parameters of the form <code class="docutils literal notranslate"><span class="pre">&lt;component&gt;__&lt;parameter&gt;</span></code> so that it’s
+possible to update each component of a nested object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>**params</strong> (<em>dict</em>) – Estimator parameters.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>self</strong> (<em>estimator instance</em>) – Estimator instance.</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="tsfeast.transformers.Scaler.transform">
+<span class="sig-name descname"><span class="pre">transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tsfeast.transformers.Scaler.transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transform fitted data.</p>
+</dd></dl>
 </dd></dl>
 <dl class="py class">
 <dt class="sig sig-object py" id="tsfeast.transformers.DateTimeFeatures">
@@ -404,6 +1579,71 @@ Win2    –<a href="#id11"><span class="problematic" id="id12">|----|</span></a>
 <dt class="sig sig-object py" id="tsfeast.transformers.DateTimeFeatures.__init__">
 <span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">date_col</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dt_format</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tsfeast/transformers.html#DateTimeFeatures.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tsfeast.transformers.DateTimeFeatures.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Instantiate transformer object.</p>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="tsfeast.transformers.DateTimeFeatures.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference internal" href="#tsfeast.transformers.BaseTransformer" title="tsfeast.transformers.BaseTransformer"><span class="pre">tsfeast.transformers.BaseTransformer</span></a></span></span><a class="headerlink" href="#tsfeast.transformers.DateTimeFeatures.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fit transformer object to data.</p>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="tsfeast.transformers.DateTimeFeatures.fit_transform">
+<span class="sig-name descname"><span class="pre">fit_transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">fit_params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tsfeast.transformers.DateTimeFeatures.fit_transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fit to data, then transform it.</p>
+<p>Fits transformer to <cite>X</cite> and <cite>y</cite> with optional parameters <cite>fit_params</cite>
+and returns a transformed version of <cite>X</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>array-like of shape (n_samples, n_features)</em>) – Input samples.</p></li>
+<li><p><strong>y</strong> (<em>array-like of shape (n_samples,) or (n_samples, n_outputs),                 default=None</em>) – Target values (None for unsupervised transformations).</p></li>
+<li><p><strong>**fit_params</strong> (<em>dict</em>) – Additional fit parameters.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>X_new</strong> (<em>ndarray array of shape (n_samples, n_features_new)</em>) – Transformed array.</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="tsfeast.transformers.DateTimeFeatures.get_feature_names">
+<span class="sig-name descname"><span class="pre">get_feature_names</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#tsfeast.transformers.DateTimeFeatures.get_feature_names" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get list of feature names.</p>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="tsfeast.transformers.DateTimeFeatures.get_params">
+<span class="sig-name descname"><span class="pre">get_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">deep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tsfeast.transformers.DateTimeFeatures.get_params" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get parameters for this estimator.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>deep</strong> (<em>bool, default=True</em>) – If True, will return the parameters for this estimator and
+contained subobjects that are estimators.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>params</strong> (<em>dict</em>) – Parameter names mapped to their values.</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="tsfeast.transformers.DateTimeFeatures.set_params">
+<span class="sig-name descname"><span class="pre">set_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tsfeast.transformers.DateTimeFeatures.set_params" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the parameters of this estimator.</p>
+<p>The method works on simple estimators as well as on nested objects
+(such as <code class="xref py py-class docutils literal notranslate"><span class="pre">Pipeline</span></code>). The latter have
+parameters of the form <code class="docutils literal notranslate"><span class="pre">&lt;component&gt;__&lt;parameter&gt;</span></code> so that it’s
+possible to update each component of a nested object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>**params</strong> (<em>dict</em>) – Estimator parameters.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>self</strong> (<em>estimator instance</em>) – Estimator instance.</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="tsfeast.transformers.DateTimeFeatures.transform">
+<span class="sig-name descname"><span class="pre">transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tsfeast.transformers.DateTimeFeatures.transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transform fitted data.</p>
 </dd></dl>
 </dd></dl>
 <dl class="py class">
@@ -417,6 +1657,71 @@ Win2    –<a href="#id11"><span class="problematic" id="id12">|----|</span></a>
 <span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_lags</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tsfeast/transformers.html#LagFeatures.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tsfeast.transformers.LagFeatures.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Instantiate transformer object.</p>
 </dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="tsfeast.transformers.LagFeatures.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference internal" href="#tsfeast.transformers.BaseTransformer" title="tsfeast.transformers.BaseTransformer"><span class="pre">tsfeast.transformers.BaseTransformer</span></a></span></span><a class="headerlink" href="#tsfeast.transformers.LagFeatures.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fit transformer object to data.</p>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="tsfeast.transformers.LagFeatures.fit_transform">
+<span class="sig-name descname"><span class="pre">fit_transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">fit_params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tsfeast.transformers.LagFeatures.fit_transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fit to data, then transform it.</p>
+<p>Fits transformer to <cite>X</cite> and <cite>y</cite> with optional parameters <cite>fit_params</cite>
+and returns a transformed version of <cite>X</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>array-like of shape (n_samples, n_features)</em>) – Input samples.</p></li>
+<li><p><strong>y</strong> (<em>array-like of shape (n_samples,) or (n_samples, n_outputs),                 default=None</em>) – Target values (None for unsupervised transformations).</p></li>
+<li><p><strong>**fit_params</strong> (<em>dict</em>) – Additional fit parameters.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>X_new</strong> (<em>ndarray array of shape (n_samples, n_features_new)</em>) – Transformed array.</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="tsfeast.transformers.LagFeatures.get_feature_names">
+<span class="sig-name descname"><span class="pre">get_feature_names</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#tsfeast.transformers.LagFeatures.get_feature_names" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get list of feature names.</p>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="tsfeast.transformers.LagFeatures.get_params">
+<span class="sig-name descname"><span class="pre">get_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">deep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tsfeast.transformers.LagFeatures.get_params" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get parameters for this estimator.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>deep</strong> (<em>bool, default=True</em>) – If True, will return the parameters for this estimator and
+contained subobjects that are estimators.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>params</strong> (<em>dict</em>) – Parameter names mapped to their values.</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="tsfeast.transformers.LagFeatures.set_params">
+<span class="sig-name descname"><span class="pre">set_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tsfeast.transformers.LagFeatures.set_params" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the parameters of this estimator.</p>
+<p>The method works on simple estimators as well as on nested objects
+(such as <code class="xref py py-class docutils literal notranslate"><span class="pre">Pipeline</span></code>). The latter have
+parameters of the form <code class="docutils literal notranslate"><span class="pre">&lt;component&gt;__&lt;parameter&gt;</span></code> so that it’s
+possible to update each component of a nested object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>**params</strong> (<em>dict</em>) – Estimator parameters.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>self</strong> (<em>estimator instance</em>) – Estimator instance.</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="tsfeast.transformers.LagFeatures.transform">
+<span class="sig-name descname"><span class="pre">transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tsfeast.transformers.LagFeatures.transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transform fitted data.</p>
+</dd></dl>
 </dd></dl>
 <dl class="py class">
 <dt class="sig sig-object py" id="tsfeast.transformers.RollingFeatures">
@@ -428,6 +1733,71 @@ Win2    –<a href="#id11"><span class="problematic" id="id12">|----|</span></a>
 <dt class="sig sig-object py" id="tsfeast.transformers.RollingFeatures.__init__">
 <span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">window_lengths</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tsfeast/transformers.html#RollingFeatures.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tsfeast.transformers.RollingFeatures.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Instantiate transformer object.</p>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="tsfeast.transformers.RollingFeatures.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference internal" href="#tsfeast.transformers.BaseTransformer" title="tsfeast.transformers.BaseTransformer"><span class="pre">tsfeast.transformers.BaseTransformer</span></a></span></span><a class="headerlink" href="#tsfeast.transformers.RollingFeatures.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fit transformer object to data.</p>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="tsfeast.transformers.RollingFeatures.fit_transform">
+<span class="sig-name descname"><span class="pre">fit_transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">fit_params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tsfeast.transformers.RollingFeatures.fit_transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fit to data, then transform it.</p>
+<p>Fits transformer to <cite>X</cite> and <cite>y</cite> with optional parameters <cite>fit_params</cite>
+and returns a transformed version of <cite>X</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>array-like of shape (n_samples, n_features)</em>) – Input samples.</p></li>
+<li><p><strong>y</strong> (<em>array-like of shape (n_samples,) or (n_samples, n_outputs),                 default=None</em>) – Target values (None for unsupervised transformations).</p></li>
+<li><p><strong>**fit_params</strong> (<em>dict</em>) – Additional fit parameters.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>X_new</strong> (<em>ndarray array of shape (n_samples, n_features_new)</em>) – Transformed array.</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="tsfeast.transformers.RollingFeatures.get_feature_names">
+<span class="sig-name descname"><span class="pre">get_feature_names</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#tsfeast.transformers.RollingFeatures.get_feature_names" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get list of feature names.</p>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="tsfeast.transformers.RollingFeatures.get_params">
+<span class="sig-name descname"><span class="pre">get_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">deep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tsfeast.transformers.RollingFeatures.get_params" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get parameters for this estimator.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>deep</strong> (<em>bool, default=True</em>) – If True, will return the parameters for this estimator and
+contained subobjects that are estimators.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>params</strong> (<em>dict</em>) – Parameter names mapped to their values.</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="tsfeast.transformers.RollingFeatures.set_params">
+<span class="sig-name descname"><span class="pre">set_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tsfeast.transformers.RollingFeatures.set_params" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the parameters of this estimator.</p>
+<p>The method works on simple estimators as well as on nested objects
+(such as <code class="xref py py-class docutils literal notranslate"><span class="pre">Pipeline</span></code>). The latter have
+parameters of the form <code class="docutils literal notranslate"><span class="pre">&lt;component&gt;__&lt;parameter&gt;</span></code> so that it’s
+possible to update each component of a nested object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>**params</strong> (<em>dict</em>) – Estimator parameters.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>self</strong> (<em>estimator instance</em>) – Estimator instance.</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="tsfeast.transformers.RollingFeatures.transform">
+<span class="sig-name descname"><span class="pre">transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tsfeast.transformers.RollingFeatures.transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transform fitted data.</p>
 </dd></dl>
 </dd></dl>
 <dl class="py class">
@@ -441,6 +1811,71 @@ Win2    –<a href="#id11"><span class="problematic" id="id12">|----|</span></a>
 <span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">window_lengths</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tsfeast/transformers.html#EwmaFeatures.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tsfeast.transformers.EwmaFeatures.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Instantiate transformer object.</p>
 </dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="tsfeast.transformers.EwmaFeatures.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference internal" href="#tsfeast.transformers.BaseTransformer" title="tsfeast.transformers.BaseTransformer"><span class="pre">tsfeast.transformers.BaseTransformer</span></a></span></span><a class="headerlink" href="#tsfeast.transformers.EwmaFeatures.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fit transformer object to data.</p>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="tsfeast.transformers.EwmaFeatures.fit_transform">
+<span class="sig-name descname"><span class="pre">fit_transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">fit_params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tsfeast.transformers.EwmaFeatures.fit_transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fit to data, then transform it.</p>
+<p>Fits transformer to <cite>X</cite> and <cite>y</cite> with optional parameters <cite>fit_params</cite>
+and returns a transformed version of <cite>X</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>array-like of shape (n_samples, n_features)</em>) – Input samples.</p></li>
+<li><p><strong>y</strong> (<em>array-like of shape (n_samples,) or (n_samples, n_outputs),                 default=None</em>) – Target values (None for unsupervised transformations).</p></li>
+<li><p><strong>**fit_params</strong> (<em>dict</em>) – Additional fit parameters.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>X_new</strong> (<em>ndarray array of shape (n_samples, n_features_new)</em>) – Transformed array.</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="tsfeast.transformers.EwmaFeatures.get_feature_names">
+<span class="sig-name descname"><span class="pre">get_feature_names</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#tsfeast.transformers.EwmaFeatures.get_feature_names" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get list of feature names.</p>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="tsfeast.transformers.EwmaFeatures.get_params">
+<span class="sig-name descname"><span class="pre">get_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">deep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tsfeast.transformers.EwmaFeatures.get_params" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get parameters for this estimator.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>deep</strong> (<em>bool, default=True</em>) – If True, will return the parameters for this estimator and
+contained subobjects that are estimators.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>params</strong> (<em>dict</em>) – Parameter names mapped to their values.</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="tsfeast.transformers.EwmaFeatures.set_params">
+<span class="sig-name descname"><span class="pre">set_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tsfeast.transformers.EwmaFeatures.set_params" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the parameters of this estimator.</p>
+<p>The method works on simple estimators as well as on nested objects
+(such as <code class="xref py py-class docutils literal notranslate"><span class="pre">Pipeline</span></code>). The latter have
+parameters of the form <code class="docutils literal notranslate"><span class="pre">&lt;component&gt;__&lt;parameter&gt;</span></code> so that it’s
+possible to update each component of a nested object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>**params</strong> (<em>dict</em>) – Estimator parameters.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>self</strong> (<em>estimator instance</em>) – Estimator instance.</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="tsfeast.transformers.EwmaFeatures.transform">
+<span class="sig-name descname"><span class="pre">transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tsfeast.transformers.EwmaFeatures.transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transform fitted data.</p>
+</dd></dl>
 </dd></dl>
 <dl class="py class">
 <dt class="sig sig-object py" id="tsfeast.transformers.ChangeFeatures">
@@ -452,6 +1887,71 @@ Win2    –<a href="#id11"><span class="problematic" id="id12">|----|</span></a>
 <dt class="sig sig-object py" id="tsfeast.transformers.ChangeFeatures.__init__">
 <span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">period_lengths</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tsfeast/transformers.html#ChangeFeatures.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tsfeast.transformers.ChangeFeatures.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Instantiate transformer object.</p>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="tsfeast.transformers.ChangeFeatures.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference internal" href="#tsfeast.transformers.BaseTransformer" title="tsfeast.transformers.BaseTransformer"><span class="pre">tsfeast.transformers.BaseTransformer</span></a></span></span><a class="headerlink" href="#tsfeast.transformers.ChangeFeatures.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fit transformer object to data.</p>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="tsfeast.transformers.ChangeFeatures.fit_transform">
+<span class="sig-name descname"><span class="pre">fit_transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">fit_params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tsfeast.transformers.ChangeFeatures.fit_transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fit to data, then transform it.</p>
+<p>Fits transformer to <cite>X</cite> and <cite>y</cite> with optional parameters <cite>fit_params</cite>
+and returns a transformed version of <cite>X</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>array-like of shape (n_samples, n_features)</em>) – Input samples.</p></li>
+<li><p><strong>y</strong> (<em>array-like of shape (n_samples,) or (n_samples, n_outputs),                 default=None</em>) – Target values (None for unsupervised transformations).</p></li>
+<li><p><strong>**fit_params</strong> (<em>dict</em>) – Additional fit parameters.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>X_new</strong> (<em>ndarray array of shape (n_samples, n_features_new)</em>) – Transformed array.</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="tsfeast.transformers.ChangeFeatures.get_feature_names">
+<span class="sig-name descname"><span class="pre">get_feature_names</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#tsfeast.transformers.ChangeFeatures.get_feature_names" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get list of feature names.</p>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="tsfeast.transformers.ChangeFeatures.get_params">
+<span class="sig-name descname"><span class="pre">get_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">deep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tsfeast.transformers.ChangeFeatures.get_params" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get parameters for this estimator.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>deep</strong> (<em>bool, default=True</em>) – If True, will return the parameters for this estimator and
+contained subobjects that are estimators.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>params</strong> (<em>dict</em>) – Parameter names mapped to their values.</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="tsfeast.transformers.ChangeFeatures.set_params">
+<span class="sig-name descname"><span class="pre">set_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tsfeast.transformers.ChangeFeatures.set_params" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the parameters of this estimator.</p>
+<p>The method works on simple estimators as well as on nested objects
+(such as <code class="xref py py-class docutils literal notranslate"><span class="pre">Pipeline</span></code>). The latter have
+parameters of the form <code class="docutils literal notranslate"><span class="pre">&lt;component&gt;__&lt;parameter&gt;</span></code> so that it’s
+possible to update each component of a nested object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>**params</strong> (<em>dict</em>) – Estimator parameters.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>self</strong> (<em>estimator instance</em>) – Estimator instance.</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="tsfeast.transformers.ChangeFeatures.transform">
+<span class="sig-name descname"><span class="pre">transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tsfeast.transformers.ChangeFeatures.transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transform fitted data.</p>
 </dd></dl>
 </dd></dl>
 <dl class="py class">
@@ -465,6 +1965,71 @@ Win2    –<a href="#id11"><span class="problematic" id="id12">|----|</span></a>
 <span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_diffs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tsfeast/transformers.html#DifferenceFeatures.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tsfeast.transformers.DifferenceFeatures.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Instantiate transformer object.</p>
 </dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="tsfeast.transformers.DifferenceFeatures.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference internal" href="#tsfeast.transformers.BaseTransformer" title="tsfeast.transformers.BaseTransformer"><span class="pre">tsfeast.transformers.BaseTransformer</span></a></span></span><a class="headerlink" href="#tsfeast.transformers.DifferenceFeatures.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fit transformer object to data.</p>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="tsfeast.transformers.DifferenceFeatures.fit_transform">
+<span class="sig-name descname"><span class="pre">fit_transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">fit_params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tsfeast.transformers.DifferenceFeatures.fit_transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fit to data, then transform it.</p>
+<p>Fits transformer to <cite>X</cite> and <cite>y</cite> with optional parameters <cite>fit_params</cite>
+and returns a transformed version of <cite>X</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>array-like of shape (n_samples, n_features)</em>) – Input samples.</p></li>
+<li><p><strong>y</strong> (<em>array-like of shape (n_samples,) or (n_samples, n_outputs),                 default=None</em>) – Target values (None for unsupervised transformations).</p></li>
+<li><p><strong>**fit_params</strong> (<em>dict</em>) – Additional fit parameters.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>X_new</strong> (<em>ndarray array of shape (n_samples, n_features_new)</em>) – Transformed array.</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="tsfeast.transformers.DifferenceFeatures.get_feature_names">
+<span class="sig-name descname"><span class="pre">get_feature_names</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#tsfeast.transformers.DifferenceFeatures.get_feature_names" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get list of feature names.</p>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="tsfeast.transformers.DifferenceFeatures.get_params">
+<span class="sig-name descname"><span class="pre">get_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">deep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tsfeast.transformers.DifferenceFeatures.get_params" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get parameters for this estimator.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>deep</strong> (<em>bool, default=True</em>) – If True, will return the parameters for this estimator and
+contained subobjects that are estimators.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>params</strong> (<em>dict</em>) – Parameter names mapped to their values.</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="tsfeast.transformers.DifferenceFeatures.set_params">
+<span class="sig-name descname"><span class="pre">set_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tsfeast.transformers.DifferenceFeatures.set_params" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the parameters of this estimator.</p>
+<p>The method works on simple estimators as well as on nested objects
+(such as <code class="xref py py-class docutils literal notranslate"><span class="pre">Pipeline</span></code>). The latter have
+parameters of the form <code class="docutils literal notranslate"><span class="pre">&lt;component&gt;__&lt;parameter&gt;</span></code> so that it’s
+possible to update each component of a nested object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>**params</strong> (<em>dict</em>) – Estimator parameters.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>self</strong> (<em>estimator instance</em>) – Estimator instance.</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="tsfeast.transformers.DifferenceFeatures.transform">
+<span class="sig-name descname"><span class="pre">transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tsfeast.transformers.DifferenceFeatures.transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transform fitted data.</p>
+</dd></dl>
 </dd></dl>
 <dl class="py class">
 <dt class="sig sig-object py" id="tsfeast.transformers.PolyFeatures">
@@ -477,6 +2042,71 @@ Win2    –<a href="#id11"><span class="problematic" id="id12">|----|</span></a>
 <span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">degree</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tsfeast/transformers.html#PolyFeatures.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tsfeast.transformers.PolyFeatures.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Instantiate transformer object.</p>
 </dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="tsfeast.transformers.PolyFeatures.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference internal" href="#tsfeast.transformers.BaseTransformer" title="tsfeast.transformers.BaseTransformer"><span class="pre">tsfeast.transformers.BaseTransformer</span></a></span></span><a class="headerlink" href="#tsfeast.transformers.PolyFeatures.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fit transformer object to data.</p>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="tsfeast.transformers.PolyFeatures.fit_transform">
+<span class="sig-name descname"><span class="pre">fit_transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">fit_params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tsfeast.transformers.PolyFeatures.fit_transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fit to data, then transform it.</p>
+<p>Fits transformer to <cite>X</cite> and <cite>y</cite> with optional parameters <cite>fit_params</cite>
+and returns a transformed version of <cite>X</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>array-like of shape (n_samples, n_features)</em>) – Input samples.</p></li>
+<li><p><strong>y</strong> (<em>array-like of shape (n_samples,) or (n_samples, n_outputs),                 default=None</em>) – Target values (None for unsupervised transformations).</p></li>
+<li><p><strong>**fit_params</strong> (<em>dict</em>) – Additional fit parameters.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>X_new</strong> (<em>ndarray array of shape (n_samples, n_features_new)</em>) – Transformed array.</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="tsfeast.transformers.PolyFeatures.get_feature_names">
+<span class="sig-name descname"><span class="pre">get_feature_names</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#tsfeast.transformers.PolyFeatures.get_feature_names" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get list of feature names.</p>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="tsfeast.transformers.PolyFeatures.get_params">
+<span class="sig-name descname"><span class="pre">get_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">deep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tsfeast.transformers.PolyFeatures.get_params" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get parameters for this estimator.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>deep</strong> (<em>bool, default=True</em>) – If True, will return the parameters for this estimator and
+contained subobjects that are estimators.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>params</strong> (<em>dict</em>) – Parameter names mapped to their values.</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="tsfeast.transformers.PolyFeatures.set_params">
+<span class="sig-name descname"><span class="pre">set_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tsfeast.transformers.PolyFeatures.set_params" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the parameters of this estimator.</p>
+<p>The method works on simple estimators as well as on nested objects
+(such as <code class="xref py py-class docutils literal notranslate"><span class="pre">Pipeline</span></code>). The latter have
+parameters of the form <code class="docutils literal notranslate"><span class="pre">&lt;component&gt;__&lt;parameter&gt;</span></code> so that it’s
+possible to update each component of a nested object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>**params</strong> (<em>dict</em>) – Estimator parameters.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>self</strong> (<em>estimator instance</em>) – Estimator instance.</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="tsfeast.transformers.PolyFeatures.transform">
+<span class="sig-name descname"><span class="pre">transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tsfeast.transformers.PolyFeatures.transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transform fitted data.</p>
+</dd></dl>
 </dd></dl>
 <dl class="py class">
 <dt class="sig sig-object py" id="tsfeast.transformers.InteractionFeatures">
@@ -484,6 +2114,76 @@ Win2    –<a href="#id11"><span class="problematic" id="id12">|----|</span></a>
 <dd><p>Bases: <a class="reference internal" href="#tsfeast.transformers.BaseTransformer" title="tsfeast.transformers.BaseTransformer"><code class="xref py py-class docutils literal notranslate"><span class="pre">tsfeast.transformers.BaseTransformer</span></code></a></p>
 <p>Wrap PolynomialFeatures to extract interactions and keep column names.</p>
 <p>Instantiate transformer object.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="tsfeast.transformers.InteractionFeatures.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tsfeast.transformers.InteractionFeatures.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Instantiate transformer object.</p>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="tsfeast.transformers.InteractionFeatures.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference internal" href="#tsfeast.transformers.BaseTransformer" title="tsfeast.transformers.BaseTransformer"><span class="pre">tsfeast.transformers.BaseTransformer</span></a></span></span><a class="headerlink" href="#tsfeast.transformers.InteractionFeatures.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fit transformer object to data.</p>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="tsfeast.transformers.InteractionFeatures.fit_transform">
+<span class="sig-name descname"><span class="pre">fit_transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">fit_params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tsfeast.transformers.InteractionFeatures.fit_transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fit to data, then transform it.</p>
+<p>Fits transformer to <cite>X</cite> and <cite>y</cite> with optional parameters <cite>fit_params</cite>
+and returns a transformed version of <cite>X</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>array-like of shape (n_samples, n_features)</em>) – Input samples.</p></li>
+<li><p><strong>y</strong> (<em>array-like of shape (n_samples,) or (n_samples, n_outputs),                 default=None</em>) – Target values (None for unsupervised transformations).</p></li>
+<li><p><strong>**fit_params</strong> (<em>dict</em>) – Additional fit parameters.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>X_new</strong> (<em>ndarray array of shape (n_samples, n_features_new)</em>) – Transformed array.</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="tsfeast.transformers.InteractionFeatures.get_feature_names">
+<span class="sig-name descname"><span class="pre">get_feature_names</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#tsfeast.transformers.InteractionFeatures.get_feature_names" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get list of feature names.</p>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="tsfeast.transformers.InteractionFeatures.get_params">
+<span class="sig-name descname"><span class="pre">get_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">deep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tsfeast.transformers.InteractionFeatures.get_params" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get parameters for this estimator.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>deep</strong> (<em>bool, default=True</em>) – If True, will return the parameters for this estimator and
+contained subobjects that are estimators.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>params</strong> (<em>dict</em>) – Parameter names mapped to their values.</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="tsfeast.transformers.InteractionFeatures.set_params">
+<span class="sig-name descname"><span class="pre">set_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tsfeast.transformers.InteractionFeatures.set_params" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the parameters of this estimator.</p>
+<p>The method works on simple estimators as well as on nested objects
+(such as <code class="xref py py-class docutils literal notranslate"><span class="pre">Pipeline</span></code>). The latter have
+parameters of the form <code class="docutils literal notranslate"><span class="pre">&lt;component&gt;__&lt;parameter&gt;</span></code> so that it’s
+possible to update each component of a nested object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>**params</strong> (<em>dict</em>) – Estimator parameters.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>self</strong> (<em>estimator instance</em>) – Estimator instance.</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="tsfeast.transformers.InteractionFeatures.transform">
+<span class="sig-name descname"><span class="pre">transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tsfeast.transformers.InteractionFeatures.transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transform fitted data.</p>
+</dd></dl>
 </dd></dl>
 </div>
 <div class="section" id="module-tsfeast.tsfeatures">
@@ -499,6 +2199,71 @@ Win2    –<a href="#id11"><span class="problematic" id="id12">|----|</span></a>
 <dt class="sig sig-object py" id="tsfeast.tsfeatures.TimeSeriesFeatures.__init__">
 <span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">datetime</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">trend</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'n'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lags</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rolling</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ewma</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pct_chg</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">diffs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">polynomial</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interactions</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tsfeast/tsfeatures.html#TimeSeriesFeatures.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tsfeast.tsfeatures.TimeSeriesFeatures.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Instanatiate transformer object.</p>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="tsfeast.tsfeatures.TimeSeriesFeatures.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference internal" href="#tsfeast.transformers.BaseTransformer" title="tsfeast.transformers.BaseTransformer"><span class="pre">tsfeast.transformers.BaseTransformer</span></a></span></span><a class="headerlink" href="#tsfeast.tsfeatures.TimeSeriesFeatures.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fit transformer object to data.</p>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="tsfeast.tsfeatures.TimeSeriesFeatures.fit_transform">
+<span class="sig-name descname"><span class="pre">fit_transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">fit_params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tsfeast.tsfeatures.TimeSeriesFeatures.fit_transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fit to data, then transform it.</p>
+<p>Fits transformer to <cite>X</cite> and <cite>y</cite> with optional parameters <cite>fit_params</cite>
+and returns a transformed version of <cite>X</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>array-like of shape (n_samples, n_features)</em>) – Input samples.</p></li>
+<li><p><strong>y</strong> (<em>array-like of shape (n_samples,) or (n_samples, n_outputs),                 default=None</em>) – Target values (None for unsupervised transformations).</p></li>
+<li><p><strong>**fit_params</strong> (<em>dict</em>) – Additional fit parameters.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>X_new</strong> (<em>ndarray array of shape (n_samples, n_features_new)</em>) – Transformed array.</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="tsfeast.tsfeatures.TimeSeriesFeatures.get_feature_names">
+<span class="sig-name descname"><span class="pre">get_feature_names</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#tsfeast.tsfeatures.TimeSeriesFeatures.get_feature_names" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get list of feature names.</p>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="tsfeast.tsfeatures.TimeSeriesFeatures.get_params">
+<span class="sig-name descname"><span class="pre">get_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">deep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tsfeast.tsfeatures.TimeSeriesFeatures.get_params" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get parameters for this estimator.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>deep</strong> (<em>bool, default=True</em>) – If True, will return the parameters for this estimator and
+contained subobjects that are estimators.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>params</strong> (<em>dict</em>) – Parameter names mapped to their values.</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="tsfeast.tsfeatures.TimeSeriesFeatures.set_params">
+<span class="sig-name descname"><span class="pre">set_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tsfeast.tsfeatures.TimeSeriesFeatures.set_params" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the parameters of this estimator.</p>
+<p>The method works on simple estimators as well as on nested objects
+(such as <code class="xref py py-class docutils literal notranslate"><span class="pre">Pipeline</span></code>). The latter have
+parameters of the form <code class="docutils literal notranslate"><span class="pre">&lt;component&gt;__&lt;parameter&gt;</span></code> so that it’s
+possible to update each component of a nested object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>**params</strong> (<em>dict</em>) – Estimator parameters.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>self</strong> (<em>estimator instance</em>) – Estimator instance.</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="tsfeast.tsfeatures.TimeSeriesFeatures.transform">
+<span class="sig-name descname"><span class="pre">transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tsfeast.tsfeatures.TimeSeriesFeatures.transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transform fitted data.</p>
 </dd></dl>
 </dd></dl>
 </div>

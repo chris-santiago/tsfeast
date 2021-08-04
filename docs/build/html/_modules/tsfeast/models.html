@@ -145,14 +145,14 @@
 
 <div class="viewcode-block" id="ARMARegressor"><a class="viewcode-back" href="../../tsfeast.html#tsfeast.models.ARMARegressor">[docs]</a><span class="k">class</span> <span class="nc">ARMARegressor</span><span class="p">(</span><span class="n">SciKitContainer</span><span class="p">):</span>
     <span class="sd">"""Estimator for Scikit-Learn estimator with ARMA residuals."""</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+<div class="viewcode-block" id="ARMARegressor.__init__"><a class="viewcode-back" href="../../tsfeast.html#tsfeast.models.ARMARegressor.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
             <span class="bp">self</span><span class="p">,</span> <span class="n">estimator</span><span class="p">:</span> <span class="n">LinearModel</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">(),</span>
             <span class="n">order</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
     <span class="p">):</span>
         <span class="sd">"""Instantiate ARMARegressor object."""</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">estimator</span> <span class="o">=</span> <span class="n">estimator</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">order</span> <span class="o">=</span> <span class="n">order</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">order</span> <span class="o">=</span> <span class="n">order</span></div>
 
     <span class="k">def</span> <span class="nf">_fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">:</span> <span class="n">Data</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">Data</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">"ARMARegressor"</span><span class="p">:</span>
         <span class="sd">"""Fit the estimator."""</span>
@@ -175,12 +175,12 @@
 
 <div class="viewcode-block" id="TSARegressor"><a class="viewcode-back" href="../../tsfeast.html#tsfeast.models.TSARegressor">[docs]</a><span class="k">class</span> <span class="nc">TSARegressor</span><span class="p">(</span><span class="n">StatsModelsContainer</span><span class="p">):</span>
     <span class="sd">"""Estimator for StatsModels TSA model."""</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">use_exog</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<div class="viewcode-block" id="TSARegressor.__init__"><a class="viewcode-back" href="../../tsfeast.html#tsfeast.models.TSARegressor.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">use_exog</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="sd">"""Instantiate TSARegressor object."""</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">model</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">use_exog</span> <span class="o">=</span> <span class="n">use_exog</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">kwargs</span> <span class="o">=</span> <span class="n">kwargs</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">kwargs</span> <span class="o">=</span> <span class="n">kwargs</span></div>
 
     <span class="k">def</span> <span class="nf">_fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">:</span> <span class="n">Data</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">Data</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">"TSARegressor"</span><span class="p">:</span>
         <span class="sd">"""Fit the estimator."""</span>
