@@ -1,4 +1,5 @@
 # tsfeast
+![build](https://travis-ci.com/chris-santiago/tsfeast.svg?branch=master)
 
 A collection of Scikit-Learn compatible time series transformers and tools.
 
