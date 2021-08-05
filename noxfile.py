@@ -1,19 +1,10 @@
 import nox
 
 PROJECT = 'tsfeast'
-PROD_PYTHON = '3.6'
-
-
-# @nox.session(venv_backend='conda', python=PROD_PYTHON, reuse_venv=True)
-# def test_prod_python(session):
-#     """Run unit tests in production Python environment."""
-#     session.install('pytest', 'pytest-cov')
-#     session.install('.')
-#     session.run('pytest')
 
 
 @nox.session(reuse_venv=True)
-def test_current(session):
+def tests(session):
     """Run unit tests in current Python environment."""
     session.install('pytest', 'pytest-cov')
     session.install('.')
@@ -43,3 +34,4 @@ def qa(session):
     session.run('isort', '.')
     session.run('pre-commit', 'run', 'trailing-whitespace', '--all-files')
     session.run('pre-commit', 'run', 'end-of-file-fixer', '--all-files')
+    session.run('pre-commit', 'run', 'check-yaml', '--all-files')
