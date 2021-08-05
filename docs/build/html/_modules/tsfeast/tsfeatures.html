@@ -132,15 +132,30 @@
         </label>
         <h1>Source code for tsfeast.tsfeatures</h1><div class="highlight"><pre>
 <span></span><span class="sd">"""Time series features module."""</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span>
+
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">from</span> <span class="nn">sklearn.compose</span> <span class="kn">import</span> <span class="n">ColumnTransformer</span>
 <span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <span class="n">FeatureUnion</span>
 <span class="kn">from</span> <span class="nn">statsmodels.tsa.tsatools</span> <span class="kn">import</span> <span class="n">add_trend</span>
 
-<span class="kn">from</span> <span class="nn">tsfeast.transformers</span> <span class="kn">import</span> <span class="o">*</span>  <span class="c1"># pylint: disable=wildcard-import</span>
+<span class="kn">from</span> <span class="nn">tsfeast.transformers</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">BaseTransformer</span><span class="p">,</span>
+    <span class="n">ChangeFeatures</span><span class="p">,</span>
+    <span class="n">DateTimeFeatures</span><span class="p">,</span>
+    <span class="n">DifferenceFeatures</span><span class="p">,</span>
+    <span class="n">EwmaFeatures</span><span class="p">,</span>
+    <span class="n">InteractionFeatures</span><span class="p">,</span>
+    <span class="n">LagFeatures</span><span class="p">,</span>
+    <span class="n">OriginalFeatures</span><span class="p">,</span>
+    <span class="n">PolyFeatures</span><span class="p">,</span>
+    <span class="n">RollingFeatures</span><span class="p">,</span>
+<span class="p">)</span>
 
 
 <div class="viewcode-block" id="TimeSeriesFeatures"><a class="viewcode-back" href="../../tsfeast.html#tsfeast.tsfeatures.TimeSeriesFeatures">[docs]</a><span class="k">class</span> <span class="nc">TimeSeriesFeatures</span><span class="p">(</span><span class="n">BaseTransformer</span><span class="p">):</span>
     <span class="sd">"""Generate multiple time series feature in one transformer."""</span>
+
 <div class="viewcode-block" id="TimeSeriesFeatures.__init__"><a class="viewcode-back" href="../../tsfeast.html#tsfeast.tsfeatures.TimeSeriesFeatures.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
             <span class="bp">self</span><span class="p">,</span> <span class="n">datetime</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">trend</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">'n'</span><span class="p">,</span> <span class="n">lags</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
             <span class="n">rolling</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">ewma</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>

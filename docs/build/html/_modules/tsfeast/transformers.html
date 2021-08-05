@@ -134,17 +134,28 @@
 <span></span><span class="sd">"""Time series feature generators as Scikit-Learn compatible transformers."""</span>
 
 <span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">combinations</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
 
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">from</span> <span class="nn">sklearn.base</span> <span class="kn">import</span> <span class="n">BaseEstimator</span><span class="p">,</span> <span class="n">TransformerMixin</span>
 <span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">PolynomialFeatures</span><span class="p">,</span> <span class="n">StandardScaler</span>
 <span class="kn">from</span> <span class="nn">sklearn.utils.validation</span> <span class="kn">import</span> <span class="n">check_is_fitted</span>
 
-<span class="kn">from</span> <span class="nn">tsfeast.funcs</span> <span class="kn">import</span> <span class="o">*</span>  <span class="c1"># pylint: disable=wildcard-import</span>
+<span class="kn">from</span> <span class="nn">tsfeast.funcs</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">get_change_features</span><span class="p">,</span>
+    <span class="n">get_datetime_features</span><span class="p">,</span>
+    <span class="n">get_difference_features</span><span class="p">,</span>
+    <span class="n">get_ewma_features</span><span class="p">,</span>
+    <span class="n">get_lag_features</span><span class="p">,</span>
+    <span class="n">get_rolling_features</span><span class="p">,</span>
+<span class="p">)</span>
 <span class="kn">from</span> <span class="nn">tsfeast.utils</span> <span class="kn">import</span> <span class="n">array_to_dataframe</span>
 
 
 <div class="viewcode-block" id="BaseTransformer"><a class="viewcode-back" href="../../tsfeast.html#tsfeast.transformers.BaseTransformer">[docs]</a><span class="k">class</span> <span class="nc">BaseTransformer</span><span class="p">(</span><span class="n">BaseEstimator</span><span class="p">,</span> <span class="n">TransformerMixin</span><span class="p">):</span>
     <span class="sd">"""Base transformer object."""</span>
+
 <div class="viewcode-block" id="BaseTransformer.__init__"><a class="viewcode-back" href="../../tsfeast.html#tsfeast.transformers.BaseTransformer.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">"""Instantiate transformer object."""</span></div>
 
@@ -184,6 +195,7 @@
 
 <div class="viewcode-block" id="Scaler"><a class="viewcode-back" href="../../tsfeast.html#tsfeast.transformers.Scaler">[docs]</a><span class="k">class</span> <span class="nc">Scaler</span><span class="p">(</span><span class="n">BaseTransformer</span><span class="p">):</span>
     <span class="sd">"""Wrap StandardScaler to maintain column names."""</span>
+
 <div class="viewcode-block" id="Scaler.__init__"><a class="viewcode-back" href="../../tsfeast.html#tsfeast.transformers.Scaler.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">"""Instantiate transformer object."""</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
@@ -208,6 +220,7 @@
 
 <div class="viewcode-block" id="DateTimeFeatures"><a class="viewcode-back" href="../../tsfeast.html#tsfeast.transformers.DateTimeFeatures">[docs]</a><span class="k">class</span> <span class="nc">DateTimeFeatures</span><span class="p">(</span><span class="n">BaseTransformer</span><span class="p">):</span>
     <span class="sd">"""Generate datetime features."""</span>
+
 <div class="viewcode-block" id="DateTimeFeatures.__init__"><a class="viewcode-back" href="../../tsfeast.html#tsfeast.transformers.DateTimeFeatures.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">date_col</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">dt_format</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
         <span class="sd">"""Instantiate transformer object."""</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
@@ -221,6 +234,7 @@
 
 <div class="viewcode-block" id="LagFeatures"><a class="viewcode-back" href="../../tsfeast.html#tsfeast.transformers.LagFeatures">[docs]</a><span class="k">class</span> <span class="nc">LagFeatures</span><span class="p">(</span><span class="n">BaseTransformer</span><span class="p">):</span>
     <span class="sd">"""Generate lag features."""</span>
+
 <div class="viewcode-block" id="LagFeatures.__init__"><a class="viewcode-back" href="../../tsfeast.html#tsfeast.transformers.LagFeatures.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n_lags</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
         <span class="sd">"""Instantiate transformer object."""</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
@@ -233,6 +247,7 @@
 
 <div class="viewcode-block" id="RollingFeatures"><a class="viewcode-back" href="../../tsfeast.html#tsfeast.transformers.RollingFeatures">[docs]</a><span class="k">class</span> <span class="nc">RollingFeatures</span><span class="p">(</span><span class="n">BaseTransformer</span><span class="p">):</span>
     <span class="sd">"""Generate rolling features."""</span>
+
 <div class="viewcode-block" id="RollingFeatures.__init__"><a class="viewcode-back" href="../../tsfeast.html#tsfeast.transformers.RollingFeatures.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">window_lengths</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]):</span>
         <span class="sd">"""Instantiate transformer object."""</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
@@ -245,6 +260,7 @@
 
 <div class="viewcode-block" id="EwmaFeatures"><a class="viewcode-back" href="../../tsfeast.html#tsfeast.transformers.EwmaFeatures">[docs]</a><span class="k">class</span> <span class="nc">EwmaFeatures</span><span class="p">(</span><span class="n">BaseTransformer</span><span class="p">):</span>
     <span class="sd">"""Generate exponentially-weighted moving-average features."""</span>
+
 <div class="viewcode-block" id="EwmaFeatures.__init__"><a class="viewcode-back" href="../../tsfeast.html#tsfeast.transformers.EwmaFeatures.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">window_lengths</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]):</span>
         <span class="sd">"""Instantiate transformer object."""</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
@@ -257,6 +273,7 @@
 
 <div class="viewcode-block" id="ChangeFeatures"><a class="viewcode-back" href="../../tsfeast.html#tsfeast.transformers.ChangeFeatures">[docs]</a><span class="k">class</span> <span class="nc">ChangeFeatures</span><span class="p">(</span><span class="n">BaseTransformer</span><span class="p">):</span>
     <span class="sd">"""Generate period change features."""</span>
+
 <div class="viewcode-block" id="ChangeFeatures.__init__"><a class="viewcode-back" href="../../tsfeast.html#tsfeast.transformers.ChangeFeatures.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">period_lengths</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]):</span>
         <span class="sd">"""Instantiate transformer object."""</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
@@ -269,6 +286,7 @@
 
 <div class="viewcode-block" id="DifferenceFeatures"><a class="viewcode-back" href="../../tsfeast.html#tsfeast.transformers.DifferenceFeatures">[docs]</a><span class="k">class</span> <span class="nc">DifferenceFeatures</span><span class="p">(</span><span class="n">BaseTransformer</span><span class="p">):</span>
     <span class="sd">"""Generate difference features."""</span>
+
 <div class="viewcode-block" id="DifferenceFeatures.__init__"><a class="viewcode-back" href="../../tsfeast.html#tsfeast.transformers.DifferenceFeatures.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n_diffs</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
         <span class="sd">"""Instantiate transformer object."""</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
@@ -281,6 +299,7 @@
 
 <div class="viewcode-block" id="PolyFeatures"><a class="viewcode-back" href="../../tsfeast.html#tsfeast.transformers.PolyFeatures">[docs]</a><span class="k">class</span> <span class="nc">PolyFeatures</span><span class="p">(</span><span class="n">BaseTransformer</span><span class="p">):</span>
     <span class="sd">"""Generate polynomial features."""</span>
+
 <div class="viewcode-block" id="PolyFeatures.__init__"><a class="viewcode-back" href="../../tsfeast.html#tsfeast.transformers.PolyFeatures.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">degree</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
         <span class="sd">"""Instantiate transformer object."""</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
@@ -290,7 +309,7 @@
         <span class="sd">"""Fit transformer object to data."""</span>
         <span class="n">poly</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="n">df</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">degree</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">degree</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
             <span class="n">poly</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
                 <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
                     <span class="n">df</span><span class="o">.</span><span class="n">values</span> <span class="o">**</span> <span class="n">i</span><span class="p">,</span>
