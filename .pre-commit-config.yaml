@@ -14,18 +14,12 @@ repos:
     rev: 5.9.2
     hooks:
     -   id: isort
-################## Pylint ##################
--   repo: https://github.com/PyCQA/pylint
-    rev: v2.9.5
-    hooks:
-    -   id: pylint
-        entry: pylint
-        exclude: tests/|docs/
 ################## Flake8 ##################
-#-   repo: https://github.com/PyCQA/flake8
-#    rev: 3.8.3
-#    hooks:
-#    -   id: flake8
+-   repo: https://github.com/PyCQA/flake8
+    rev: 3.8.3
+    hooks:
+    -   id: flake8
+        args: ['--count', '--statistics', '--exit-zero', ' --show-source']
 ################## Mypy ##################
 #-   repo: https://github.com/pre-commit/mirrors-mypy
 #    rev: v0.910

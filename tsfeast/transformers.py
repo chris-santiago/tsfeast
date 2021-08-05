@@ -1,17 +1,28 @@
 """Time series feature generators as Scikit-Learn compatible transformers."""
 
 from itertools import combinations
+from typing import List
 
+import numpy as np
+import pandas as pd
 from sklearn.base import BaseEstimator, TransformerMixin
 from sklearn.preprocessing import PolynomialFeatures, StandardScaler
 from sklearn.utils.validation import check_is_fitted
 
-from tsfeast.funcs import *  # pylint: disable=wildcard-import
+from tsfeast.funcs import (
+    get_change_features,
+    get_datetime_features,
+    get_difference_features,
+    get_ewma_features,
+    get_lag_features,
+    get_rolling_features,
+)
 from tsfeast.utils import array_to_dataframe
 
 
 class BaseTransformer(BaseEstimator, TransformerMixin):
     """Base transformer object."""
+
     def __init__(self):
         """Instantiate transformer object."""
 
@@ -51,6 +62,7 @@ class OriginalFeatures(BaseTransformer):
 
 class Scaler(BaseTransformer):
     """Wrap StandardScaler to maintain column names."""
+
     def __init__(self):
         """Instantiate transformer object."""
         super().__init__()
@@ -75,6 +87,7 @@ class Scaler(BaseTransformer):
 
 class DateTimeFeatures(BaseTransformer):
     """Generate datetime features."""
+
     def __init__(self, date_col: str = None, dt_format: str = None):
         """Instantiate transformer object."""
         super().__init__()
@@ -88,6 +101,7 @@ class DateTimeFeatures(BaseTransformer):
 
 class LagFeatures(BaseTransformer):
     """Generate lag features."""
+
     def __init__(self, n_lags: int):
         """Instantiate transformer object."""
         super().__init__()
@@ -100,6 +114,7 @@ class LagFeatures(BaseTransformer):
 
 class RollingFeatures(BaseTransformer):
     """Generate rolling features."""
+
     def __init__(self, window_lengths: List[int]):
         """Instantiate transformer object."""
         super().__init__()
@@ -112,6 +127,7 @@ class RollingFeatures(BaseTransformer):
 
 class EwmaFeatures(BaseTransformer):
     """Generate exponentially-weighted moving-average features."""
+
     def __init__(self, window_lengths: List[int]):
         """Instantiate transformer object."""
         super().__init__()
@@ -124,6 +140,7 @@ class EwmaFeatures(BaseTransformer):
 
 class ChangeFeatures(BaseTransformer):
     """Generate period change features."""
+
     def __init__(self, period_lengths: List[int]):
         """Instantiate transformer object."""
         super().__init__()
@@ -136,6 +153,7 @@ class ChangeFeatures(BaseTransformer):
 
 class DifferenceFeatures(BaseTransformer):
     """Generate difference features."""
+
     def __init__(self, n_diffs: int):
         """Instantiate transformer object."""
         super().__init__()
@@ -148,6 +166,7 @@ class DifferenceFeatures(BaseTransformer):
 
 class PolyFeatures(BaseTransformer):
     """Generate polynomial features."""
+
     def __init__(self, degree=2):
         """Instantiate transformer object."""
         super().__init__()
@@ -157,7 +176,7 @@ class PolyFeatures(BaseTransformer):
         """Fit transformer object to data."""
         poly = []
         df = X.copy()
-        for i in range(2, self.degree+1):
+        for i in range(2, self.degree + 1):
             poly.append(
                 pd.DataFrame(
                     df.values ** i,
