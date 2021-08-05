@@ -32,6 +32,6 @@ def qa(session):
     """Run QA code checks."""
     session.run('check-manifest')
     session.run('isort', '.')
-    session.run('pre-commit', 'run', 'trailing-whitespace', '--all-files')
-    session.run('pre-commit', 'run', 'end-of-file-fixer', '--all-files')
+    session.run('pre-commit', 'run', 'trailing-whitespace', '--files', '*.py')
+    session.run('pre-commit', 'run', 'end-of-file-fixer', '--files', '*.py')
     session.run('pre-commit', 'run', 'check-yaml', '--all-files')
