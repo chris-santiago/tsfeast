@@ -1,6 +1,9 @@
-"""Module for Base Estimators."""
+"""Module for Base Estimator."""
+import numpy as np
 from sklearn.base import BaseEstimator, RegressorMixin
 from sklearn.utils.validation import check_array, check_is_fitted, check_X_y
+
+from tsfeast.utils import Data
 
 
 class BaseContainer(BaseEstimator, RegressorMixin):
@@ -8,22 +11,47 @@ class BaseContainer(BaseEstimator, RegressorMixin):
     def __init__(self):
         """Instantiate container."""
 
-    def _fit(self, X, y):
+    def _fit(self, X: Data, y: Data):
         """Method not implemented."""
         raise NotImplementedError
 
-    def fit(self, X, y):
-        """Fit the estimator."""
+    def fit(self, X: Data, y: Data) -> "BaseContainer":
+        """
+        Fit the estimator.
+
+        Parameters
+        ----------
+        X : array of shape [n_samples, n_features]
+            The input samples.
+        y :  array-like of shape (n_samples,) or (n_samples, n_outputs), default=None
+            Target values (None for unsupervised transformations).
+        Returns
+        -------
+        BaseContainer
+            Self.
+        """
         X, y = check_X_y(X, y)
         self._fit(X, y)
         return self
 
-    def _predict(self, X):
+    def _predict(self, X: Data):
         """Method not implemented."""
         raise NotImplementedError
 
-    def predict(self, X):
-        """Make predictions with fitted estimator."""
+    def predict(self, X: Data) -> np.ndarray:
+        """
+        Make predictions with fitted estimator.
+
+        Parameters
+        ----------
+        X : array of shape [n_samples, n_features]
+            The input samples.
+
+        Returns
+        -------
+        np.ndarray
+            Array of predicted values.
+        """
         check_is_fitted(self)
         X = check_array(X)
         return self._predict(X)

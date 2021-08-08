@@ -2,8 +2,11 @@
 from numpy import log
 from sklearn.metrics import mean_squared_error
 
+from tsfeast._base import BaseContainer
+from tsfeast.utils import Data
 
-def bic_score(mse: float, n: int, p: int):
+
+def bic_score(mse: float, n: int, p: int) -> float:
     """
     Calcuate BIC score.
 
@@ -24,7 +27,7 @@ def bic_score(mse: float, n: int, p: int):
     return n * log(mse) + log(n) * p
 
 
-def bic_scorer(estimator, X, y):
+def bic_scorer(estimator: BaseContainer, X: Data, y: Data) -> float:
     """Score SciKit-Learn estimator using BIC."""
     y_pred = estimator.predict(X)
     mse = mean_squared_error(y, y_pred)
