@@ -6,11 +6,11 @@ from sklearn.linear_model import LinearRegression
 from sklearn.linear_model._base import LinearModel
 from statsmodels.tsa.arima.model import ARIMA
 
-from tsfeast._base import SciKitContainer, StatsModelsContainer
+from tsfeast._base import BaseContainer
 from tsfeast.utils import Data
 
 
-class ARMARegressor(SciKitContainer):
+class ARMARegressor(BaseContainer):
     """Estimator for Scikit-Learn estimator with ARMA residuals."""
     def __init__(
             self, estimator: LinearModel = LinearRegression(),
@@ -40,7 +40,7 @@ class ARMARegressor(SciKitContainer):
         return estimator_pred + arma_pred
 
 
-class TSARegressor(StatsModelsContainer):
+class TSARegressor(BaseContainer):
     """Estimator for StatsModels TSA model."""
     def __init__(self, model, use_exog=False, **kwargs):
         """Instantiate TSARegressor object."""
