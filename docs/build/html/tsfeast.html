@@ -2,50 +2,46 @@
 <html class="no-js">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="prev" title="tsfeast" href="modules.html" />
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="prev" title="tsfeast" href="modules.html" />
 
-    <meta name="generator" content="sphinx-4.1.2, furo 2021.07.05.beta38"/>
+    <meta name="generator" content="sphinx-4.1.2, furo 2021.07.31.beta41"/>
         <title>tsfeast package - tsfeast</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css" />
-
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=daa650a7760fac3eee23aa959745d2c866b74cb3" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=93475b62d1c3bc01323a0eefdc14a62d77b12690" />
+    
+    
 
 
 <style>
-  :root {
+  body {
     --color-code-background: #f8f8f8;
   --color-code-foreground: black;
-
+  
   }
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --color-code-background: #202020;
-  --color-code-foreground: #d0d0d0;
-
-    }
-  }
-
-  /* For allowing end-user-specific overrides */
-  .override-light {
-    --color-code-background: #f8f8f8;
-  --color-code-foreground: black;
-
-  }
-  .override-dark {
+  body[data-theme="dark"] {
     --color-code-background: #202020;
   --color-code-foreground: #d0d0d0;
-
+  
   }
-</style><link media="(prefers-color-scheme: dark)" rel="stylesheet" href="_static/pygments_dark.css"></head>
-  <body dir="">
-
+  @media (prefers-color-scheme: dark) {
+    body:not([data-theme="light"]) {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+  }
+</style>
+    <link media="(prefers-color-scheme: dark)" rel="stylesheet" href="_static/pygments_dark.css"></head>
+  <body>
+    
 <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
   <symbol id="svg-toc" viewBox="0 0 24 24">
     <title>Contents</title>
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-      stroke-width="1.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-      <path stroke="none" d="M0 0h24v24H0z"/>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z" />
       <line x1="4" y1="6" x2="20" y2="6" />
       <line x1="10" y1="12" x2="20" y2="12" />
       <line x1="6" y1="18" x2="20" y2="18" />
@@ -53,9 +49,8 @@
   </symbol>
   <symbol id="svg-menu" viewBox="0 0 24 24">
     <title>Menu</title>
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-      class="feather feather-menu">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
       <line x1="3" y1="12" x2="21" y2="12"></line>
       <line x1="3" y1="6" x2="21" y2="6"></line>
       <line x1="3" y1="18" x2="21" y2="18"></line>
@@ -63,18 +58,57 @@
   </symbol>
   <symbol id="svg-arrow-right" viewBox="0 0 24 24">
     <title>Expand</title>
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-      class="feather feather-chevron-right">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
       <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-half" viewBox="0 0 24 24">
+    <title>Auto light/dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M13 12h5" />
+      <path d="M13 15h4" />
+      <path d="M13 18h1" />
+      <path d="M13 9h4" />
+      <path d="M13 6h1" />
     </svg>
   </symbol>
 </svg>
 
 <input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
 <input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
-<label class="overlay sidebar-overlay" for="__navigation"></label>
-<label class="overlay toc-overlay" for="__toc"></label>
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
 
 
 
@@ -82,6 +116,7 @@
   <header class="mobile-header">
     <div class="header-left">
       <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
         <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
       </label>
     </div>
@@ -89,29 +124,39 @@
       <a href="index.html"><div class="brand">tsfeast</div></a>
     </div>
     <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
       <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
     </div>
   </header>
   <aside class="sidebar-drawer">
     <div class="sidebar-container">
-
+      
       <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
-
-
+  
+  
   <span class="sidebar-brand-text">tsfeast</span>
-
-</a><form class="sidebar-search-container" method="get" action="search.html">
-  <input class="sidebar-search" placeholder=Search name="q">
+  
+</a><form class="sidebar-search-container" method="get" action="search.html" role="search">
+  <input class="sidebar-search" placeholder=Search name="q" aria-label="Search">
   <input type="hidden" name="check_keywords" value="yes">
   <input type="hidden" name="area" value="default">
-</form><div class="sidebar-scroll"><div class="sidebar-tree">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
   <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quickstart</a></li>
 <li class="toctree-l1"><a class="reference internal" href="quickstart.html#tsfeast">tsfeast</a></li>
-<li class="toctree-l1 current has-children"><a class="reference internal" href="modules.html">tsfeast</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label for="toctree-checkbox-1"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l1 current has-children"><a class="reference internal" href="modules.html">tsfeast</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
 <li class="toctree-l2 current current-page"><a class="current reference internal" href="#">tsfeast package</a></li>
 </ul>
 </li>
@@ -121,21 +166,32 @@
 </div>
 </div>
       </div>
-
+      
     </div>
   </aside>
-  <main class="main">
+  <div class="main">
     <div class="content">
       <article role="main">
-        <label class="toc-overlay-icon toc-content-icon" for="__toc">
-          <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
-        </label>
-        <div class="section" id="tsfeast-package">
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <section id="tsfeast-package">
 <h1>tsfeast package<a class="headerlink" href="#tsfeast-package" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="submodules">
+<section id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
-</div>
-<div class="section" id="module-tsfeast.funcs">
+</section>
+<section id="module-tsfeast.funcs">
 <span id="tsfeast-funcs-module"></span><h2>tsfeast.funcs module<a class="headerlink" href="#module-tsfeast.funcs" title="Permalink to this headline">¶</a></h2>
 <p>Time series feature generator functions.</p>
 <dl class="py function">
@@ -249,8 +305,8 @@ month, business days in month and leap year.</p>
 </dd>
 </dl>
 </dd></dl>
-</div>
-<div class="section" id="module-tsfeast.metrics">
+</section>
+<section id="module-tsfeast.metrics">
 <span id="tsfeast-metrics-module"></span><h2>tsfeast.metrics module<a class="headerlink" href="#module-tsfeast.metrics" title="Permalink to this headline">¶</a></h2>
 <p>Custom scoring metrics.</p>
 <dl class="py function">
@@ -275,8 +331,8 @@ month, business days in month and leap year.</p>
 <span class="sig-prename descclassname"><span class="pre">tsfeast.metrics.</span></span><span class="sig-name descname"><span class="pre">bic_scorer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">estimator</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tsfeast/metrics.html#bic_scorer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tsfeast.metrics.bic_scorer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Score SciKit-Learn estimator using BIC.</p>
 </dd></dl>
-</div>
-<div class="section" id="module-tsfeast.models">
+</section>
+<section id="module-tsfeast.models">
 <span id="tsfeast-models-module"></span><h2>tsfeast.models module<a class="headerlink" href="#module-tsfeast.models" title="Permalink to this headline">¶</a></h2>
 <p>Module for Scikit-Learn Regressor with ARMA Residuals.</p>
 <dl class="py class">
@@ -317,327 +373,15 @@ contained subobjects that are estimators.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="tsfeast.models.ARMARegressor.score">
 <span class="sig-name descname"><span class="pre">score</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_weight</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tsfeast.models.ARMARegressor.score" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return the coefficient of determination <div class="system-message">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">R^2</span>)</p>
-<p>latex exited with error
-[stdout]
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=latex)
- restricted \write18 enabled.
-entering extended mode
-(./math.tex
-LaTeX2e &lt;2020-10-01&gt;
-L3 programming layer &lt;2020-09-24&gt; xparse &lt;2020-03-03&gt;
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/base/article.c
-ls
-Document Class: article 2020/04/10 v1.4m Standard LaTeX document class
-
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/base/size12.cl
-o))
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/base/inputenc.
-sty)
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsmat
-h.sty
-For additional information on amsmath, use the `?' option.
-
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amstex
-t.sty
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsgen
-.sty))
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsbsy
-.sty)
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsopn
-.sty))
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amscls/amsthm.
-sty)
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/amssy
-mb.sty
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/amsfo
-nts.sty))
-
-! LaTeX Error: File `anyfontsize.sty' not found.
-
-Type X to quit or &lt;RETURN&gt; to proceed,
-or enter new name. (Default extension: sty)
-
-Enter file name:
-! Emergency stop.
-&lt;read *&gt;
-
-l.8 \usepackage
-               {bm}^^M
-No pages of output.
-Transcript written on math.log.
-</p>
-</div>
- of the
+<dd><p>Return the coefficient of determination <span class="math">R^2</span> of the
 prediction.</p>
-<p>The coefficient <div class="system-message">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">R^2</span>)</p>
-<p>latex exited with error
-[stdout]
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=latex)
- restricted \write18 enabled.
-entering extended mode
-(./math.tex
-LaTeX2e &lt;2020-10-01&gt;
-L3 programming layer &lt;2020-09-24&gt; xparse &lt;2020-03-03&gt;
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/base/article.c
-ls
-Document Class: article 2020/04/10 v1.4m Standard LaTeX document class
-
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/base/size12.cl
-o))
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/base/inputenc.
-sty)
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsmat
-h.sty
-For additional information on amsmath, use the `?' option.
-
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amstex
-t.sty
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsgen
-.sty))
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsbsy
-.sty)
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsopn
-.sty))
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amscls/amsthm.
-sty)
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/amssy
-mb.sty
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/amsfo
-nts.sty))
-
-! LaTeX Error: File `anyfontsize.sty' not found.
-
-Type X to quit or &lt;RETURN&gt; to proceed,
-or enter new name. (Default extension: sty)
-
-Enter file name:
-! Emergency stop.
-&lt;read *&gt;
-
-l.8 \usepackage
-               {bm}^^M
-No pages of output.
-Transcript written on math.log.
-</p>
-</div>
- is defined as <div class="system-message">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">(1 - \frac{u}{v})</span>)</p>
-<p>latex exited with error
-[stdout]
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=latex)
- restricted \write18 enabled.
-entering extended mode
-(./math.tex
-LaTeX2e &lt;2020-10-01&gt;
-L3 programming layer &lt;2020-09-24&gt; xparse &lt;2020-03-03&gt;
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/base/article.c
-ls
-Document Class: article 2020/04/10 v1.4m Standard LaTeX document class
-
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/base/size12.cl
-o))
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/base/inputenc.
-sty)
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsmat
-h.sty
-For additional information on amsmath, use the `?' option.
-
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amstex
-t.sty
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsgen
-.sty))
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsbsy
-.sty)
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsopn
-.sty))
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amscls/amsthm.
-sty)
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/amssy
-mb.sty
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/amsfo
-nts.sty))
-
-! LaTeX Error: File `anyfontsize.sty' not found.
-
-Type X to quit or &lt;RETURN&gt; to proceed,
-or enter new name. (Default extension: sty)
-
-Enter file name:
-! Emergency stop.
-&lt;read *&gt;
-
-l.8 \usepackage
-               {bm}^^M
-No pages of output.
-Transcript written on math.log.
-</p>
-</div>
-,
-where <div class="system-message">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">u</span>)</p>
-<p>latex exited with error
-[stdout]
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=latex)
- restricted \write18 enabled.
-entering extended mode
-(./math.tex
-LaTeX2e &lt;2020-10-01&gt;
-L3 programming layer &lt;2020-09-24&gt; xparse &lt;2020-03-03&gt;
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/base/article.c
-ls
-Document Class: article 2020/04/10 v1.4m Standard LaTeX document class
-
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/base/size12.cl
-o))
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/base/inputenc.
-sty)
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsmat
-h.sty
-For additional information on amsmath, use the `?' option.
-
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amstex
-t.sty
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsgen
-.sty))
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsbsy
-.sty)
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsopn
-.sty))
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amscls/amsthm.
-sty)
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/amssy
-mb.sty
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/amsfo
-nts.sty))
-
-! LaTeX Error: File `anyfontsize.sty' not found.
-
-Type X to quit or &lt;RETURN&gt; to proceed,
-or enter new name. (Default extension: sty)
-
-Enter file name:
-! Emergency stop.
-&lt;read *&gt;
-
-l.8 \usepackage
-               {bm}^^M
-No pages of output.
-Transcript written on math.log.
-</p>
-</div>
- is the residual sum of squares <code class="docutils literal notranslate"><span class="pre">((y_true</span> <span class="pre">-</span> <span class="pre">y_pred)</span>
-<span class="pre">**</span> <span class="pre">2).sum()</span></code> and <div class="system-message">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">v</span>)</p>
-<p>latex exited with error
-[stdout]
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=latex)
- restricted \write18 enabled.
-entering extended mode
-(./math.tex
-LaTeX2e &lt;2020-10-01&gt;
-L3 programming layer &lt;2020-09-24&gt; xparse &lt;2020-03-03&gt;
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/base/article.c
-ls
-Document Class: article 2020/04/10 v1.4m Standard LaTeX document class
-
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/base/size12.cl
-o))
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/base/inputenc.
-sty)
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsmat
-h.sty
-For additional information on amsmath, use the `?' option.
-
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amstex
-t.sty
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsgen
-.sty))
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsbsy
-.sty)
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsopn
-.sty))
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amscls/amsthm.
-sty)
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/amssy
-mb.sty
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/amsfo
-nts.sty))
-
-! LaTeX Error: File `anyfontsize.sty' not found.
-
-Type X to quit or &lt;RETURN&gt; to proceed,
-or enter new name. (Default extension: sty)
-
-Enter file name:
-! Emergency stop.
-&lt;read *&gt;
-
-l.8 \usepackage
-               {bm}^^M
-No pages of output.
-Transcript written on math.log.
-</p>
-</div>
- is the total sum of squares <code class="docutils literal notranslate"><span class="pre">((y_true</span> <span class="pre">-</span>
+<p>The coefficient <span class="math">R^2</span> is defined as <span class="math">(1 - \frac{u}{v})</span>,
+where <span class="math">u</span> is the residual sum of squares <code class="docutils literal notranslate"><span class="pre">((y_true</span> <span class="pre">-</span> <span class="pre">y_pred)</span>
+<span class="pre">**</span> <span class="pre">2).sum()</span></code> and <span class="math">v</span> is the total sum of squares <code class="docutils literal notranslate"><span class="pre">((y_true</span> <span class="pre">-</span>
 <span class="pre">y_true.mean())</span> <span class="pre">**</span> <span class="pre">2).sum()</span></code>. The best possible score is 1.0 and it
 can be negative (because the model can be arbitrarily worse). A
 constant model that always predicts the expected value of <cite>y</cite>,
-disregarding the input features, would get a <div class="system-message">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">R^2</span>)</p>
-<p>latex exited with error
-[stdout]
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=latex)
- restricted \write18 enabled.
-entering extended mode
-(./math.tex
-LaTeX2e &lt;2020-10-01&gt;
-L3 programming layer &lt;2020-09-24&gt; xparse &lt;2020-03-03&gt;
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/base/article.c
-ls
-Document Class: article 2020/04/10 v1.4m Standard LaTeX document class
-
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/base/size12.cl
-o))
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/base/inputenc.
-sty)
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsmat
-h.sty
-For additional information on amsmath, use the `?' option.
-
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amstex
-t.sty
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsgen
-.sty))
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsbsy
-.sty)
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsopn
-.sty))
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amscls/amsthm.
-sty)
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/amssy
-mb.sty
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/amsfo
-nts.sty))
-
-! LaTeX Error: File `anyfontsize.sty' not found.
-
-Type X to quit or &lt;RETURN&gt; to proceed,
-or enter new name. (Default extension: sty)
-
-Enter file name:
-! Emergency stop.
-&lt;read *&gt;
-
-l.8 \usepackage
-               {bm}^^M
-No pages of output.
-Transcript written on math.log.
-</p>
-</div>
- score of
+disregarding the input features, would get a <span class="math">R^2</span> score of
 0.0.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -651,116 +395,12 @@ is the number of samples used in the fitting for the estimator.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>score</strong> (<em>float</em>) – <div class="system-message">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">R^2</span>)</p>
-<p>latex exited with error
-[stdout]
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=latex)
- restricted \write18 enabled.
-entering extended mode
-(./math.tex
-LaTeX2e &lt;2020-10-01&gt;
-L3 programming layer &lt;2020-09-24&gt; xparse &lt;2020-03-03&gt;
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/base/article.c
-ls
-Document Class: article 2020/04/10 v1.4m Standard LaTeX document class
-
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/base/size12.cl
-o))
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/base/inputenc.
-sty)
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsmat
-h.sty
-For additional information on amsmath, use the `?' option.
-
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amstex
-t.sty
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsgen
-.sty))
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsbsy
-.sty)
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsopn
-.sty))
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amscls/amsthm.
-sty)
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/amssy
-mb.sty
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/amsfo
-nts.sty))
-
-! LaTeX Error: File `anyfontsize.sty' not found.
-
-Type X to quit or &lt;RETURN&gt; to proceed,
-or enter new name. (Default extension: sty)
-
-Enter file name:
-! Emergency stop.
-&lt;read *&gt;
-
-l.8 \usepackage
-               {bm}^^M
-No pages of output.
-Transcript written on math.log.
-</p>
-</div>
- of <code class="docutils literal notranslate"><span class="pre">self.predict(X)</span></code> wrt. <cite>y</cite>.</p>
+<dd class="field-even"><p><strong>score</strong> (<em>float</em>) – <span class="math">R^2</span> of <code class="docutils literal notranslate"><span class="pre">self.predict(X)</span></code> wrt. <cite>y</cite>.</p>
 </dd>
 </dl>
 <div class="admonition-notes admonition">
 <p class="admonition-title">Notes</p>
-<p>The <div class="system-message">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">R^2</span>)</p>
-<p>latex exited with error
-[stdout]
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=latex)
- restricted \write18 enabled.
-entering extended mode
-(./math.tex
-LaTeX2e &lt;2020-10-01&gt;
-L3 programming layer &lt;2020-09-24&gt; xparse &lt;2020-03-03&gt;
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/base/article.c
-ls
-Document Class: article 2020/04/10 v1.4m Standard LaTeX document class
-
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/base/size12.cl
-o))
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/base/inputenc.
-sty)
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsmat
-h.sty
-For additional information on amsmath, use the `?' option.
-
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amstex
-t.sty
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsgen
-.sty))
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsbsy
-.sty)
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsopn
-.sty))
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amscls/amsthm.
-sty)
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/amssy
-mb.sty
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/amsfo
-nts.sty))
-
-! LaTeX Error: File `anyfontsize.sty' not found.
-
-Type X to quit or &lt;RETURN&gt; to proceed,
-or enter new name. (Default extension: sty)
-
-Enter file name:
-! Emergency stop.
-&lt;read *&gt;
-
-l.8 \usepackage
-               {bm}^^M
-No pages of output.
-Transcript written on math.log.
-</p>
-</div>
- score used when calling <code class="docutils literal notranslate"><span class="pre">score</span></code> on a regressor uses
+<p>The <span class="math">R^2</span> score used when calling <code class="docutils literal notranslate"><span class="pre">score</span></code> on a regressor uses
 <code class="docutils literal notranslate"><span class="pre">multioutput='uniform_average'</span></code> from version 0.23 to keep consistent
 with default value of <code class="xref py py-func docutils literal notranslate"><span class="pre">r2_score()</span></code>.
 This influences the <code class="docutils literal notranslate"><span class="pre">score</span></code> method of all the multioutput
@@ -824,327 +464,15 @@ contained subobjects that are estimators.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="tsfeast.models.TSARegressor.score">
 <span class="sig-name descname"><span class="pre">score</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_weight</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tsfeast.models.TSARegressor.score" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return the coefficient of determination <div class="system-message">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">R^2</span>)</p>
-<p>latex exited with error
-[stdout]
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=latex)
- restricted \write18 enabled.
-entering extended mode
-(./math.tex
-LaTeX2e &lt;2020-10-01&gt;
-L3 programming layer &lt;2020-09-24&gt; xparse &lt;2020-03-03&gt;
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/base/article.c
-ls
-Document Class: article 2020/04/10 v1.4m Standard LaTeX document class
-
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/base/size12.cl
-o))
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/base/inputenc.
-sty)
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsmat
-h.sty
-For additional information on amsmath, use the `?' option.
-
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amstex
-t.sty
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsgen
-.sty))
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsbsy
-.sty)
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsopn
-.sty))
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amscls/amsthm.
-sty)
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/amssy
-mb.sty
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/amsfo
-nts.sty))
-
-! LaTeX Error: File `anyfontsize.sty' not found.
-
-Type X to quit or &lt;RETURN&gt; to proceed,
-or enter new name. (Default extension: sty)
-
-Enter file name:
-! Emergency stop.
-&lt;read *&gt;
-
-l.8 \usepackage
-               {bm}^^M
-No pages of output.
-Transcript written on math.log.
-</p>
-</div>
- of the
+<dd><p>Return the coefficient of determination <span class="math">R^2</span> of the
 prediction.</p>
-<p>The coefficient <div class="system-message">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">R^2</span>)</p>
-<p>latex exited with error
-[stdout]
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=latex)
- restricted \write18 enabled.
-entering extended mode
-(./math.tex
-LaTeX2e &lt;2020-10-01&gt;
-L3 programming layer &lt;2020-09-24&gt; xparse &lt;2020-03-03&gt;
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/base/article.c
-ls
-Document Class: article 2020/04/10 v1.4m Standard LaTeX document class
-
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/base/size12.cl
-o))
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/base/inputenc.
-sty)
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsmat
-h.sty
-For additional information on amsmath, use the `?' option.
-
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amstex
-t.sty
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsgen
-.sty))
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsbsy
-.sty)
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsopn
-.sty))
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amscls/amsthm.
-sty)
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/amssy
-mb.sty
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/amsfo
-nts.sty))
-
-! LaTeX Error: File `anyfontsize.sty' not found.
-
-Type X to quit or &lt;RETURN&gt; to proceed,
-or enter new name. (Default extension: sty)
-
-Enter file name:
-! Emergency stop.
-&lt;read *&gt;
-
-l.8 \usepackage
-               {bm}^^M
-No pages of output.
-Transcript written on math.log.
-</p>
-</div>
- is defined as <div class="system-message">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">(1 - \frac{u}{v})</span>)</p>
-<p>latex exited with error
-[stdout]
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=latex)
- restricted \write18 enabled.
-entering extended mode
-(./math.tex
-LaTeX2e &lt;2020-10-01&gt;
-L3 programming layer &lt;2020-09-24&gt; xparse &lt;2020-03-03&gt;
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/base/article.c
-ls
-Document Class: article 2020/04/10 v1.4m Standard LaTeX document class
-
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/base/size12.cl
-o))
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/base/inputenc.
-sty)
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsmat
-h.sty
-For additional information on amsmath, use the `?' option.
-
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amstex
-t.sty
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsgen
-.sty))
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsbsy
-.sty)
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsopn
-.sty))
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amscls/amsthm.
-sty)
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/amssy
-mb.sty
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/amsfo
-nts.sty))
-
-! LaTeX Error: File `anyfontsize.sty' not found.
-
-Type X to quit or &lt;RETURN&gt; to proceed,
-or enter new name. (Default extension: sty)
-
-Enter file name:
-! Emergency stop.
-&lt;read *&gt;
-
-l.8 \usepackage
-               {bm}^^M
-No pages of output.
-Transcript written on math.log.
-</p>
-</div>
-,
-where <div class="system-message">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">u</span>)</p>
-<p>latex exited with error
-[stdout]
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=latex)
- restricted \write18 enabled.
-entering extended mode
-(./math.tex
-LaTeX2e &lt;2020-10-01&gt;
-L3 programming layer &lt;2020-09-24&gt; xparse &lt;2020-03-03&gt;
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/base/article.c
-ls
-Document Class: article 2020/04/10 v1.4m Standard LaTeX document class
-
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/base/size12.cl
-o))
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/base/inputenc.
-sty)
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsmat
-h.sty
-For additional information on amsmath, use the `?' option.
-
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amstex
-t.sty
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsgen
-.sty))
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsbsy
-.sty)
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsopn
-.sty))
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amscls/amsthm.
-sty)
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/amssy
-mb.sty
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/amsfo
-nts.sty))
-
-! LaTeX Error: File `anyfontsize.sty' not found.
-
-Type X to quit or &lt;RETURN&gt; to proceed,
-or enter new name. (Default extension: sty)
-
-Enter file name:
-! Emergency stop.
-&lt;read *&gt;
-
-l.8 \usepackage
-               {bm}^^M
-No pages of output.
-Transcript written on math.log.
-</p>
-</div>
- is the residual sum of squares <code class="docutils literal notranslate"><span class="pre">((y_true</span> <span class="pre">-</span> <span class="pre">y_pred)</span>
-<span class="pre">**</span> <span class="pre">2).sum()</span></code> and <div class="system-message">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">v</span>)</p>
-<p>latex exited with error
-[stdout]
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=latex)
- restricted \write18 enabled.
-entering extended mode
-(./math.tex
-LaTeX2e &lt;2020-10-01&gt;
-L3 programming layer &lt;2020-09-24&gt; xparse &lt;2020-03-03&gt;
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/base/article.c
-ls
-Document Class: article 2020/04/10 v1.4m Standard LaTeX document class
-
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/base/size12.cl
-o))
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/base/inputenc.
-sty)
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsmat
-h.sty
-For additional information on amsmath, use the `?' option.
-
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amstex
-t.sty
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsgen
-.sty))
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsbsy
-.sty)
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsopn
-.sty))
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amscls/amsthm.
-sty)
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/amssy
-mb.sty
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/amsfo
-nts.sty))
-
-! LaTeX Error: File `anyfontsize.sty' not found.
-
-Type X to quit or &lt;RETURN&gt; to proceed,
-or enter new name. (Default extension: sty)
-
-Enter file name:
-! Emergency stop.
-&lt;read *&gt;
-
-l.8 \usepackage
-               {bm}^^M
-No pages of output.
-Transcript written on math.log.
-</p>
-</div>
- is the total sum of squares <code class="docutils literal notranslate"><span class="pre">((y_true</span> <span class="pre">-</span>
+<p>The coefficient <span class="math">R^2</span> is defined as <span class="math">(1 - \frac{u}{v})</span>,
+where <span class="math">u</span> is the residual sum of squares <code class="docutils literal notranslate"><span class="pre">((y_true</span> <span class="pre">-</span> <span class="pre">y_pred)</span>
+<span class="pre">**</span> <span class="pre">2).sum()</span></code> and <span class="math">v</span> is the total sum of squares <code class="docutils literal notranslate"><span class="pre">((y_true</span> <span class="pre">-</span>
 <span class="pre">y_true.mean())</span> <span class="pre">**</span> <span class="pre">2).sum()</span></code>. The best possible score is 1.0 and it
 can be negative (because the model can be arbitrarily worse). A
 constant model that always predicts the expected value of <cite>y</cite>,
-disregarding the input features, would get a <div class="system-message">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">R^2</span>)</p>
-<p>latex exited with error
-[stdout]
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=latex)
- restricted \write18 enabled.
-entering extended mode
-(./math.tex
-LaTeX2e &lt;2020-10-01&gt;
-L3 programming layer &lt;2020-09-24&gt; xparse &lt;2020-03-03&gt;
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/base/article.c
-ls
-Document Class: article 2020/04/10 v1.4m Standard LaTeX document class
-
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/base/size12.cl
-o))
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/base/inputenc.
-sty)
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsmat
-h.sty
-For additional information on amsmath, use the `?' option.
-
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amstex
-t.sty
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsgen
-.sty))
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsbsy
-.sty)
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsopn
-.sty))
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amscls/amsthm.
-sty)
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/amssy
-mb.sty
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/amsfo
-nts.sty))
-
-! LaTeX Error: File `anyfontsize.sty' not found.
-
-Type X to quit or &lt;RETURN&gt; to proceed,
-or enter new name. (Default extension: sty)
-
-Enter file name:
-! Emergency stop.
-&lt;read *&gt;
-
-l.8 \usepackage
-               {bm}^^M
-No pages of output.
-Transcript written on math.log.
-</p>
-</div>
- score of
+disregarding the input features, would get a <span class="math">R^2</span> score of
 0.0.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1158,116 +486,12 @@ is the number of samples used in the fitting for the estimator.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>score</strong> (<em>float</em>) – <div class="system-message">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">R^2</span>)</p>
-<p>latex exited with error
-[stdout]
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=latex)
- restricted \write18 enabled.
-entering extended mode
-(./math.tex
-LaTeX2e &lt;2020-10-01&gt;
-L3 programming layer &lt;2020-09-24&gt; xparse &lt;2020-03-03&gt;
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/base/article.c
-ls
-Document Class: article 2020/04/10 v1.4m Standard LaTeX document class
-
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/base/size12.cl
-o))
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/base/inputenc.
-sty)
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsmat
-h.sty
-For additional information on amsmath, use the `?' option.
-
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amstex
-t.sty
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsgen
-.sty))
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsbsy
-.sty)
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsopn
-.sty))
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amscls/amsthm.
-sty)
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/amssy
-mb.sty
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/amsfo
-nts.sty))
-
-! LaTeX Error: File `anyfontsize.sty' not found.
-
-Type X to quit or &lt;RETURN&gt; to proceed,
-or enter new name. (Default extension: sty)
-
-Enter file name:
-! Emergency stop.
-&lt;read *&gt;
-
-l.8 \usepackage
-               {bm}^^M
-No pages of output.
-Transcript written on math.log.
-</p>
-</div>
- of <code class="docutils literal notranslate"><span class="pre">self.predict(X)</span></code> wrt. <cite>y</cite>.</p>
+<dd class="field-even"><p><strong>score</strong> (<em>float</em>) – <span class="math">R^2</span> of <code class="docutils literal notranslate"><span class="pre">self.predict(X)</span></code> wrt. <cite>y</cite>.</p>
 </dd>
 </dl>
 <div class="admonition-notes admonition">
 <p class="admonition-title">Notes</p>
-<p>The <div class="system-message">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">R^2</span>)</p>
-<p>latex exited with error
-[stdout]
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=latex)
- restricted \write18 enabled.
-entering extended mode
-(./math.tex
-LaTeX2e &lt;2020-10-01&gt;
-L3 programming layer &lt;2020-09-24&gt; xparse &lt;2020-03-03&gt;
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/base/article.c
-ls
-Document Class: article 2020/04/10 v1.4m Standard LaTeX document class
-
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/base/size12.cl
-o))
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/base/inputenc.
-sty)
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsmat
-h.sty
-For additional information on amsmath, use the `?' option.
-
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amstex
-t.sty
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsgen
-.sty))
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsbsy
-.sty)
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsopn
-.sty))
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amscls/amsthm.
-sty)
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/amssy
-mb.sty
-(/Users/christophersantiago/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/amsfo
-nts.sty))
-
-! LaTeX Error: File `anyfontsize.sty' not found.
-
-Type X to quit or &lt;RETURN&gt; to proceed,
-or enter new name. (Default extension: sty)
-
-Enter file name:
-! Emergency stop.
-&lt;read *&gt;
-
-l.8 \usepackage
-               {bm}^^M
-No pages of output.
-Transcript written on math.log.
-</p>
-</div>
- score used when calling <code class="docutils literal notranslate"><span class="pre">score</span></code> on a regressor uses
+<p>The <span class="math">R^2</span> score used when calling <code class="docutils literal notranslate"><span class="pre">score</span></code> on a regressor uses
 <code class="docutils literal notranslate"><span class="pre">multioutput='uniform_average'</span></code> from version 0.23 to keep consistent
 with default value of <code class="xref py py-func docutils literal notranslate"><span class="pre">r2_score()</span></code>.
 This influences the <code class="docutils literal notranslate"><span class="pre">score</span></code> method of all the multioutput
@@ -1293,19 +517,19 @@ possible to update each component of a nested object.</p>
 </dl>
 </dd></dl>
 </dd></dl>
-</div>
-<div class="section" id="module-tsfeast.splitter">
+</section>
+<section id="module-tsfeast.splitter">
 <span id="tsfeast-splitter-module"></span><h2>tsfeast.splitter module<a class="headerlink" href="#module-tsfeast.splitter" title="Permalink to this headline">¶</a></h2>
 <p>Time Series Windows Module.</p>
 <p><em>Note</em> These classes split data into n, equal-length, sliding training/test windows.  This differs
 from Scikit-Learn’s TimeSeriesSplit implementation where windows are accumulated:</p>
-<div class="section" id="scikit-learn">
+<section id="scikit-learn">
 <h3>Scikit-Learn<a class="headerlink" href="#scikit-learn" title="Permalink to this headline">¶</a></h3>
 <p>Win 0   <a href="#id1"><span class="problematic" id="id2">|----|</span></a>
 Win 1   <a href="#id3"><span class="problematic" id="id4">|--------|</span></a>
 Win2    <a href="#id5"><span class="problematic" id="id6">|------------|</span></a></p>
-</div>
-<div class="section" id="timeserieswindows">
+</section>
+<section id="timeserieswindows">
 <h3>TimeSeriesWindows<a class="headerlink" href="#timeserieswindows" title="Permalink to this headline">¶</a></h3>
 <p>Win 0   <a href="#id7"><span class="problematic" id="id8">|----|</span></a>——–
 Win 1   -<a href="#id9"><span class="problematic" id="id10">|----|</span></a>——-
@@ -1328,9 +552,9 @@ Win2    –<a href="#id11"><span class="problematic" id="id12">|----|</span></a>
 <span class="sig-name descname"><span class="pre">split</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">pandas.core.frame.DataFrame</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/tsfeast/splitter.html#EndogSeriesWindows.split"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tsfeast.splitter.EndogSeriesWindows.split" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 </dd></dl>
-</div>
-</div>
-<div class="section" id="module-tsfeast.transformers">
+</section>
+</section>
+<section id="module-tsfeast.transformers">
 <span id="tsfeast-transformers-module"></span><h2>tsfeast.transformers module<a class="headerlink" href="#module-tsfeast.transformers" title="Permalink to this headline">¶</a></h2>
 <p>Time series feature generators as Scikit-Learn compatible transformers.</p>
 <dl class="py class">
@@ -2185,8 +1409,8 @@ possible to update each component of a nested object.</p>
 <dd><p>Transform fitted data.</p>
 </dd></dl>
 </dd></dl>
-</div>
-<div class="section" id="module-tsfeast.tsfeatures">
+</section>
+<section id="module-tsfeast.tsfeatures">
 <span id="tsfeast-tsfeatures-module"></span><h2>tsfeast.tsfeatures module<a class="headerlink" href="#module-tsfeast.tsfeatures" title="Permalink to this headline">¶</a></h2>
 <p>Time series features module.</p>
 <dl class="py class">
@@ -2266,8 +1490,8 @@ possible to update each component of a nested object.</p>
 <dd><p>Transform fitted data.</p>
 </dd></dl>
 </dd></dl>
-</div>
-<div class="section" id="module-tsfeast.utils">
+</section>
+<section id="module-tsfeast.utils">
 <span id="tsfeast-utils-module"></span><h2>tsfeast.utils module<a class="headerlink" href="#module-tsfeast.utils" title="Permalink to this headline">¶</a></h2>
 <p>Miscellaneous utility functions.</p>
 <dl class="py function">
@@ -2285,26 +1509,26 @@ possible to update each component of a nested object.</p>
 <span class="sig-prename descclassname"><span class="pre">tsfeast.utils.</span></span><span class="sig-name descname"><span class="pre">array_to_series</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">pandas.core.series.Series</span></span></span><a class="reference internal" href="_modules/tsfeast/utils.html#array_to_series"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tsfeast.utils.array_to_series" title="Permalink to this definition">¶</a></dt>
 <dd><p>Convert Numpy array to Pandas Series with default name.</p>
 </dd></dl>
-</div>
-<div class="section" id="module-tsfeast">
+</section>
+<section id="module-tsfeast">
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-tsfeast" title="Permalink to this headline">¶</a></h2>
-</div>
-</div>
+</section>
+</section>
 
       </article>
       <footer>
-
+        
         <div class="related-pages">
-
+          
           <a class="prev-page" href="modules.html">
               <svg><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
-
+                
                 <div class="title">tsfeast</div>
-
+                
               </div>
             </a>
         </div>
@@ -2322,12 +1546,12 @@ possible to update each component of a nested object.</p>
               Show Source
             </a>
         </div>
-
+        
       </footer>
     </div>
     <aside class="toc-drawer">
-
-
+      
+      
       <div class="toc-sticky toc-scroll">
         <div class="toc-title-container">
           <span class="toc-title">
@@ -2358,10 +1582,10 @@ possible to update each component of a nested object.</p>
           </div>
         </div>
       </div>
-
-
+      
+      
     </aside>
-  </main>
+  </div>
 </div><script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
