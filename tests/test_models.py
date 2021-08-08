@@ -1,8 +1,8 @@
-import pytest
 import numpy as np
 import pandas as pd
-from statsmodels.tsa.holtwinters import ExponentialSmoothing
+import pytest
 from statsmodels.iolib.summary import Summary
+from statsmodels.tsa.holtwinters import ExponentialSmoothing
 from statsmodels.tsa.statespace.sarimax import SARIMAX
 
 from tsfeast.models import ARMARegressor, TSARegressor
