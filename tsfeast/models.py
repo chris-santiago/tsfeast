@@ -51,9 +51,10 @@ class TSARegressor(StatsModelsContainer):
 
     def _fit(self, X: Data, y: Data) -> "TSARegressor":
         """Fit the estimator."""
-        if not self.use_exog:
-            X = None
-        self.fitted_model_ = self.model(endog=y, exog=X, **self.kwargs).fit()
+        if self.use_exog:
+            self.fitted_model_ = self.model(endog=y, exog=X, **self.kwargs).fit()
+        else:
+            self.fitted_model_ = self.model(endog=y, **self.kwargs).fit()
         self.fitted_values_ = self.fitted_model_.fittedvalues
         self.summary_ = self.fitted_model_.summary()
         return self
