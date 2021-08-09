@@ -17,7 +17,7 @@ from tsfeast.funcs import (
     get_lag_features,
     get_rolling_features,
 )
-from tsfeast.utils import array_to_dataframe
+from tsfeast.utils import Data, array_to_dataframe
 
 
 class BaseTransformer(BaseEstimator, TransformerMixin):
@@ -26,8 +26,22 @@ class BaseTransformer(BaseEstimator, TransformerMixin):
     def __init__(self):
         """Instantiate transformer object."""
 
-    def transform(self, X: pd.DataFrame, y=None):
-        """Transform fitted data."""
+    def transform(self, X: Data, y=None) -> Data:
+        """
+        Transform fitted data.
+
+        Parameters
+        ----------
+        X: array of shape [n_samples, n_features]
+            The input samples.
+        y: None
+            Not used; included for compatibility, only.
+
+        Returns
+        -------
+        Data
+            Array-like object of transformed data.
+        """
         _, _ = X, y
         check_is_fitted(self)
         return self.output_features_
@@ -37,12 +51,40 @@ class BaseTransformer(BaseEstimator, TransformerMixin):
         check_is_fitted(self)
         return list(self.feature_names_)
 
-    def _fit(self, X: pd.DataFrame, y=None):
-        """Not implemented."""
+    def _fit(self, X: Data, y=None) -> Data:
+        """
+        Fit transformer object to data.
+
+        Parameters
+        ----------
+        X: array of shape [n_samples, n_features]
+            The input samples.
+        y: None
+            Not used; included for compatibility, only.
+
+        Returns
+        -------
+        Data
+            Transformed features.
+        """
         raise NotImplementedError
 
-    def fit(self, X: pd.DataFrame, y=None) -> "BaseTransformer":
-        """Fit transformer object to data."""
+    def fit(self, X: Data, y=None) -> "BaseTransformer":
+        """
+        Fit transformer object to data.
+
+        Parameters
+        ----------
+        X: array of shape [n_samples, n_features]
+            The input samples.
+        y: None
+            Not used; included for compatibility, only.
+
+        Returns
+        -------
+        BaseTransformer
+            Self.
+        """
         if isinstance(X, np.ndarray):
             X = array_to_dataframe(X)
         self.input_features_ = X
@@ -55,8 +97,22 @@ class BaseTransformer(BaseEstimator, TransformerMixin):
 class OriginalFeatures(BaseTransformer):
     """Return original features."""
 
-    def _fit(self, X: pd.DataFrame, y=None):
-        """Fit transformer object to data."""
+    def _fit(self, X: Data, y=None) -> Data:
+        """
+        Fit transformer object to data.
+
+        Parameters
+        ----------
+        X: array of shape [n_samples, n_features]
+            The input samples.
+        y: None
+            Not used; included for compatibility, only.
+
+        Returns
+        -------
+        Data
+            Transformed features.
+        """
         return X
 
 
@@ -68,16 +124,44 @@ class Scaler(BaseTransformer):
         super().__init__()
         self.scaler = StandardScaler()
 
-    def _fit(self, X: pd.DataFrame, y=None):
-        """Fit transformer object to data."""
+    def _fit(self, X: pd.DataFrame, y=None) -> Data:
+        """
+        Fit transformer object to data.
+
+        Parameters
+        ----------
+        X: array of shape [n_samples, n_features]
+            The input samples.
+        y: None
+            Not used; included for compatibility, only.
+
+        Returns
+        -------
+        Data
+            Transformed features.
+        """
         return pd.DataFrame(
             self.scaler.fit_transform(X),
             columns=X.columns,
             index=X.index
         )
 
-    def inverse_transform(self, X: pd.DataFrame, copy=None):
-        """Transform scaled data into original feature space."""
+    def inverse_transform(self, X: Data, copy: bool = True) -> Data:
+        """
+        Transform scaled data into original feature space.
+
+        Parameters
+        ----------
+        X: array of shape [n_samples, n_features]
+            The input samples.
+        copy: bool
+            Default True; if False, try to avoid a copy and do inplace scaling instead.
+
+        Returns
+        -------
+        Data
+            Data in original feature space.
+        """
         return pd.DataFrame(
             self.scaler.inverse_transform(X, copy=copy),
             columns=self.feature_names_,
@@ -89,13 +173,34 @@ class DateTimeFeatures(BaseTransformer):
     """Generate datetime features."""
 
     def __init__(self, date_col: str = None, dt_format: str = None):
-        """Instantiate transformer object."""
+        """
+        Instantiate transformer object.
+
+        date_col: Optional[str]
+            Column name containing date/timestamp.
+        dt_format: Optional[str]
+            Date/timestamp format, e.g. `%Y-%m-%d` for `2020-01-31`.
+        """
         super().__init__()
         self.date_col = date_col
         self.dt_format = dt_format
 
-    def _fit(self, X: pd.DataFrame, y=None):
-        """Fit transformer object to data."""
+    def _fit(self, X: Data, y=None) -> Data:
+        """
+        Fit transformer object to data.
+
+        Parameters
+        ----------
+        X: array of shape [n_samples, n_features]
+            The input samples.
+        y: None
+            Not used; included for compatibility, only.
+
+        Returns
+        -------
+        Data
+            Transformed features.
+        """
         return get_datetime_features(X, self.date_col, dt_format=self.dt_format)
 
 
@@ -103,12 +208,33 @@ class LagFeatures(BaseTransformer):
     """Generate lag features."""
 
     def __init__(self, n_lags: int):
-        """Instantiate transformer object."""
+        """
+        Instantiate transformer object.
+
+        Parameters
+        ----------
+        n_lags: int
+            Number of lags to generate.
+        """
         super().__init__()
         self.n_lags = n_lags
 
-    def _fit(self, X: pd.DataFrame, y=None):
-        """Fit transformer object to data."""
+    def _fit(self, X: Data, y=None) -> Data:
+        """
+        Fit transformer object to data.
+
+        Parameters
+        ----------
+        X: array of shape [n_samples, n_features]
+            The input samples.
+        y: None
+            Not used; included for compatibility, only.
+
+        Returns
+        -------
+        Data
+            Transformed features.
+        """
         return get_lag_features(X, n_lags=self.n_lags)
 
 
@@ -116,12 +242,33 @@ class RollingFeatures(BaseTransformer):
     """Generate rolling features."""
 
     def __init__(self, window_lengths: List[int]):
-        """Instantiate transformer object."""
+        """
+        Instantiate transformer object.
+
+        Parameters
+        ----------
+        window_lengths: L:ist[int]
+            Length of window(s) to create.
+        """
         super().__init__()
         self.window_lengths = window_lengths
 
-    def _fit(self, X: pd.DataFrame, y=None):
-        """Fit transformer object to data."""
+    def _fit(self, X: Data, y=None) -> Data:
+        """
+        Fit transformer object to data.
+
+        Parameters
+        ----------
+        X: array of shape [n_samples, n_features]
+            The input samples.
+        y: None
+            Not used; included for compatibility, only.
+
+        Returns
+        -------
+        Data
+            Transformed features.
+        """
         return get_rolling_features(X, window_lengths=self.window_lengths)
 
 
@@ -129,12 +276,33 @@ class EwmaFeatures(BaseTransformer):
     """Generate exponentially-weighted moving-average features."""
 
     def __init__(self, window_lengths: List[int]):
-        """Instantiate transformer object."""
+        """
+        Instantiate transformer object.
+
+        Parameters
+        ----------
+        window_lengths: L:ist[int]
+            Length of window(s) to create.
+        """
         super().__init__()
         self.window_lengths = window_lengths
 
-    def _fit(self, X: pd.DataFrame, y=None):
-        """Fit transformer object to data."""
+    def _fit(self, X: Data, y=None) -> Data:
+        """
+        Fit transformer object to data.
+
+        Parameters
+        ----------
+        X: array of shape [n_samples, n_features]
+            The input samples.
+        y: None
+            Not used; included for compatibility, only.
+
+        Returns
+        -------
+        Data
+            Transformed features.
+        """
         return get_ewma_features(X, window_lengths=self.window_lengths)
 
 
@@ -142,12 +310,33 @@ class ChangeFeatures(BaseTransformer):
     """Generate period change features."""
 
     def __init__(self, period_lengths: List[int]):
-        """Instantiate transformer object."""
+        """
+        Instantiate transformer object.
+
+        Parameters
+        ----------
+        period_lengths: List[int]
+            Length of period[s] to generate change features.
+        """
         super().__init__()
         self.period_lengths = period_lengths
 
-    def _fit(self, X: pd.DataFrame, y=None):
-        """Fit transformer object to data."""
+    def _fit(self, X: Data, y=None) -> Data:
+        """
+        Fit transformer object to data.
+
+        Parameters
+        ----------
+        X: array of shape [n_samples, n_features]
+            The input samples.
+        y: None
+            Not used; included for compatibility, only.
+
+        Returns
+        -------
+        Data
+            Transformed features.
+        """
         return get_change_features(X, period_lengths=self.period_lengths)
 
 
@@ -155,12 +344,33 @@ class DifferenceFeatures(BaseTransformer):
     """Generate difference features."""
 
     def __init__(self, n_diffs: int):
-        """Instantiate transformer object."""
+        """
+        Instantiate transformer object.
+
+        Parameters
+        ----------
+        n_diffs: int
+            Number of differences to calculate.
+        """
         super().__init__()
         self.n_diffs = n_diffs
 
-    def _fit(self, X: pd.DataFrame, y=None):
-        """Fit transformer object to data."""
+    def _fit(self, X: Data, y=None) -> Data:
+        """
+        Fit transformer object to data.
+
+        Parameters
+        ----------
+        X: array of shape [n_samples, n_features]
+            The input samples.
+        y: None
+            Not used; included for compatibility, only.
+
+        Returns
+        -------
+        Data
+            Transformed features.
+        """
         return get_difference_features(X, n_diffs=self.n_diffs)
 
 
@@ -168,12 +378,33 @@ class PolyFeatures(BaseTransformer):
     """Generate polynomial features."""
 
     def __init__(self, degree=2):
-        """Instantiate transformer object."""
+        """
+        Instantiate transformer object.
+
+        Parameters
+        ----------
+        degree: int
+            Degree of polynomial to use.
+        """
         super().__init__()
         self.degree = degree
 
-    def _fit(self, X: pd.DataFrame, y=None):
-        """Fit transformer object to data."""
+    def _fit(self, X: Data, y=None) -> Data:
+        """
+        Fit transformer object to data.
+
+        Parameters
+        ----------
+        X: array of shape [n_samples, n_features]
+            The input samples.
+        y: None
+            Not used; included for compatibility, only.
+
+        Returns
+        -------
+        Data
+            Transformed features.
+        """
         poly = []
         df = X.copy()
         for i in range(2, self.degree + 1):
@@ -190,8 +421,22 @@ class PolyFeatures(BaseTransformer):
 class InteractionFeatures(BaseTransformer):
     """Wrap PolynomialFeatures to extract interactions and keep column names."""
 
-    def _fit(self, X: pd.DataFrame, y=None):
-        """Fit transformer object to data."""
+    def _fit(self, X: Data, y=None) -> Data:
+        """
+        Fit transformer object to data.
+
+        Parameters
+        ----------
+        X: array of shape [n_samples, n_features]
+            The input samples.
+        y: None
+            Not used; included for compatibility, only.
+
+        Returns
+        -------
+        Data
+            Transformed features.
+        """
         transformer = PolynomialFeatures(interaction_only=True, include_bias=False)
         interactions = transformer.fit_transform(X.fillna(0))
         cols = [':'.join(x) for x in combinations(X.columns, r=2)]
