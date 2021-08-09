@@ -1,5 +1,4 @@
 """Module for Base Estimator."""
-import numpy as np
 from sklearn.base import BaseEstimator, RegressorMixin
 from sklearn.utils.validation import check_array, check_is_fitted, check_X_y
 
@@ -11,7 +10,7 @@ class BaseContainer(BaseEstimator, RegressorMixin):
     def __init__(self):
         """Instantiate container."""
 
-    def _fit(self, X: Data, y: Data):
+    def _fit(self, X: Data, y: Data) -> Data:
         """Method not implemented."""
         raise NotImplementedError
 
@@ -34,11 +33,11 @@ class BaseContainer(BaseEstimator, RegressorMixin):
         self._fit(X, y)
         return self
 
-    def _predict(self, X: Data):
+    def _predict(self, X: Data) -> Data:
         """Method not implemented."""
         raise NotImplementedError
 
-    def predict(self, X: Data) -> np.ndarray:
+    def predict(self, X: Data) -> Data:
         """
         Make predictions with fitted estimator.
 

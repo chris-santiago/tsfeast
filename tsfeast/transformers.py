@@ -51,13 +51,13 @@ class BaseTransformer(BaseEstimator, TransformerMixin):
         check_is_fitted(self)
         return list(self.feature_names_)
 
-    def _fit(self, X: Data, y=None) -> Data:
+    def _fit(self, X: pd.DataFrame, y=None) -> pd.DataFrame:
         """
         Fit transformer object to data.
 
         Parameters
         ----------
-        X: array of shape [n_samples, n_features]
+        X: pd.DataFrame
             The input samples.
         y: None
             Not used; included for compatibility, only.
@@ -97,13 +97,13 @@ class BaseTransformer(BaseEstimator, TransformerMixin):
 class OriginalFeatures(BaseTransformer):
     """Return original features."""
 
-    def _fit(self, X: Data, y=None) -> Data:
+    def _fit(self, X: pd.DataFrame, y=None) -> Data:
         """
         Fit transformer object to data.
 
         Parameters
         ----------
-        X: array of shape [n_samples, n_features]
+        X: pd.DataFrame
             The input samples.
         y: None
             Not used; included for compatibility, only.
@@ -130,7 +130,7 @@ class Scaler(BaseTransformer):
 
         Parameters
         ----------
-        X: array of shape [n_samples, n_features]
+        X: pd.DataFrame
             The input samples.
         y: None
             Not used; included for compatibility, only.
@@ -146,13 +146,13 @@ class Scaler(BaseTransformer):
             index=X.index
         )
 
-    def inverse_transform(self, X: Data, copy: bool = True) -> Data:
+    def inverse_transform(self, X: pd.DataFrame, copy: bool = True) -> pd.DataFrame:
         """
         Transform scaled data into original feature space.
 
         Parameters
         ----------
-        X: array of shape [n_samples, n_features]
+        X: pd.DataFrame
             The input samples.
         copy: bool
             Default True; if False, try to avoid a copy and do inplace scaling instead.
@@ -185,13 +185,13 @@ class DateTimeFeatures(BaseTransformer):
         self.date_col = date_col
         self.dt_format = dt_format
 
-    def _fit(self, X: Data, y=None) -> Data:
+    def _fit(self, X: pd.DataFrame, y=None) -> Data:
         """
         Fit transformer object to data.
 
         Parameters
         ----------
-        X: array of shape [n_samples, n_features]
+        X: pd.DataFrame
             The input samples.
         y: None
             Not used; included for compatibility, only.
@@ -219,13 +219,13 @@ class LagFeatures(BaseTransformer):
         super().__init__()
         self.n_lags = n_lags
 
-    def _fit(self, X: Data, y=None) -> Data:
+    def _fit(self, X: pd.DataFrame, y=None) -> Data:
         """
         Fit transformer object to data.
 
         Parameters
         ----------
-        X: array of shape [n_samples, n_features]
+        X: pd.DataFrame
             The input samples.
         y: None
             Not used; included for compatibility, only.
@@ -253,13 +253,13 @@ class RollingFeatures(BaseTransformer):
         super().__init__()
         self.window_lengths = window_lengths
 
-    def _fit(self, X: Data, y=None) -> Data:
+    def _fit(self, X: pd.DataFrame, y=None) -> Data:
         """
         Fit transformer object to data.
 
         Parameters
         ----------
-        X: array of shape [n_samples, n_features]
+        X: pd.DataFrame
             The input samples.
         y: None
             Not used; included for compatibility, only.
@@ -287,13 +287,13 @@ class EwmaFeatures(BaseTransformer):
         super().__init__()
         self.window_lengths = window_lengths
 
-    def _fit(self, X: Data, y=None) -> Data:
+    def _fit(self, X: pd.DataFrame, y=None) -> Data:
         """
         Fit transformer object to data.
 
         Parameters
         ----------
-        X: array of shape [n_samples, n_features]
+        X: pd.DataFrame
             The input samples.
         y: None
             Not used; included for compatibility, only.
@@ -321,13 +321,13 @@ class ChangeFeatures(BaseTransformer):
         super().__init__()
         self.period_lengths = period_lengths
 
-    def _fit(self, X: Data, y=None) -> Data:
+    def _fit(self, X: pd.DataFrame, y=None) -> Data:
         """
         Fit transformer object to data.
 
         Parameters
         ----------
-        X: array of shape [n_samples, n_features]
+        X: pd.DataFrame
             The input samples.
         y: None
             Not used; included for compatibility, only.
@@ -355,13 +355,13 @@ class DifferenceFeatures(BaseTransformer):
         super().__init__()
         self.n_diffs = n_diffs
 
-    def _fit(self, X: Data, y=None) -> Data:
+    def _fit(self, X: pd.DataFrame, y=None) -> Data:
         """
         Fit transformer object to data.
 
         Parameters
         ----------
-        X: array of shape [n_samples, n_features]
+        X: pd.DataFrame
             The input samples.
         y: None
             Not used; included for compatibility, only.
@@ -389,13 +389,13 @@ class PolyFeatures(BaseTransformer):
         super().__init__()
         self.degree = degree
 
-    def _fit(self, X: Data, y=None) -> Data:
+    def _fit(self, X: pd.DataFrame, y=None) -> pd.DataFrame:
         """
         Fit transformer object to data.
 
         Parameters
         ----------
-        X: array of shape [n_samples, n_features]
+        X: pd.DataFrame
             The input samples.
         y: None
             Not used; included for compatibility, only.
@@ -421,13 +421,13 @@ class PolyFeatures(BaseTransformer):
 class InteractionFeatures(BaseTransformer):
     """Wrap PolynomialFeatures to extract interactions and keep column names."""
 
-    def _fit(self, X: Data, y=None) -> Data:
+    def _fit(self, X: pd.DataFrame, y=None) -> pd.DataFrame:
         """
         Fit transformer object to data.
 
         Parameters
         ----------
-        X: array of shape [n_samples, n_features]
+        X: pd.DataFrame
             The input samples.
         y: None
             Not used; included for compatibility, only.

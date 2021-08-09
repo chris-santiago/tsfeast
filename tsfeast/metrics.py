@@ -6,7 +6,7 @@ from tsfeast._base import BaseContainer
 from tsfeast.utils import Data
 
 
-def bic_score(mse: float, n: int, p: int) -> float:
+def bic_score(mse: float, n: int, p: int):
     """
     Calcuate BIC score.
 
@@ -27,7 +27,7 @@ def bic_score(mse: float, n: int, p: int) -> float:
     return n * log(mse) + log(n) * p
 
 
-def bic_scorer(estimator: BaseContainer, X: Data, y: Data) -> float:
+def bic_scorer(estimator: BaseContainer, X: Data, y: Data):
     """Score SciKit-Learn estimator using BIC."""
     y_pred = estimator.predict(X)
     mse = mean_squared_error(y, y_pred)
