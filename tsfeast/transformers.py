@@ -41,9 +41,17 @@ class BaseTransformer(BaseEstimator, TransformerMixin):
         -------
         Data
             Array-like object of transformed data.
+
+        Notes
+        -----
+        Scikit-Learn Pipelines only call the `.transform()` method during the `.predict()` method,
+        which is appropriate to prevent data leakage in predictions.  However, most of the
+        transformers in this module take a set of features and generate new features; there's no
+        inherent method to transform some timeseries features given a fitted estimator.
         """
         _, _ = X, y
         check_is_fitted(self)
+        # todo make this call fit again
         return self.output_features_
 
     def get_feature_names(self) -> List[str]:
