@@ -1,7 +1,7 @@
 """Time series feature generators as Scikit-Learn compatible transformers."""
 
 from itertools import combinations
-from typing import List
+from typing import List, Optional
 
 import numpy as np
 import pandas as pd
@@ -23,8 +23,9 @@ from tsfeast.utils import Data, array_to_dataframe
 class BaseTransformer(BaseEstimator, TransformerMixin):
     """Base transformer object."""
 
-    def __init__(self):
+    def __init__(self, fillna: bool = True):
         """Instantiate transformer object."""
+        self.fillna = fillna
 
     def transform(self, X: Data, y=None) -> Data:
         """
@@ -49,9 +50,30 @@ class BaseTransformer(BaseEstimator, TransformerMixin):
         transformers in this module take a set of features and generate new features; there's no
         inherent method to transform some timeseries features given a fitted estimator.
         """
-        _, _ = X, y
-        check_is_fitted(self)
-        # todo make this call fit again
+        if isinstance(X, np.ndarray):
+            X = array_to_dataframe(X)
+
+        if hasattr(self, 'input_features_'):
+            """
+            For time series lags, changes, etc., we have access to past data for feature
+            generation without risk of data leakage; certain features (e.g. lags) require this
+            to avoid NaNs or zeros.
+
+            We append new X to our original features and transform on entire dataset, keeping
+            only the last n rows.  Appropriate for time series transformations, only.
+            """
+            rows = X.shape[0]
+            X = pd.concat([self.input_features_, X])
+            self.output_features_ = self._transform(X, y).iloc[-rows:, :]
+            if self.fillna:
+                return self.output_features_.fillna(0)
+            return self.output_features_
+        self.input_features_ = X
+        self.n_features_in_ = X.shape[0]
+        self.output_features_ = self._transform(X, y)
+        self.feature_names_ = self.output_features_.columns
+        if self.fillna:
+            return self.output_features_.fillna(0)
         return self.output_features_
 
     def get_feature_names(self) -> List[str]:
@@ -59,9 +81,9 @@ class BaseTransformer(BaseEstimator, TransformerMixin):
         check_is_fitted(self)
         return list(self.feature_names_)
 
-    def _fit(self, X: pd.DataFrame, y=None) -> pd.DataFrame:
+    def _transform(self, X: pd.DataFrame, y=None) -> pd.DataFrame:
         """
-        Fit transformer object to data.
+        Transform input data.
 
         Parameters
         ----------
@@ -93,19 +115,14 @@ class BaseTransformer(BaseEstimator, TransformerMixin):
         BaseTransformer
             Self.
         """
-        if isinstance(X, np.ndarray):
-            X = array_to_dataframe(X)
-        self.input_features_ = X
-        self.n_features_in_ = X.shape[0]
-        self.output_features_ = self._fit(X, y)
-        self.feature_names_ = self.output_features_.columns
+        _, _ = X, y
         return self
 
 
 class OriginalFeatures(BaseTransformer):
     """Return original features."""
 
-    def _fit(self, X: pd.DataFrame, y=None) -> Data:
+    def _transform(self, X: pd.DataFrame, y=None) -> Data:
         """
         Fit transformer object to data.
 
@@ -132,7 +149,26 @@ class Scaler(BaseTransformer):
         super().__init__()
         self.scaler = StandardScaler()
 
-    def _fit(self, X: pd.DataFrame, y=None) -> Data:
+    def fit(self, X: pd.DataFrame, y=None) -> "Scaler":
+        """
+        Fit transformer object to data.
+
+        Parameters
+        ----------
+        X: pd.DataFrame
+            The input samples.
+        y: None
+            Not used; included for compatibility, only.
+
+        Returns
+        -------
+        Data
+            Transformed features.
+        """
+        self.scaler.fit(X)
+        return self
+
+    def transform(self, X: pd.DataFrame, y=None) -> Data:
         """
         Fit transformer object to data.
 
@@ -149,7 +185,7 @@ class Scaler(BaseTransformer):
             Transformed features.
         """
         return pd.DataFrame(
-            self.scaler.fit_transform(X),
+            self.scaler.transform(X),
             columns=X.columns,
             index=X.index
         )
@@ -180,7 +216,7 @@ class Scaler(BaseTransformer):
 class DateTimeFeatures(BaseTransformer):
     """Generate datetime features."""
 
-    def __init__(self, date_col: str = None, dt_format: str = None):
+    def __init__(self, date_col: Optional[str] = None, dt_format: Optional[str] = None):
         """
         Instantiate transformer object.
 
@@ -193,7 +229,20 @@ class DateTimeFeatures(BaseTransformer):
         self.date_col = date_col
         self.dt_format = dt_format
 
-    def _fit(self, X: pd.DataFrame, y=None) -> Data:
+    def fit(self, X: Data, y=None) -> "DateTimeFeatures":
+        _ = y
+        if isinstance(X, pd.DataFrame):
+            dates = X[self.date_col]
+        elif isinstance(X, pd.Series):
+            dates = X
+        else:
+            raise ValueError('`data` must be a DataFrame or Series.')
+        self.freq_ = pd.infer_freq(
+            pd.DatetimeIndex(pd.to_datetime(dates, format=self.dt_format))
+        )
+        return self
+
+    def _transform(self, X: pd.DataFrame, y=None) -> Data:
         """
         Fit transformer object to data.
 
@@ -209,7 +258,7 @@ class DateTimeFeatures(BaseTransformer):
         Data
             Transformed features.
         """
-        return get_datetime_features(X, self.date_col, dt_format=self.dt_format)
+        return get_datetime_features(X, self.date_col, dt_format=self.dt_format, freq=self.freq_)
 
 
 class LagFeatures(BaseTransformer):
@@ -227,7 +276,7 @@ class LagFeatures(BaseTransformer):
         super().__init__()
         self.n_lags = n_lags
 
-    def _fit(self, X: pd.DataFrame, y=None) -> Data:
+    def _transform(self, X: pd.DataFrame, y=None) -> Data:
         """
         Fit transformer object to data.
 
@@ -261,7 +310,7 @@ class RollingFeatures(BaseTransformer):
         super().__init__()
         self.window_lengths = window_lengths
 
-    def _fit(self, X: pd.DataFrame, y=None) -> Data:
+    def _transform(self, X: pd.DataFrame, y=None) -> Data:
         """
         Fit transformer object to data.
 
@@ -295,7 +344,7 @@ class EwmaFeatures(BaseTransformer):
         super().__init__()
         self.window_lengths = window_lengths
 
-    def _fit(self, X: pd.DataFrame, y=None) -> Data:
+    def _transform(self, X: pd.DataFrame, y=None) -> Data:
         """
         Fit transformer object to data.
 
@@ -329,7 +378,7 @@ class ChangeFeatures(BaseTransformer):
         super().__init__()
         self.period_lengths = period_lengths
 
-    def _fit(self, X: pd.DataFrame, y=None) -> Data:
+    def _transform(self, X: pd.DataFrame, y=None) -> Data:
         """
         Fit transformer object to data.
 
@@ -363,7 +412,7 @@ class DifferenceFeatures(BaseTransformer):
         super().__init__()
         self.n_diffs = n_diffs
 
-    def _fit(self, X: pd.DataFrame, y=None) -> Data:
+    def _transform(self, X: pd.DataFrame, y=None) -> Data:
         """
         Fit transformer object to data.
 
@@ -397,7 +446,7 @@ class PolyFeatures(BaseTransformer):
         super().__init__()
         self.degree = degree
 
-    def _fit(self, X: pd.DataFrame, y=None) -> pd.DataFrame:
+    def _transform(self, X: pd.DataFrame, y=None) -> pd.DataFrame:
         """
         Fit transformer object to data.
 
@@ -429,7 +478,7 @@ class PolyFeatures(BaseTransformer):
 class InteractionFeatures(BaseTransformer):
     """Wrap PolynomialFeatures to extract interactions and keep column names."""
 
-    def _fit(self, X: pd.DataFrame, y=None) -> pd.DataFrame:
+    def _transform(self, X: pd.DataFrame, y=None) -> pd.DataFrame:
         """
         Fit transformer object to data.
 

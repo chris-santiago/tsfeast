@@ -34,7 +34,7 @@ def get_busdays_in_month(dt: pd.Timestamp) -> int:
 
 def get_datetime_features(
         data: Union[pd.DataFrame, pd.Series], date_col: Optional[str] = None,
-        dt_format: Optional[str] = None
+        dt_format: Optional[str] = None, freq: Optional[str] = None
 ) -> pd.DataFrame:
     """
     Get features based on datetime index, including year, month, week, weekday, quarter, days in
@@ -48,6 +48,8 @@ def get_datetime_features(
         Column name containing date/timestamp.
     dt_format: Optional[str]
         Date/timestamp format, e.g. `%Y-%m-%d` for `2020-01-31`.
+    freq: Optional[str]
+        Date frequency.
 
     Returns
     -------
@@ -64,7 +66,10 @@ def get_datetime_features(
         raise ValueError('`data` must be a DataFrame or Series.')
 
     X_dt = pd.DatetimeIndex(pd.to_datetime(dates, format=dt_format))  # enforce DatetimeIndex
-    ts_freq = pd.infer_freq(X_dt)
+    if freq:
+        ts_freq = freq
+    else:
+        ts_freq = pd.infer_freq(X_dt)
     dt_features = pd.DataFrame()
     dt_features['year'] = X_dt.year  # pylint: disable=no-member
     dt_features['quarter'] = X_dt.quarter  # pylint: disable=no-member

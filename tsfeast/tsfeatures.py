@@ -43,7 +43,7 @@ class TimeSeriesFeatures(BaseTransformer):
         self.interactions = interactions
         self.fillna = fillna
 
-    def _fit(self, X, y=None):
+    def _transform(self, X, y=None):
         """Fit transformer to data."""
         transforms = {
             'lags': LagFeatures(self.lags),
