@@ -27,7 +27,8 @@ class TimeSeriesFeatures(BaseTransformer):
             self, datetime: str, trend: str = 'n', lags: Optional[int] = None,
             rolling: Optional[List[int]] = None, ewma: Optional[List[int]] = None,
             pct_chg: Optional[List[int]] = None, diffs: Optional[int] = None,
-            polynomial: Optional[int] = None, interactions: bool = True
+            polynomial: Optional[int] = None, interactions: bool = True,
+            fillna: bool = True
     ):
         """Instanatiate transformer object."""
         super().__init__()
@@ -40,6 +41,7 @@ class TimeSeriesFeatures(BaseTransformer):
         self.diffs = diffs
         self.polynomial = polynomial
         self.interactions = interactions
+        self.fillna = fillna
 
     def _transform(self, X, y=None):
         """Fit transformer to data."""
@@ -73,4 +75,6 @@ class TimeSeriesFeatures(BaseTransformer):
         )
         if self.trend:
             features = add_trend(features, trend=self.trend, prepend=True, has_constant='add')
+        if self.fillna:
+            return features.fillna(0)
         return features
