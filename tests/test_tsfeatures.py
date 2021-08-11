@@ -31,5 +31,5 @@ class TestTimeSeriesFeatures:
         )
         actual = ts.fit_transform(exog.reset_index())
         fp = curr_dir.joinpath('valid_outputs', 'all_transforms.json')
-        expected = pd.read_json(fp).reset_index(drop=True).fillna(0)
+        expected = pd.read_json(fp).reset_index(drop=True)
         pd.testing.assert_frame_equal(actual, expected, check_freq=False, check_dtype=False)
