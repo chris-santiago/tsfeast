@@ -38,6 +38,13 @@ def date_col():
     return dates
 
 
+@pytest.fixture
+def train_test():
+    x_train, x_test = X.iloc[:10, :], X.iloc[-2:, :]
+    y_train, y_test = y.iloc[:10], y.iloc[-2]
+    return x_train, y_train, x_test, y_test
+
+
 # @pytest.fixture
 # def tsfe_uni():
 #     return TSFeatureExtractor(y)
