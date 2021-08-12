@@ -49,19 +49,18 @@ class BaseTransformer(BaseEstimator, TransformerMixin):
         which is appropriate to prevent data leakage in predictions.  However, most of the
         transformers in this module take a set of features and generate new features; there's no
         inherent method to transform some timeseries features given a fitted estimator.
+
+        For time series lags, changes, etc., we have access to past data for feature
+        generation without risk of data leakage; certain features (e.g. lags) require this
+        to avoid NaNs or zeros.
+
+        We append new X to our original features and transform on entire dataset, keeping
+        only the last n rows.  Appropriate for time series transformations, only.
         """
         if isinstance(X, np.ndarray):
             X = array_to_dataframe(X)
 
         if hasattr(self, 'input_features_'):
-            """
-            For time series lags, changes, etc., we have access to past data for feature
-            generation without risk of data leakage; certain features (e.g. lags) require this
-            to avoid NaNs or zeros.
-
-            We append new X to our original features and transform on entire dataset, keeping
-            only the last n rows.  Appropriate for time series transformations, only.
-            """
             rows = X.shape[0]
             X = pd.concat([self.input_features_, X])  # pylint: disable=E0203
             self.output_features_ = self._transform(X, y).iloc[-rows:, :]
