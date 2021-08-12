@@ -63,12 +63,12 @@ class BaseTransformer(BaseEstimator, TransformerMixin):
             only the last n rows.  Appropriate for time series transformations, only.
             """
             rows = X.shape[0]
-            X = pd.concat([self.input_features_, X])
+            X = pd.concat([self.input_features_, X])  # pylint: disable=E0203
             self.output_features_ = self._transform(X, y).iloc[-rows:, :]
             if self.fillna:
                 return self.output_features_.fillna(0)
             return self.output_features_
-        self.input_features_ = X
+        self.input_features_: pd.DataFrame = X
         self.n_features_in_ = X.shape[0]
         self.output_features_ = self._transform(X, y)
         self.feature_names_ = self.output_features_.columns
@@ -168,6 +168,9 @@ class Scaler(BaseTransformer):
         self.scaler.fit(X)
         return self
 
+    def _transform(self, X: pd.DataFrame, y=None) -> pd.DataFrame:
+        return self
+
     def transform(self, X: pd.DataFrame, y=None) -> Data:
         """
         Fit transformer object to data.
@@ -184,6 +187,7 @@ class Scaler(BaseTransformer):
         Data
             Transformed features.
         """
+        self.feature_names_ = X.columns
         return pd.DataFrame(
             self.scaler.transform(X),
             columns=X.columns,
@@ -264,7 +268,7 @@ class DateTimeFeatures(BaseTransformer):
 class LagFeatures(BaseTransformer):
     """Generate lag features."""
 
-    def __init__(self, n_lags: int):
+    def __init__(self, n_lags: int, fillna: bool = True):
         """
         Instantiate transformer object.
 
@@ -273,7 +277,7 @@ class LagFeatures(BaseTransformer):
         n_lags: int
             Number of lags to generate.
         """
-        super().__init__()
+        super().__init__(fillna=fillna)
         self.n_lags = n_lags
 
     def _transform(self, X: pd.DataFrame, y=None) -> Data:
@@ -298,7 +302,7 @@ class LagFeatures(BaseTransformer):
 class RollingFeatures(BaseTransformer):
     """Generate rolling features."""
 
-    def __init__(self, window_lengths: List[int]):
+    def __init__(self, window_lengths: List[int], fillna: bool = True):
         """
         Instantiate transformer object.
 
@@ -307,7 +311,7 @@ class RollingFeatures(BaseTransformer):
         window_lengths: L:ist[int]
             Length of window(s) to create.
         """
-        super().__init__()
+        super().__init__(fillna=fillna)
         self.window_lengths = window_lengths
 
     def _transform(self, X: pd.DataFrame, y=None) -> Data:
@@ -332,7 +336,7 @@ class RollingFeatures(BaseTransformer):
 class EwmaFeatures(BaseTransformer):
     """Generate exponentially-weighted moving-average features."""
 
-    def __init__(self, window_lengths: List[int]):
+    def __init__(self, window_lengths: List[int], fillna: bool = True):
         """
         Instantiate transformer object.
 
@@ -341,7 +345,7 @@ class EwmaFeatures(BaseTransformer):
         window_lengths: L:ist[int]
             Length of window(s) to create.
         """
-        super().__init__()
+        super().__init__(fillna=fillna)
         self.window_lengths = window_lengths
 
     def _transform(self, X: pd.DataFrame, y=None) -> Data:
@@ -366,7 +370,7 @@ class EwmaFeatures(BaseTransformer):
 class ChangeFeatures(BaseTransformer):
     """Generate period change features."""
 
-    def __init__(self, period_lengths: List[int]):
+    def __init__(self, period_lengths: List[int], fillna: bool = True):
         """
         Instantiate transformer object.
 
@@ -375,7 +379,7 @@ class ChangeFeatures(BaseTransformer):
         period_lengths: List[int]
             Length of period[s] to generate change features.
         """
-        super().__init__()
+        super().__init__(fillna=fillna)
         self.period_lengths = period_lengths
 
     def _transform(self, X: pd.DataFrame, y=None) -> Data:
@@ -400,7 +404,7 @@ class ChangeFeatures(BaseTransformer):
 class DifferenceFeatures(BaseTransformer):
     """Generate difference features."""
 
-    def __init__(self, n_diffs: int):
+    def __init__(self, n_diffs: int, fillna: bool = True):
         """
         Instantiate transformer object.
 
@@ -409,7 +413,7 @@ class DifferenceFeatures(BaseTransformer):
         n_diffs: int
             Number of differences to calculate.
         """
-        super().__init__()
+        super().__init__(fillna=fillna)
         self.n_diffs = n_diffs
 
     def _transform(self, X: pd.DataFrame, y=None) -> Data:

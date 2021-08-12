@@ -189,7 +189,7 @@
 <span></span><span class="sd">"""Time series feature generators as Scikit-Learn compatible transformers."""</span>
 
 <span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">combinations</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span>
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -205,19 +205,63 @@
     <span class="n">get_lag_features</span><span class="p">,</span>
     <span class="n">get_rolling_features</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="kn">from</span> <span class="nn">tsfeast.utils</span> <span class="kn">import</span> <span class="n">array_to_dataframe</span>
+<span class="kn">from</span> <span class="nn">tsfeast.utils</span> <span class="kn">import</span> <span class="n">Data</span><span class="p">,</span> <span class="n">array_to_dataframe</span>
 
 
 <div class="viewcode-block" id="BaseTransformer"><a class="viewcode-back" href="../../tsfeast.html#tsfeast.transformers.BaseTransformer">[docs]</a><span class="k">class</span> <span class="nc">BaseTransformer</span><span class="p">(</span><span class="n">BaseEstimator</span><span class="p">,</span> <span class="n">TransformerMixin</span><span class="p">):</span>
     <span class="sd">"""Base transformer object."""</span>
 
-<div class="viewcode-block" id="BaseTransformer.__init__"><a class="viewcode-back" href="../../tsfeast.html#tsfeast.transformers.BaseTransformer.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">"""Instantiate transformer object."""</span></div>
+<div class="viewcode-block" id="BaseTransformer.__init__"><a class="viewcode-back" href="../../tsfeast.html#tsfeast.transformers.BaseTransformer.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fillna</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">):</span>
+        <span class="sd">"""Instantiate transformer object."""</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fillna</span> <span class="o">=</span> <span class="n">fillna</span></div>
 
-<div class="viewcode-block" id="BaseTransformer.transform"><a class="viewcode-back" href="../../tsfeast.html#tsfeast.transformers.BaseTransformer.transform">[docs]</a>    <span class="k">def</span> <span class="nf">transform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">"""Transform fitted data."""</span>
-        <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span>
-        <span class="n">check_is_fitted</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+<div class="viewcode-block" id="BaseTransformer.transform"><a class="viewcode-back" href="../../tsfeast.html#tsfeast.transformers.BaseTransformer.transform">[docs]</a>    <span class="k">def</span> <span class="nf">transform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">:</span> <span class="n">Data</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Data</span><span class="p">:</span>
+        <span class="sd">"""</span>
+<span class="sd">        Transform fitted data.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        X: array of shape [n_samples, n_features]</span>
+<span class="sd">            The input samples.</span>
+<span class="sd">        y: None</span>
+<span class="sd">            Not used; included for compatibility, only.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        Data</span>
+<span class="sd">            Array-like object of transformed data.</span>
+
+<span class="sd">        Notes</span>
+<span class="sd">        -----</span>
+<span class="sd">        Scikit-Learn Pipelines only call the `.transform()` method during the `.predict()` method,</span>
+<span class="sd">        which is appropriate to prevent data leakage in predictions.  However, most of the</span>
+<span class="sd">        transformers in this module take a set of features and generate new features; there's no</span>
+<span class="sd">        inherent method to transform some timeseries features given a fitted estimator.</span>
+<span class="sd">        """</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
+            <span class="n">X</span> <span class="o">=</span> <span class="n">array_to_dataframe</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">'input_features_'</span><span class="p">):</span>
+            <span class="sd">"""</span>
+<span class="sd">            For time series lags, changes, etc., we have access to past data for feature</span>
+<span class="sd">            generation without risk of data leakage; certain features (e.g. lags) require this</span>
+<span class="sd">            to avoid NaNs or zeros.</span>
+
+<span class="sd">            We append new X to our original features and transform on entire dataset, keeping</span>
+<span class="sd">            only the last n rows.  Appropriate for time series transformations, only.</span>
+<span class="sd">            """</span>
+            <span class="n">rows</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">X</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">input_features_</span><span class="p">,</span> <span class="n">X</span><span class="p">])</span>  <span class="c1"># pylint: disable=E0203</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">output_features_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_transform</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="n">rows</span><span class="p">:,</span> <span class="p">:]</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">fillna</span><span class="p">:</span>
+                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_features_</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_features_</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">input_features_</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span> <span class="o">=</span> <span class="n">X</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n_features_in_</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">output_features_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_transform</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">feature_names_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_features_</span><span class="o">.</span><span class="n">columns</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">fillna</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_features_</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_features_</span></div>
 
 <div class="viewcode-block" id="BaseTransformer.get_feature_names"><a class="viewcode-back" href="../../tsfeast.html#tsfeast.transformers.BaseTransformer.get_feature_names">[docs]</a>    <span class="k">def</span> <span class="nf">get_feature_names</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
@@ -225,26 +269,63 @@
         <span class="n">check_is_fitted</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
         <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">feature_names_</span><span class="p">)</span></div>
 
-    <span class="k">def</span> <span class="nf">_fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">"""Not implemented."""</span>
+    <span class="k">def</span> <span class="nf">_transform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+        <span class="sd">"""</span>
+<span class="sd">        Transform input data.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        X: pd.DataFrame</span>
+<span class="sd">            The input samples.</span>
+<span class="sd">        y: None</span>
+<span class="sd">            Not used; included for compatibility, only.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        Data</span>
+<span class="sd">            Transformed features.</span>
+<span class="sd">        """</span>
         <span class="k">raise</span> <span class="ne">NotImplementedError</span>
 
-<div class="viewcode-block" id="BaseTransformer.fit"><a class="viewcode-back" href="../../tsfeast.html#tsfeast.transformers.BaseTransformer.fit">[docs]</a>    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">"BaseTransformer"</span><span class="p">:</span>
-        <span class="sd">"""Fit transformer object to data."""</span>
-        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
-            <span class="n">X</span> <span class="o">=</span> <span class="n">array_to_dataframe</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">input_features_</span> <span class="o">=</span> <span class="n">X</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">n_features_in_</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">output_features_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">feature_names_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_features_</span><span class="o">.</span><span class="n">columns</span>
+<div class="viewcode-block" id="BaseTransformer.fit"><a class="viewcode-back" href="../../tsfeast.html#tsfeast.transformers.BaseTransformer.fit">[docs]</a>    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">:</span> <span class="n">Data</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">"BaseTransformer"</span><span class="p">:</span>
+        <span class="sd">"""</span>
+<span class="sd">        Fit transformer object to data.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        X: array of shape [n_samples, n_features]</span>
+<span class="sd">            The input samples.</span>
+<span class="sd">        y: None</span>
+<span class="sd">            Not used; included for compatibility, only.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        BaseTransformer</span>
+<span class="sd">            Self.</span>
+<span class="sd">        """</span>
+        <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span>
         <span class="k">return</span> <span class="bp">self</span></div></div>
 
 
 <div class="viewcode-block" id="OriginalFeatures"><a class="viewcode-back" href="../../tsfeast.html#tsfeast.transformers.OriginalFeatures">[docs]</a><span class="k">class</span> <span class="nc">OriginalFeatures</span><span class="p">(</span><span class="n">BaseTransformer</span><span class="p">):</span>
     <span class="sd">"""Return original features."""</span>
 
-    <span class="k">def</span> <span class="nf">_fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">"""Fit transformer object to data."""</span>
+    <span class="k">def</span> <span class="nf">_transform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Data</span><span class="p">:</span>
+        <span class="sd">"""</span>
+<span class="sd">        Fit transformer object to data.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        X: pd.DataFrame</span>
+<span class="sd">            The input samples.</span>
+<span class="sd">        y: None</span>
+<span class="sd">            Not used; included for compatibility, only.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        Data</span>
+<span class="sd">            Transformed features.</span>
+<span class="sd">        """</span>
         <span class="k">return</span> <span class="n">X</span></div>
 
 
@@ -256,16 +337,67 @@
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span></div>
 
-    <span class="k">def</span> <span class="nf">_fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">"""Fit transformer object to data."""</span>
+<div class="viewcode-block" id="Scaler.fit"><a class="viewcode-back" href="../../tsfeast.html#tsfeast.transformers.Scaler.fit">[docs]</a>    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">"Scaler"</span><span class="p">:</span>
+        <span class="sd">"""</span>
+<span class="sd">        Fit transformer object to data.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        X: pd.DataFrame</span>
+<span class="sd">            The input samples.</span>
+<span class="sd">        y: None</span>
+<span class="sd">            Not used; included for compatibility, only.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        Data</span>
+<span class="sd">            Transformed features.</span>
+<span class="sd">        """</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">scaler</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span></div>
+
+    <span class="k">def</span> <span class="nf">_transform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span>
+
+<div class="viewcode-block" id="Scaler.transform"><a class="viewcode-back" href="../../tsfeast.html#tsfeast.transformers.Scaler.transform">[docs]</a>    <span class="k">def</span> <span class="nf">transform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Data</span><span class="p">:</span>
+        <span class="sd">"""</span>
+<span class="sd">        Fit transformer object to data.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        X: pd.DataFrame</span>
+<span class="sd">            The input samples.</span>
+<span class="sd">        y: None</span>
+<span class="sd">            Not used; included for compatibility, only.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        Data</span>
+<span class="sd">            Transformed features.</span>
+<span class="sd">        """</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">feature_names_</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">columns</span>
         <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">),</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">scaler</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X</span><span class="p">),</span>
             <span class="n">columns</span><span class="o">=</span><span class="n">X</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span>
             <span class="n">index</span><span class="o">=</span><span class="n">X</span><span class="o">.</span><span class="n">index</span>
-        <span class="p">)</span>
+        <span class="p">)</span></div>
 
-<div class="viewcode-block" id="Scaler.inverse_transform"><a class="viewcode-back" href="../../tsfeast.html#tsfeast.transformers.Scaler.inverse_transform">[docs]</a>    <span class="k">def</span> <span class="nf">inverse_transform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">"""Transform scaled data into original feature space."""</span>
+<div class="viewcode-block" id="Scaler.inverse_transform"><a class="viewcode-back" href="../../tsfeast.html#tsfeast.transformers.Scaler.inverse_transform">[docs]</a>    <span class="k">def</span> <span class="nf">inverse_transform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">copy</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+        <span class="sd">"""</span>
+<span class="sd">        Transform scaled data into original feature space.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        X: pd.DataFrame</span>
+<span class="sd">            The input samples.</span>
+<span class="sd">        copy: bool</span>
+<span class="sd">            Default True; if False, try to avoid a copy and do inplace scaling instead.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        Data</span>
+<span class="sd">            Data in original feature space.</span>
+<span class="sd">        """</span>
         <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">scaler</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="n">copy</span><span class="p">),</span>
             <span class="n">columns</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">feature_names_</span><span class="p">,</span>
@@ -276,79 +408,218 @@
 <div class="viewcode-block" id="DateTimeFeatures"><a class="viewcode-back" href="../../tsfeast.html#tsfeast.transformers.DateTimeFeatures">[docs]</a><span class="k">class</span> <span class="nc">DateTimeFeatures</span><span class="p">(</span><span class="n">BaseTransformer</span><span class="p">):</span>
     <span class="sd">"""Generate datetime features."""</span>
 
-<div class="viewcode-block" id="DateTimeFeatures.__init__"><a class="viewcode-back" href="../../tsfeast.html#tsfeast.transformers.DateTimeFeatures.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">date_col</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">dt_format</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
-        <span class="sd">"""Instantiate transformer object."""</span>
+<div class="viewcode-block" id="DateTimeFeatures.__init__"><a class="viewcode-back" href="../../tsfeast.html#tsfeast.transformers.DateTimeFeatures.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">date_col</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">dt_format</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+        <span class="sd">"""</span>
+<span class="sd">        Instantiate transformer object.</span>
+
+<span class="sd">        date_col: Optional[str]</span>
+<span class="sd">            Column name containing date/timestamp.</span>
+<span class="sd">        dt_format: Optional[str]</span>
+<span class="sd">            Date/timestamp format, e.g. `%Y-%m-%d` for `2020-01-31`.</span>
+<span class="sd">        """</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">date_col</span> <span class="o">=</span> <span class="n">date_col</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">dt_format</span> <span class="o">=</span> <span class="n">dt_format</span></div>
 
-    <span class="k">def</span> <span class="nf">_fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">"""Fit transformer object to data."""</span>
-        <span class="k">return</span> <span class="n">get_datetime_features</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">date_col</span><span class="p">,</span> <span class="n">dt_format</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">dt_format</span><span class="p">)</span></div>
+<div class="viewcode-block" id="DateTimeFeatures.fit"><a class="viewcode-back" href="../../tsfeast.html#tsfeast.transformers.DateTimeFeatures.fit">[docs]</a>    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">:</span> <span class="n">Data</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">"DateTimeFeatures"</span><span class="p">:</span>
+        <span class="n">_</span> <span class="o">=</span> <span class="n">y</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">):</span>
+            <span class="n">dates</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">date_col</span><span class="p">]</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">):</span>
+            <span class="n">dates</span> <span class="o">=</span> <span class="n">X</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">'`data` must be a DataFrame or Series.'</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">freq_</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">infer_freq</span><span class="p">(</span>
+            <span class="n">pd</span><span class="o">.</span><span class="n">DatetimeIndex</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">dates</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">dt_format</span><span class="p">))</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span></div>
+
+    <span class="k">def</span> <span class="nf">_transform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Data</span><span class="p">:</span>
+        <span class="sd">"""</span>
+<span class="sd">        Fit transformer object to data.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        X: pd.DataFrame</span>
+<span class="sd">            The input samples.</span>
+<span class="sd">        y: None</span>
+<span class="sd">            Not used; included for compatibility, only.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        Data</span>
+<span class="sd">            Transformed features.</span>
+<span class="sd">        """</span>
+        <span class="k">return</span> <span class="n">get_datetime_features</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">date_col</span><span class="p">,</span> <span class="n">dt_format</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">dt_format</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">freq_</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="LagFeatures"><a class="viewcode-back" href="../../tsfeast.html#tsfeast.transformers.LagFeatures">[docs]</a><span class="k">class</span> <span class="nc">LagFeatures</span><span class="p">(</span><span class="n">BaseTransformer</span><span class="p">):</span>
     <span class="sd">"""Generate lag features."""</span>
 
-<div class="viewcode-block" id="LagFeatures.__init__"><a class="viewcode-back" href="../../tsfeast.html#tsfeast.transformers.LagFeatures.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n_lags</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
-        <span class="sd">"""Instantiate transformer object."""</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+<div class="viewcode-block" id="LagFeatures.__init__"><a class="viewcode-back" href="../../tsfeast.html#tsfeast.transformers.LagFeatures.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n_lags</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">fillna</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">):</span>
+        <span class="sd">"""</span>
+<span class="sd">        Instantiate transformer object.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        n_lags: int</span>
+<span class="sd">            Number of lags to generate.</span>
+<span class="sd">        """</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">fillna</span><span class="o">=</span><span class="n">fillna</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">n_lags</span> <span class="o">=</span> <span class="n">n_lags</span></div>
 
-    <span class="k">def</span> <span class="nf">_fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">"""Fit transformer object to data."""</span>
+    <span class="k">def</span> <span class="nf">_transform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Data</span><span class="p">:</span>
+        <span class="sd">"""</span>
+<span class="sd">        Fit transformer object to data.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        X: pd.DataFrame</span>
+<span class="sd">            The input samples.</span>
+<span class="sd">        y: None</span>
+<span class="sd">            Not used; included for compatibility, only.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        Data</span>
+<span class="sd">            Transformed features.</span>
+<span class="sd">        """</span>
         <span class="k">return</span> <span class="n">get_lag_features</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">n_lags</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">n_lags</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="RollingFeatures"><a class="viewcode-back" href="../../tsfeast.html#tsfeast.transformers.RollingFeatures">[docs]</a><span class="k">class</span> <span class="nc">RollingFeatures</span><span class="p">(</span><span class="n">BaseTransformer</span><span class="p">):</span>
     <span class="sd">"""Generate rolling features."""</span>
 
-<div class="viewcode-block" id="RollingFeatures.__init__"><a class="viewcode-back" href="../../tsfeast.html#tsfeast.transformers.RollingFeatures.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">window_lengths</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]):</span>
-        <span class="sd">"""Instantiate transformer object."""</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+<div class="viewcode-block" id="RollingFeatures.__init__"><a class="viewcode-back" href="../../tsfeast.html#tsfeast.transformers.RollingFeatures.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">window_lengths</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">fillna</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">):</span>
+        <span class="sd">"""</span>
+<span class="sd">        Instantiate transformer object.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        window_lengths: L:ist[int]</span>
+<span class="sd">            Length of window(s) to create.</span>
+<span class="sd">        """</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">fillna</span><span class="o">=</span><span class="n">fillna</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">window_lengths</span> <span class="o">=</span> <span class="n">window_lengths</span></div>
 
-    <span class="k">def</span> <span class="nf">_fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">"""Fit transformer object to data."""</span>
+    <span class="k">def</span> <span class="nf">_transform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Data</span><span class="p">:</span>
+        <span class="sd">"""</span>
+<span class="sd">        Fit transformer object to data.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        X: pd.DataFrame</span>
+<span class="sd">            The input samples.</span>
+<span class="sd">        y: None</span>
+<span class="sd">            Not used; included for compatibility, only.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        Data</span>
+<span class="sd">            Transformed features.</span>
+<span class="sd">        """</span>
         <span class="k">return</span> <span class="n">get_rolling_features</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">window_lengths</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">window_lengths</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="EwmaFeatures"><a class="viewcode-back" href="../../tsfeast.html#tsfeast.transformers.EwmaFeatures">[docs]</a><span class="k">class</span> <span class="nc">EwmaFeatures</span><span class="p">(</span><span class="n">BaseTransformer</span><span class="p">):</span>
     <span class="sd">"""Generate exponentially-weighted moving-average features."""</span>
 
-<div class="viewcode-block" id="EwmaFeatures.__init__"><a class="viewcode-back" href="../../tsfeast.html#tsfeast.transformers.EwmaFeatures.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">window_lengths</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]):</span>
-        <span class="sd">"""Instantiate transformer object."""</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+<div class="viewcode-block" id="EwmaFeatures.__init__"><a class="viewcode-back" href="../../tsfeast.html#tsfeast.transformers.EwmaFeatures.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">window_lengths</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">fillna</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">):</span>
+        <span class="sd">"""</span>
+<span class="sd">        Instantiate transformer object.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        window_lengths: L:ist[int]</span>
+<span class="sd">            Length of window(s) to create.</span>
+<span class="sd">        """</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">fillna</span><span class="o">=</span><span class="n">fillna</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">window_lengths</span> <span class="o">=</span> <span class="n">window_lengths</span></div>
 
-    <span class="k">def</span> <span class="nf">_fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">"""Fit transformer object to data."""</span>
+    <span class="k">def</span> <span class="nf">_transform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Data</span><span class="p">:</span>
+        <span class="sd">"""</span>
+<span class="sd">        Fit transformer object to data.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        X: pd.DataFrame</span>
+<span class="sd">            The input samples.</span>
+<span class="sd">        y: None</span>
+<span class="sd">            Not used; included for compatibility, only.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        Data</span>
+<span class="sd">            Transformed features.</span>
+<span class="sd">        """</span>
         <span class="k">return</span> <span class="n">get_ewma_features</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">window_lengths</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">window_lengths</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="ChangeFeatures"><a class="viewcode-back" href="../../tsfeast.html#tsfeast.transformers.ChangeFeatures">[docs]</a><span class="k">class</span> <span class="nc">ChangeFeatures</span><span class="p">(</span><span class="n">BaseTransformer</span><span class="p">):</span>
     <span class="sd">"""Generate period change features."""</span>
 
-<div class="viewcode-block" id="ChangeFeatures.__init__"><a class="viewcode-back" href="../../tsfeast.html#tsfeast.transformers.ChangeFeatures.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">period_lengths</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]):</span>
-        <span class="sd">"""Instantiate transformer object."""</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+<div class="viewcode-block" id="ChangeFeatures.__init__"><a class="viewcode-back" href="../../tsfeast.html#tsfeast.transformers.ChangeFeatures.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">period_lengths</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">fillna</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">):</span>
+        <span class="sd">"""</span>
+<span class="sd">        Instantiate transformer object.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        period_lengths: List[int]</span>
+<span class="sd">            Length of period[s] to generate change features.</span>
+<span class="sd">        """</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">fillna</span><span class="o">=</span><span class="n">fillna</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">period_lengths</span> <span class="o">=</span> <span class="n">period_lengths</span></div>
 
-    <span class="k">def</span> <span class="nf">_fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">"""Fit transformer object to data."""</span>
+    <span class="k">def</span> <span class="nf">_transform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Data</span><span class="p">:</span>
+        <span class="sd">"""</span>
+<span class="sd">        Fit transformer object to data.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        X: pd.DataFrame</span>
+<span class="sd">            The input samples.</span>
+<span class="sd">        y: None</span>
+<span class="sd">            Not used; included for compatibility, only.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        Data</span>
+<span class="sd">            Transformed features.</span>
+<span class="sd">        """</span>
         <span class="k">return</span> <span class="n">get_change_features</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">period_lengths</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">period_lengths</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="DifferenceFeatures"><a class="viewcode-back" href="../../tsfeast.html#tsfeast.transformers.DifferenceFeatures">[docs]</a><span class="k">class</span> <span class="nc">DifferenceFeatures</span><span class="p">(</span><span class="n">BaseTransformer</span><span class="p">):</span>
     <span class="sd">"""Generate difference features."""</span>
 
-<div class="viewcode-block" id="DifferenceFeatures.__init__"><a class="viewcode-back" href="../../tsfeast.html#tsfeast.transformers.DifferenceFeatures.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n_diffs</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
-        <span class="sd">"""Instantiate transformer object."""</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+<div class="viewcode-block" id="DifferenceFeatures.__init__"><a class="viewcode-back" href="../../tsfeast.html#tsfeast.transformers.DifferenceFeatures.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n_diffs</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">fillna</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">):</span>
+        <span class="sd">"""</span>
+<span class="sd">        Instantiate transformer object.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        n_diffs: int</span>
+<span class="sd">            Number of differences to calculate.</span>
+<span class="sd">        """</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">fillna</span><span class="o">=</span><span class="n">fillna</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">n_diffs</span> <span class="o">=</span> <span class="n">n_diffs</span></div>
 
-    <span class="k">def</span> <span class="nf">_fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">"""Fit transformer object to data."""</span>
+    <span class="k">def</span> <span class="nf">_transform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Data</span><span class="p">:</span>
+        <span class="sd">"""</span>
+<span class="sd">        Fit transformer object to data.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        X: pd.DataFrame</span>
+<span class="sd">            The input samples.</span>
+<span class="sd">        y: None</span>
+<span class="sd">            Not used; included for compatibility, only.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        Data</span>
+<span class="sd">            Transformed features.</span>
+<span class="sd">        """</span>
         <span class="k">return</span> <span class="n">get_difference_features</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">n_diffs</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">n_diffs</span><span class="p">)</span></div>
 
 
@@ -356,12 +627,33 @@
     <span class="sd">"""Generate polynomial features."""</span>
 
 <div class="viewcode-block" id="PolyFeatures.__init__"><a class="viewcode-back" href="../../tsfeast.html#tsfeast.transformers.PolyFeatures.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">degree</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
-        <span class="sd">"""Instantiate transformer object."""</span>
+        <span class="sd">"""</span>
+<span class="sd">        Instantiate transformer object.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        degree: int</span>
+<span class="sd">            Degree of polynomial to use.</span>
+<span class="sd">        """</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">degree</span> <span class="o">=</span> <span class="n">degree</span></div>
 
-    <span class="k">def</span> <span class="nf">_fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">"""Fit transformer object to data."""</span>
+    <span class="k">def</span> <span class="nf">_transform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+        <span class="sd">"""</span>
+<span class="sd">        Fit transformer object to data.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        X: pd.DataFrame</span>
+<span class="sd">            The input samples.</span>
+<span class="sd">        y: None</span>
+<span class="sd">            Not used; included for compatibility, only.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        Data</span>
+<span class="sd">            Transformed features.</span>
+<span class="sd">        """</span>
         <span class="n">poly</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="n">df</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">degree</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
@@ -378,8 +670,22 @@
 <div class="viewcode-block" id="InteractionFeatures"><a class="viewcode-back" href="../../tsfeast.html#tsfeast.transformers.InteractionFeatures">[docs]</a><span class="k">class</span> <span class="nc">InteractionFeatures</span><span class="p">(</span><span class="n">BaseTransformer</span><span class="p">):</span>
     <span class="sd">"""Wrap PolynomialFeatures to extract interactions and keep column names."""</span>
 
-    <span class="k">def</span> <span class="nf">_fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">"""Fit transformer object to data."""</span>
+    <span class="k">def</span> <span class="nf">_transform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+        <span class="sd">"""</span>
+<span class="sd">        Fit transformer object to data.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        X: pd.DataFrame</span>
+<span class="sd">            The input samples.</span>
+<span class="sd">        y: None</span>
+<span class="sd">            Not used; included for compatibility, only.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        Data</span>
+<span class="sd">            Transformed features.</span>
+<span class="sd">        """</span>
         <span class="n">transformer</span> <span class="o">=</span> <span class="n">PolynomialFeatures</span><span class="p">(</span><span class="n">interaction_only</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">include_bias</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
         <span class="n">interactions</span> <span class="o">=</span> <span class="n">transformer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
         <span class="n">cols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">':'</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">combinations</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span> <span class="n">r</span><span class="o">=</span><span class="mi">2</span><span class="p">)]</span>

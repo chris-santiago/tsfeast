@@ -31,7 +31,7 @@ def array_to_series(x: np.ndarray) -> pd.Series:
 def plot_diag(estimator: LinearModel, X: Data, y: Data):
     """Plot regression diagnostics."""
     resid = y - estimator.predict(X)
-    fig, ((ax1, ax2), (ax3, ax4)) = plt.subplots(2, 2, figsize=(12, 10))
+    _, ((ax1, ax2), (ax3, ax4)) = plt.subplots(2, 2, figsize=(12, 10))
     ax1.plot(resid)
     ax1.set_title('Residuals')
     qqplot(resid, line='s', ax=ax2)

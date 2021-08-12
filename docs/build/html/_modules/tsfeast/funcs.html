@@ -222,7 +222,7 @@
 
 <div class="viewcode-block" id="get_datetime_features"><a class="viewcode-back" href="../../tsfeast.html#tsfeast.funcs.get_datetime_features">[docs]</a><span class="k">def</span> <span class="nf">get_datetime_features</span><span class="p">(</span>
         <span class="n">data</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">],</span> <span class="n">date_col</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">dt_format</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">dt_format</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">freq</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
     <span class="sd">"""</span>
 <span class="sd">    Get features based on datetime index, including year, month, week, weekday, quarter, days in</span>
@@ -236,6 +236,8 @@
 <span class="sd">        Column name containing date/timestamp.</span>
 <span class="sd">    dt_format: Optional[str]</span>
 <span class="sd">        Date/timestamp format, e.g. `%Y-%m-%d` for `2020-01-31`.</span>
+<span class="sd">    freq: Optional[str]</span>
+<span class="sd">        Date frequency.</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
@@ -252,7 +254,10 @@
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">'`data` must be a DataFrame or Series.'</span><span class="p">)</span>
 
     <span class="n">X_dt</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DatetimeIndex</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">dates</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="n">dt_format</span><span class="p">))</span>  <span class="c1"># enforce DatetimeIndex</span>
-    <span class="n">ts_freq</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">infer_freq</span><span class="p">(</span><span class="n">X_dt</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">freq</span><span class="p">:</span>
+        <span class="n">ts_freq</span> <span class="o">=</span> <span class="n">freq</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">ts_freq</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">infer_freq</span><span class="p">(</span><span class="n">X_dt</span><span class="p">)</span>
     <span class="n">dt_features</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
     <span class="n">dt_features</span><span class="p">[</span><span class="s1">'year'</span><span class="p">]</span> <span class="o">=</span> <span class="n">X_dt</span><span class="o">.</span><span class="n">year</span>  <span class="c1"># pylint: disable=no-member</span>
     <span class="n">dt_features</span><span class="p">[</span><span class="s1">'quarter'</span><span class="p">]</span> <span class="o">=</span> <span class="n">X_dt</span><span class="o">.</span><span class="n">quarter</span>  <span class="c1"># pylint: disable=no-member</span>

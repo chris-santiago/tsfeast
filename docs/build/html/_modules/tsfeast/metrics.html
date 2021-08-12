@@ -190,6 +190,9 @@
 <span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">log</span>
 <span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">mean_squared_error</span>
 
+<span class="kn">from</span> <span class="nn">tsfeast._base</span> <span class="kn">import</span> <span class="n">BaseContainer</span>
+<span class="kn">from</span> <span class="nn">tsfeast.utils</span> <span class="kn">import</span> <span class="n">Data</span>
+
 
 <div class="viewcode-block" id="bic_score"><a class="viewcode-back" href="../../tsfeast.html#tsfeast.metrics.bic_score">[docs]</a><span class="k">def</span> <span class="nf">bic_score</span><span class="p">(</span><span class="n">mse</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">p</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
     <span class="sd">"""</span>
@@ -212,7 +215,7 @@
     <span class="k">return</span> <span class="n">n</span> <span class="o">*</span> <span class="n">log</span><span class="p">(</span><span class="n">mse</span><span class="p">)</span> <span class="o">+</span> <span class="n">log</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">*</span> <span class="n">p</span></div>
 
 
-<div class="viewcode-block" id="bic_scorer"><a class="viewcode-back" href="../../tsfeast.html#tsfeast.metrics.bic_scorer">[docs]</a><span class="k">def</span> <span class="nf">bic_scorer</span><span class="p">(</span><span class="n">estimator</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<div class="viewcode-block" id="bic_scorer"><a class="viewcode-back" href="../../tsfeast.html#tsfeast.metrics.bic_scorer">[docs]</a><span class="k">def</span> <span class="nf">bic_scorer</span><span class="p">(</span><span class="n">estimator</span><span class="p">:</span> <span class="n">BaseContainer</span><span class="p">,</span> <span class="n">X</span><span class="p">:</span> <span class="n">Data</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">Data</span><span class="p">):</span>
     <span class="sd">"""Score SciKit-Learn estimator using BIC."""</span>
     <span class="n">y_pred</span> <span class="o">=</span> <span class="n">estimator</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
     <span class="n">mse</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
