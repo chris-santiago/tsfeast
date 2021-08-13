@@ -65,15 +65,20 @@ def get_datetime_features(
     else:
         raise ValueError('`data` must be a DataFrame or Series.')
 
+    if not freq:
+        freq = pd.infer_freq(pd.DatetimeIndex(pd.to_datetime(dates, format=dt_format)))
+
     X_dt = pd.DatetimeIndex(pd.to_datetime(dates, format=dt_format))  # enforce DatetimeIndex
     dt_features = pd.DataFrame()
     dt_features['year'] = X_dt.year  # pylint: disable=no-member
     dt_features['quarter'] = X_dt.quarter  # pylint: disable=no-member
     dt_features['month'] = X_dt.month  # pylint: disable=no-member
-    dt_features['week'] = X_dt.week  # pylint: disable=no-member
-    dt_features['weekday'] = X_dt.weekday  # pylint: disable=no-member
-    dt_features['days_in_month'] = X_dt.days_in_month  # pylint: disable=no-member
-    dt_features['bdays_in_month'] = pd.Series(X_dt).apply(get_busdays_in_month)
+    if freq == 'D':
+        dt_features['week'] = X_dt.week  # pylint: disable=no-member
+        dt_features['weekday'] = X_dt.weekday  # pylint: disable=no-member
+    if 'M' in freq:
+        dt_features['days_in_month'] = X_dt.days_in_month  # pylint: disable=no-member
+        dt_features['bdays_in_month'] = pd.Series(X_dt).apply(get_busdays_in_month)
     dt_features['leap_year'] = X_dt.is_leap_year.astype(int)  # pylint: disable=no-member
     dt_features.index = data.index
     return dt_features
