@@ -73,9 +73,17 @@ class ARMARegressor(BaseContainer):
         -------
         np.ndarray
             Array of predicted values.
+
+        Notes
+        -----
+        The `predict` method should not be used to get fitted values from the training set; rather,
+        users should access this same data using the `fitted_values_` attribute.  The `predict`
+        method calls the ARMA regresor's forecast method, which generates predictions from the last
+        time step in the training data, thus does not match, temporally, with the training data.
         """
         estimator_pred = self.estimator.predict(X)
-        arma_pred = self.arma_.forecast(steps=estimator_pred.shape[0])  # todo this won't work for in sample predictions
+        # todo this won't work for in-sample predictions
+        arma_pred = self.arma_.forecast(steps=estimator_pred.shape[0])
         return estimator_pred + arma_pred
 
 
