@@ -75,7 +75,7 @@ class ARMARegressor(BaseContainer):
             Array of predicted values.
         """
         estimator_pred = self.estimator.predict(X)
-        arma_pred = self.arma_.forecast(steps=estimator_pred.shape[0])
+        arma_pred = self.arma_.forecast(steps=estimator_pred.shape[0])  # todo this won't work for in sample predictions
         return estimator_pred + arma_pred
 
 

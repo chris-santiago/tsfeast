@@ -1,5 +1,5 @@
 """Miscellaneous utility functions."""
-from typing import List, Union
+from typing import List, Optional, Union
 
 import matplotlib.pyplot as plt
 import numpy as np
@@ -28,13 +28,21 @@ def array_to_series(x: np.ndarray) -> pd.Series:
     return pd.Series(x, name='y')
 
 
-def plot_diag(estimator: LinearModel, X: Data, y: Data):
+def plot_diag(
+        residuals: Optional[Data] = None, estimator: Optional[LinearModel] = None,
+        X: Optional[Data] = None, y: Optional[Data] = None
+):
     """Plot regression diagnostics."""
-    resid = y - estimator.predict(X)
+    if not residuals and not estimator:
+        raise ValueError('Either residuals or estimator and X, y must be given.')
+    if estimator and not X or not y:
+        raise ValueError('Both X and y must be given if passing an estimator.')
+    if not residuals:
+        residuals = y - estimator.predict(X)
     _, ((ax1, ax2), (ax3, ax4)) = plt.subplots(2, 2, figsize=(12, 10))
-    ax1.plot(resid)
+    ax1.plot(residuals)
     ax1.set_title('Residuals')
-    qqplot(resid, line='s', ax=ax2)
+    qqplot(residuals, line='s', ax=ax2)
     ax2.set_title('QQ-Plot')
-    plot_acf(resid, ax=ax3)
-    plot_pacf(resid, ax=ax4)
+    plot_acf(residuals, ax=ax3)
+    plot_pacf(residuals, ax=ax4)
