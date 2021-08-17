@@ -35,9 +35,9 @@ def plot_diag(
     """Plot regression diagnostics."""
     if residuals is None and estimator is None:
         raise ValueError('Either residuals or estimator and X, y must be given.')
-    if estimator and X is None and y is None:
+    if estimator and (X is None or y is None):
         raise ValueError('Both X and y must be given if passing an estimator.')
-    if residuals is None:
+    if residuals is None and y is not None and estimator is not None:
         residuals = y - estimator.predict(X)
     _, ((ax1, ax2), (ax3, ax4)) = plt.subplots(2, 2, figsize=(12, 10))
     ax1.plot(residuals)

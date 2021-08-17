@@ -76,7 +76,7 @@ def get_datetime_features(
     if freq == 'D':
         dt_features['week'] = X_dt.week  # pylint: disable=no-member
         dt_features['weekday'] = X_dt.weekday  # pylint: disable=no-member
-    if 'M' in freq:
+    if freq and 'M' in freq:
         dt_features['days_in_month'] = X_dt.days_in_month  # pylint: disable=no-member
         dt_features['bdays_in_month'] = pd.Series(X_dt).apply(get_busdays_in_month)
     dt_features['leap_year'] = X_dt.is_leap_year.astype(int)  # pylint: disable=no-member

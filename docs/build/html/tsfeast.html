@@ -661,6 +661,11 @@ Win2    –<a href="#id11"><span class="problematic" id="id12">|----|</span></a>
 which is appropriate to prevent data leakage in predictions.  However, most of the
 transformers in this module take a set of features and generate new features; there’s no
 inherent method to transform some timeseries features given a fitted estimator.</p>
+<p>For time series lags, changes, etc., we have access to past data for feature
+generation without risk of data leakage; certain features (e.g. lags) require this
+to avoid NaNs or zeros.</p>
+<p>We append new X to our original features and transform on entire dataset, keeping
+only the last n rows.  Appropriate for time series transformations, only.</p>
 </div>
 </dd></dl>
 <dl class="py method">
@@ -838,6 +843,11 @@ possible to update each component of a nested object.</p>
 which is appropriate to prevent data leakage in predictions.  However, most of the
 transformers in this module take a set of features and generate new features; there’s no
 inherent method to transform some timeseries features given a fitted estimator.</p>
+<p>For time series lags, changes, etc., we have access to past data for feature
+generation without risk of data leakage; certain features (e.g. lags) require this
+to avoid NaNs or zeros.</p>
+<p>We append new X to our original features and transform on entire dataset, keeping
+only the last n rows.  Appropriate for time series transformations, only.</p>
 </div>
 </dd></dl>
 </dd></dl>
@@ -958,7 +968,7 @@ possible to update each component of a nested object.</p>
 </dd></dl>
 <dl class="py class">
 <dt class="sig sig-object py" id="tsfeast.transformers.DateTimeFeatures">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">tsfeast.transformers.</span></span><span class="sig-name descname"><span class="pre">DateTimeFeatures</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">date_col</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dt_format</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tsfeast/transformers.html#DateTimeFeatures"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tsfeast.transformers.DateTimeFeatures" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">tsfeast.transformers.</span></span><span class="sig-name descname"><span class="pre">DateTimeFeatures</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">date_col</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dt_format</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">freq</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tsfeast/transformers.html#DateTimeFeatures"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tsfeast.transformers.DateTimeFeatures" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#tsfeast.transformers.BaseTransformer" title="tsfeast.transformers.BaseTransformer"><code class="xref py py-class docutils literal notranslate"><span class="pre">tsfeast.transformers.BaseTransformer</span></code></a></p>
 <p>Generate datetime features.</p>
 <p>Instantiate transformer object.</p>
@@ -970,7 +980,7 @@ possible to update each component of a nested object.</p>
 </dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="tsfeast.transformers.DateTimeFeatures.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">date_col</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dt_format</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tsfeast/transformers.html#DateTimeFeatures.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tsfeast.transformers.DateTimeFeatures.__init__" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">date_col</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dt_format</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">freq</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tsfeast/transformers.html#DateTimeFeatures.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tsfeast.transformers.DateTimeFeatures.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Instantiate transformer object.</p>
 <dl class="simple">
 <dt>date_col: Optional[str]</dt><dd><p>Column name containing date/timestamp.</p>
@@ -1071,6 +1081,11 @@ possible to update each component of a nested object.</p>
 which is appropriate to prevent data leakage in predictions.  However, most of the
 transformers in this module take a set of features and generate new features; there’s no
 inherent method to transform some timeseries features given a fitted estimator.</p>
+<p>For time series lags, changes, etc., we have access to past data for feature
+generation without risk of data leakage; certain features (e.g. lags) require this
+to avoid NaNs or zeros.</p>
+<p>We append new X to our original features and transform on entire dataset, keeping
+only the last n rows.  Appropriate for time series transformations, only.</p>
 </div>
 </dd></dl>
 </dd></dl>
@@ -1187,6 +1202,11 @@ possible to update each component of a nested object.</p>
 which is appropriate to prevent data leakage in predictions.  However, most of the
 transformers in this module take a set of features and generate new features; there’s no
 inherent method to transform some timeseries features given a fitted estimator.</p>
+<p>For time series lags, changes, etc., we have access to past data for feature
+generation without risk of data leakage; certain features (e.g. lags) require this
+to avoid NaNs or zeros.</p>
+<p>We append new X to our original features and transform on entire dataset, keeping
+only the last n rows.  Appropriate for time series transformations, only.</p>
 </div>
 </dd></dl>
 </dd></dl>
@@ -1303,6 +1323,11 @@ possible to update each component of a nested object.</p>
 which is appropriate to prevent data leakage in predictions.  However, most of the
 transformers in this module take a set of features and generate new features; there’s no
 inherent method to transform some timeseries features given a fitted estimator.</p>
+<p>For time series lags, changes, etc., we have access to past data for feature
+generation without risk of data leakage; certain features (e.g. lags) require this
+to avoid NaNs or zeros.</p>
+<p>We append new X to our original features and transform on entire dataset, keeping
+only the last n rows.  Appropriate for time series transformations, only.</p>
 </div>
 </dd></dl>
 </dd></dl>
@@ -1419,6 +1444,11 @@ possible to update each component of a nested object.</p>
 which is appropriate to prevent data leakage in predictions.  However, most of the
 transformers in this module take a set of features and generate new features; there’s no
 inherent method to transform some timeseries features given a fitted estimator.</p>
+<p>For time series lags, changes, etc., we have access to past data for feature
+generation without risk of data leakage; certain features (e.g. lags) require this
+to avoid NaNs or zeros.</p>
+<p>We append new X to our original features and transform on entire dataset, keeping
+only the last n rows.  Appropriate for time series transformations, only.</p>
 </div>
 </dd></dl>
 </dd></dl>
@@ -1535,6 +1565,11 @@ possible to update each component of a nested object.</p>
 which is appropriate to prevent data leakage in predictions.  However, most of the
 transformers in this module take a set of features and generate new features; there’s no
 inherent method to transform some timeseries features given a fitted estimator.</p>
+<p>For time series lags, changes, etc., we have access to past data for feature
+generation without risk of data leakage; certain features (e.g. lags) require this
+to avoid NaNs or zeros.</p>
+<p>We append new X to our original features and transform on entire dataset, keeping
+only the last n rows.  Appropriate for time series transformations, only.</p>
 </div>
 </dd></dl>
 </dd></dl>
@@ -1651,6 +1686,11 @@ possible to update each component of a nested object.</p>
 which is appropriate to prevent data leakage in predictions.  However, most of the
 transformers in this module take a set of features and generate new features; there’s no
 inherent method to transform some timeseries features given a fitted estimator.</p>
+<p>For time series lags, changes, etc., we have access to past data for feature
+generation without risk of data leakage; certain features (e.g. lags) require this
+to avoid NaNs or zeros.</p>
+<p>We append new X to our original features and transform on entire dataset, keeping
+only the last n rows.  Appropriate for time series transformations, only.</p>
 </div>
 </dd></dl>
 </dd></dl>
@@ -1767,6 +1807,11 @@ possible to update each component of a nested object.</p>
 which is appropriate to prevent data leakage in predictions.  However, most of the
 transformers in this module take a set of features and generate new features; there’s no
 inherent method to transform some timeseries features given a fitted estimator.</p>
+<p>For time series lags, changes, etc., we have access to past data for feature
+generation without risk of data leakage; certain features (e.g. lags) require this
+to avoid NaNs or zeros.</p>
+<p>We append new X to our original features and transform on entire dataset, keeping
+only the last n rows.  Appropriate for time series transformations, only.</p>
 </div>
 </dd></dl>
 </dd></dl>
@@ -1873,6 +1918,11 @@ possible to update each component of a nested object.</p>
 which is appropriate to prevent data leakage in predictions.  However, most of the
 transformers in this module take a set of features and generate new features; there’s no
 inherent method to transform some timeseries features given a fitted estimator.</p>
+<p>For time series lags, changes, etc., we have access to past data for feature
+generation without risk of data leakage; certain features (e.g. lags) require this
+to avoid NaNs or zeros.</p>
+<p>We append new X to our original features and transform on entire dataset, keeping
+only the last n rows.  Appropriate for time series transformations, only.</p>
 </div>
 </dd></dl>
 </dd></dl>
@@ -1983,6 +2033,11 @@ possible to update each component of a nested object.</p>
 which is appropriate to prevent data leakage in predictions.  However, most of the
 transformers in this module take a set of features and generate new features; there’s no
 inherent method to transform some timeseries features given a fitted estimator.</p>
+<p>For time series lags, changes, etc., we have access to past data for feature
+generation without risk of data leakage; certain features (e.g. lags) require this
+to avoid NaNs or zeros.</p>
+<p>We append new X to our original features and transform on entire dataset, keeping
+only the last n rows.  Appropriate for time series transformations, only.</p>
 </div>
 </dd></dl>
 </dd></dl>
@@ -2007,7 +2062,7 @@ inherent method to transform some timeseries features given a fitted estimator.<
 </dd></dl>
 <dl class="py function">
 <dt class="sig sig-object py" id="tsfeast.utils.plot_diag">
-<span class="sig-prename descclassname"><span class="pre">tsfeast.utils.</span></span><span class="sig-name descname"><span class="pre">plot_diag</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">estimator</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">sklearn.linear_model._base.LinearModel</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">X</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">pandas.core.frame.DataFrame</span><span class="p"><span class="pre">,</span> </span><span class="pre">pandas.core.series.Series</span><span class="p"><span class="pre">,</span> </span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">pandas.core.frame.DataFrame</span><span class="p"><span class="pre">,</span> </span><span class="pre">pandas.core.series.Series</span><span class="p"><span class="pre">,</span> </span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tsfeast/utils.html#plot_diag"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tsfeast.utils.plot_diag" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">tsfeast.utils.</span></span><span class="sig-name descname"><span class="pre">plot_diag</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">residuals</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">pandas.core.frame.DataFrame</span><span class="p"><span class="pre">,</span> </span><span class="pre">pandas.core.series.Series</span><span class="p"><span class="pre">,</span> </span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">estimator</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">sklearn.linear_model._base.LinearModel</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">X</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">pandas.core.frame.DataFrame</span><span class="p"><span class="pre">,</span> </span><span class="pre">pandas.core.series.Series</span><span class="p"><span class="pre">,</span> </span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">pandas.core.frame.DataFrame</span><span class="p"><span class="pre">,</span> </span><span class="pre">pandas.core.series.Series</span><span class="p"><span class="pre">,</span> </span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tsfeast/utils.html#plot_diag"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tsfeast.utils.plot_diag" title="Permalink to this definition">¶</a></dt>
 <dd><p>Plot regression diagnostics.</p>
 </dd></dl>
 </section>

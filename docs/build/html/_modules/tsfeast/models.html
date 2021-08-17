@@ -186,31 +186,58 @@
           </label>
         </div>
         <h1>Source code for tsfeast.models</h1><div class="highlight"><pre>
-<span></span><span class="sd">"""Module for Scikit-Learn Regressor with ARMA Residuals."""</span>
+<span></span><span class="sd">"""</span>
+<span class="sd">Module for Scikit-Learn Regressor with ARMA Residuals and</span>
+<span class="sd">Scikit-Learn API wrapper for Statsmodels TSA models.</span>
+<span class="sd">"""</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Tuple</span>
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
 <span class="kn">from</span> <span class="nn">sklearn.linear_model._base</span> <span class="kn">import</span> <span class="n">LinearModel</span>
+<span class="kn">from</span> <span class="nn">statsmodels.base.model</span> <span class="kn">import</span> <span class="n">Model</span>
 <span class="kn">from</span> <span class="nn">statsmodels.tsa.arima.model</span> <span class="kn">import</span> <span class="n">ARIMA</span>
 
-<span class="kn">from</span> <span class="nn">tsfeast._base</span> <span class="kn">import</span> <span class="n">SciKitContainer</span><span class="p">,</span> <span class="n">StatsModelsContainer</span>
+<span class="kn">from</span> <span class="nn">tsfeast._base</span> <span class="kn">import</span> <span class="n">BaseContainer</span>
 <span class="kn">from</span> <span class="nn">tsfeast.utils</span> <span class="kn">import</span> <span class="n">Data</span>
 
 
-<div class="viewcode-block" id="ARMARegressor"><a class="viewcode-back" href="../../tsfeast.html#tsfeast.models.ARMARegressor">[docs]</a><span class="k">class</span> <span class="nc">ARMARegressor</span><span class="p">(</span><span class="n">SciKitContainer</span><span class="p">):</span>
+<div class="viewcode-block" id="ARMARegressor"><a class="viewcode-back" href="../../tsfeast.html#tsfeast.models.ARMARegressor">[docs]</a><span class="k">class</span> <span class="nc">ARMARegressor</span><span class="p">(</span><span class="n">BaseContainer</span><span class="p">):</span>
     <span class="sd">"""Estimator for Scikit-Learn estimator with ARMA residuals."""</span>
 <div class="viewcode-block" id="ARMARegressor.__init__"><a class="viewcode-back" href="../../tsfeast.html#tsfeast.models.ARMARegressor.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
             <span class="bp">self</span><span class="p">,</span> <span class="n">estimator</span><span class="p">:</span> <span class="n">LinearModel</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">(),</span>
             <span class="n">order</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
     <span class="p">):</span>
-        <span class="sd">"""Instantiate ARMARegressor object."""</span>
+        <span class="sd">"""</span>
+<span class="sd">        Instantiate ARMARegressor object.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        estimator: LinearRegression</span>
+<span class="sd">            Scikit-Learn linear estimator.</span>
+<span class="sd">        order: Tuple[int, int, int]</span>
+<span class="sd">            ARIMA order for residuals.</span>
+
+<span class="sd">        """</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">estimator</span> <span class="o">=</span> <span class="n">estimator</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">order</span> <span class="o">=</span> <span class="n">order</span></div>
 
     <span class="k">def</span> <span class="nf">_fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">:</span> <span class="n">Data</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">Data</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">"ARMARegressor"</span><span class="p">:</span>
-        <span class="sd">"""Fit the estimator."""</span>
+        <span class="sd">"""</span>
+<span class="sd">        Fit the estimator.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        X : array of shape [n_samples, n_features]</span>
+<span class="sd">            The input samples.</span>
+<span class="sd">        y :  array-like of shape (n_samples,) or (n_samples, n_outputs), default=None</span>
+<span class="sd">            Target values (None for unsupervised transformations).</span>
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        ARMARegressor</span>
+<span class="sd">            Self.</span>
+<span class="sd">        """</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">estimator</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">intercept_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">estimator</span><span class="o">.</span><span class="n">intercept_</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">coef_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">estimator</span><span class="o">.</span><span class="n">coef_</span>
@@ -222,32 +249,87 @@
         <span class="k">return</span> <span class="bp">self</span>
 
     <span class="k">def</span> <span class="nf">_predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">:</span> <span class="n">Data</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Data</span><span class="p">:</span>
-        <span class="sd">"""Predict the response."""</span>
+        <span class="sd">"""</span>
+<span class="sd">        Predict the response.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        X : array of shape [n_samples, n_features]</span>
+<span class="sd">            The input samples.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        np.ndarray</span>
+<span class="sd">            Array of predicted values.</span>
+
+<span class="sd">        Notes</span>
+<span class="sd">        -----</span>
+<span class="sd">        The `predict` method should not be used to get fitted values from the training set; rather,</span>
+<span class="sd">        users should access this same data using the `fitted_values_` attribute.  The `predict`</span>
+<span class="sd">        method calls the ARMA regresor's forecast method, which generates predictions from the last</span>
+<span class="sd">        time step in the training data, thus does not match, temporally, with the training data.</span>
+<span class="sd">        """</span>
         <span class="n">estimator_pred</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">estimator</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+        <span class="c1"># todo this won't work for in-sample predictions</span>
         <span class="n">arma_pred</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">arma_</span><span class="o">.</span><span class="n">forecast</span><span class="p">(</span><span class="n">steps</span><span class="o">=</span><span class="n">estimator_pred</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
         <span class="k">return</span> <span class="n">estimator_pred</span> <span class="o">+</span> <span class="n">arma_pred</span></div>
 
 
-<div class="viewcode-block" id="TSARegressor"><a class="viewcode-back" href="../../tsfeast.html#tsfeast.models.TSARegressor">[docs]</a><span class="k">class</span> <span class="nc">TSARegressor</span><span class="p">(</span><span class="n">StatsModelsContainer</span><span class="p">):</span>
+<div class="viewcode-block" id="TSARegressor"><a class="viewcode-back" href="../../tsfeast.html#tsfeast.models.TSARegressor">[docs]</a><span class="k">class</span> <span class="nc">TSARegressor</span><span class="p">(</span><span class="n">BaseContainer</span><span class="p">):</span>
     <span class="sd">"""Estimator for StatsModels TSA model."""</span>
-<div class="viewcode-block" id="TSARegressor.__init__"><a class="viewcode-back" href="../../tsfeast.html#tsfeast.models.TSARegressor.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">use_exog</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="sd">"""Instantiate TSARegressor object."""</span>
+<div class="viewcode-block" id="TSARegressor.__init__"><a class="viewcode-back" href="../../tsfeast.html#tsfeast.models.TSARegressor.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">:</span> <span class="n">Model</span><span class="p">,</span> <span class="n">use_exog</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">"""</span>
+<span class="sd">        Instantiate TSARegressor object.</span>
+
+<span class="sd">        model: Model</span>
+<span class="sd">            An uninstantiated Statsmodels TSA model.</span>
+<span class="sd">        use_exog: bool</span>
+<span class="sd">            Whether to use exogenous features; default False.</span>
+<span class="sd">        kwargs:</span>
+<span class="sd">            Additional kwargs for Statsmodels model.</span>
+<span class="sd">        """</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">model</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">use_exog</span> <span class="o">=</span> <span class="n">use_exog</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">kwargs</span> <span class="o">=</span> <span class="n">kwargs</span></div>
 
     <span class="k">def</span> <span class="nf">_fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">:</span> <span class="n">Data</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">Data</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">"TSARegressor"</span><span class="p">:</span>
-        <span class="sd">"""Fit the estimator."""</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">use_exog</span><span class="p">:</span>
-            <span class="n">X</span> <span class="o">=</span> <span class="kc">None</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">fitted_model_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">(</span><span class="n">endog</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">exog</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">kwargs</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+        <span class="sd">"""</span>
+<span class="sd">        Fit the estimator.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        X : array of shape [n_samples, n_features]</span>
+<span class="sd">            The input samples.</span>
+<span class="sd">        y :  array-like of shape (n_samples,) or (n_samples, n_outputs), default=None</span>
+<span class="sd">            Target values (None for unsupervised transformations).</span>
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        TSARegressor</span>
+<span class="sd">            Self.</span>
+<span class="sd">        """</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">use_exog</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">fitted_model_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">(</span><span class="n">endog</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">exog</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">kwargs</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">fitted_model_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">(</span><span class="n">endog</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">kwargs</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">fitted_values_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fitted_model_</span><span class="o">.</span><span class="n">fittedvalues</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">summary_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fitted_model_</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
         <span class="k">return</span> <span class="bp">self</span>
 
     <span class="k">def</span> <span class="nf">_predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">:</span> <span class="n">Data</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Data</span><span class="p">:</span>
-        <span class="sd">"""Predict the response."""</span>
+        <span class="sd">"""</span>
+<span class="sd">        Predict the response.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        X : array of shape [n_samples, n_features]</span>
+<span class="sd">            The input samples.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        np.ndarray</span>
+<span class="sd">            Array of predicted values.</span>
+<span class="sd">        """</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">fitted_model_</span><span class="o">.</span><span class="n">forecast</span><span class="p">(</span><span class="n">steps</span><span class="o">=</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span></div>
 </pre></div>
       </article>

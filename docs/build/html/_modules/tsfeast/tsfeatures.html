@@ -233,6 +233,9 @@
 
     <span class="k">def</span> <span class="nf">_transform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">"""Fit transformer to data."""</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">'freq_'</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">freq_</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">infer_freq</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DatetimeIndex</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">datetime</span><span class="p">])))</span>
+
         <span class="n">transforms</span> <span class="o">=</span> <span class="p">{</span>
             <span class="s1">'lags'</span><span class="p">:</span> <span class="n">LagFeatures</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lags</span><span class="p">),</span>
             <span class="s1">'rolling'</span><span class="p">:</span> <span class="n">RollingFeatures</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rolling</span><span class="p">),</span>
@@ -249,13 +252,13 @@
             <span class="n">union</span> <span class="o">=</span> <span class="n">FeatureUnion</span><span class="p">([(</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">transforms</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">k</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">steps_</span><span class="p">])</span>
             <span class="n">transformer</span> <span class="o">=</span> <span class="n">ColumnTransformer</span><span class="p">([</span>
                 <span class="p">(</span><span class="s1">'original'</span><span class="p">,</span> <span class="n">OriginalFeatures</span><span class="p">(),</span> <span class="n">numeric</span><span class="p">),</span>
-                <span class="p">(</span><span class="s1">'datetime'</span><span class="p">,</span> <span class="n">DateTimeFeatures</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">datetime</span><span class="p">),</span>
+                <span class="p">(</span><span class="s1">'datetime'</span><span class="p">,</span> <span class="n">DateTimeFeatures</span><span class="p">(</span><span class="n">freq</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">freq_</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">datetime</span><span class="p">),</span>
                 <span class="p">(</span><span class="s1">'features'</span><span class="p">,</span> <span class="n">union</span><span class="p">,</span> <span class="n">numeric</span><span class="p">)</span>
             <span class="p">])</span>
         <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
             <span class="n">transformer</span> <span class="o">=</span> <span class="n">ColumnTransformer</span><span class="p">([</span>
                 <span class="p">(</span><span class="s1">'original'</span><span class="p">,</span> <span class="n">OriginalFeatures</span><span class="p">(),</span> <span class="n">numeric</span><span class="p">),</span>
-                <span class="p">(</span><span class="s1">'datetime'</span><span class="p">,</span> <span class="n">DateTimeFeatures</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">datetime</span><span class="p">)</span>
+                <span class="p">(</span><span class="s1">'datetime'</span><span class="p">,</span> <span class="n">DateTimeFeatures</span><span class="p">(</span><span class="n">freq</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">freq_</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">datetime</span><span class="p">)</span>
             <span class="p">])</span>
 
         <span class="n">features</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>

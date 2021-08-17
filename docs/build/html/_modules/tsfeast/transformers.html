@@ -237,19 +237,18 @@
 <span class="sd">        which is appropriate to prevent data leakage in predictions.  However, most of the</span>
 <span class="sd">        transformers in this module take a set of features and generate new features; there's no</span>
 <span class="sd">        inherent method to transform some timeseries features given a fitted estimator.</span>
+
+<span class="sd">        For time series lags, changes, etc., we have access to past data for feature</span>
+<span class="sd">        generation without risk of data leakage; certain features (e.g. lags) require this</span>
+<span class="sd">        to avoid NaNs or zeros.</span>
+
+<span class="sd">        We append new X to our original features and transform on entire dataset, keeping</span>
+<span class="sd">        only the last n rows.  Appropriate for time series transformations, only.</span>
 <span class="sd">        """</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
             <span class="n">X</span> <span class="o">=</span> <span class="n">array_to_dataframe</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">'input_features_'</span><span class="p">):</span>
-            <span class="sd">"""</span>
-<span class="sd">            For time series lags, changes, etc., we have access to past data for feature</span>
-<span class="sd">            generation without risk of data leakage; certain features (e.g. lags) require this</span>
-<span class="sd">            to avoid NaNs or zeros.</span>
-
-<span class="sd">            We append new X to our original features and transform on entire dataset, keeping</span>
-<span class="sd">            only the last n rows.  Appropriate for time series transformations, only.</span>
-<span class="sd">            """</span>
             <span class="n">rows</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
             <span class="n">X</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">input_features_</span><span class="p">,</span> <span class="n">X</span><span class="p">])</span>  <span class="c1"># pylint: disable=E0203</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">output_features_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_transform</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="n">rows</span><span class="p">:,</span> <span class="p">:]</span>
@@ -408,7 +407,10 @@
 <div class="viewcode-block" id="DateTimeFeatures"><a class="viewcode-back" href="../../tsfeast.html#tsfeast.transformers.DateTimeFeatures">[docs]</a><span class="k">class</span> <span class="nc">DateTimeFeatures</span><span class="p">(</span><span class="n">BaseTransformer</span><span class="p">):</span>
     <span class="sd">"""Generate datetime features."""</span>
 
-<div class="viewcode-block" id="DateTimeFeatures.__init__"><a class="viewcode-back" href="../../tsfeast.html#tsfeast.transformers.DateTimeFeatures.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">date_col</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">dt_format</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="DateTimeFeatures.__init__"><a class="viewcode-back" href="../../tsfeast.html#tsfeast.transformers.DateTimeFeatures.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+            <span class="bp">self</span><span class="p">,</span> <span class="n">date_col</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">dt_format</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+            <span class="n">freq</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="p">):</span>
         <span class="sd">"""</span>
 <span class="sd">        Instantiate transformer object.</span>
 
@@ -419,7 +421,8 @@
 <span class="sd">        """</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">date_col</span> <span class="o">=</span> <span class="n">date_col</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">dt_format</span> <span class="o">=</span> <span class="n">dt_format</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dt_format</span> <span class="o">=</span> <span class="n">dt_format</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">freq</span> <span class="o">=</span> <span class="n">freq</span></div>
 
 <div class="viewcode-block" id="DateTimeFeatures.fit"><a class="viewcode-back" href="../../tsfeast.html#tsfeast.transformers.DateTimeFeatures.fit">[docs]</a>    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">:</span> <span class="n">Data</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">"DateTimeFeatures"</span><span class="p">:</span>
         <span class="n">_</span> <span class="o">=</span> <span class="n">y</span>
@@ -429,9 +432,10 @@
             <span class="n">dates</span> <span class="o">=</span> <span class="n">X</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">'`data` must be a DataFrame or Series.'</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">freq_</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">infer_freq</span><span class="p">(</span>
-            <span class="n">pd</span><span class="o">.</span><span class="n">DatetimeIndex</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">dates</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">dt_format</span><span class="p">))</span>
-        <span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">freq</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">freq</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">infer_freq</span><span class="p">(</span>
+                <span class="n">pd</span><span class="o">.</span><span class="n">DatetimeIndex</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">dates</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">dt_format</span><span class="p">))</span>
+            <span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span></div>
 
     <span class="k">def</span> <span class="nf">_transform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Data</span><span class="p">:</span>
@@ -450,7 +454,7 @@
 <span class="sd">        Data</span>
 <span class="sd">            Transformed features.</span>
 <span class="sd">        """</span>
-        <span class="k">return</span> <span class="n">get_datetime_features</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">date_col</span><span class="p">,</span> <span class="n">dt_format</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">dt_format</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">freq_</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="n">get_datetime_features</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">date_col</span><span class="p">,</span> <span class="n">dt_format</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">dt_format</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">freq</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="LagFeatures"><a class="viewcode-back" href="../../tsfeast.html#tsfeast.transformers.LagFeatures">[docs]</a><span class="k">class</span> <span class="nc">LagFeatures</span><span class="p">(</span><span class="n">BaseTransformer</span><span class="p">):</span>
