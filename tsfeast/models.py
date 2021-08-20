@@ -15,7 +15,33 @@ from tsfeast.utils import Data
 
 
 class ARMARegressor(BaseContainer):
-    """Estimator for Scikit-Learn estimator with ARMA residuals."""  # todo complete class docstring
+    """
+    Estimator for Scikit-Learn estimator with ARMA residuals.
+
+    Parameters
+    ----------
+    estimator: LinearModel
+        Scikit-Learn linear estimator.
+    order: Tuple[int, int, int]
+        ARIMA order for residuals.
+
+    Attributes
+    ----------
+    estimator: LinearModel
+        The Scikit-Learn regressor.
+    order: Tuple[int, int, int]
+        The (p,d,q,) order of the ARMA model.
+    intercept_: float
+        The fitted estimator's intercept.
+    coef_: np.ndarray
+        The fitted estimator's coefficients.
+    arma_: ARIMA
+        The fitted ARMA model.
+    fitted_values_: np.ndarray
+        The combined estimator and ARMA fitted values.
+    resid_: np.ndarray
+        The combined estimator and ARMA residual values.
+    """
     def __init__(
             self, estimator: LinearModel = LinearRegression(),
             order: Tuple[int, int, int] = (1, 0, 0)
@@ -88,7 +114,26 @@ class ARMARegressor(BaseContainer):
 
 
 class TSARegressor(BaseContainer):
-    """Estimator for StatsModels TSA model."""
+    """
+    Estimator for StatsModels TSA model.
+
+    Parameters
+    ----------
+    model: Model
+        An uninstantiated Statsmodels TSA model.
+    use_exog: bool
+        Whether to use exogenous features; default False.
+    kwargs:
+        Additional kwargs for Statsmodels model.
+
+    Attributes
+    ----------
+    fitted_model_: Model
+        The fitted Statmodels model object.
+    summary_:
+        The fitted Statmodels model summary results.
+
+    """
     def __init__(self, model: Model, use_exog: bool = False, **kwargs):
         """
         Instantiate TSARegressor object.
