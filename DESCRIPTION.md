@@ -4,7 +4,7 @@
 
 A collection of Scikit-Learn compatible time series transformers and tools.
 
-## Install
+## Installation
 
 ```bash
 pip install tsfeast

@@ -2064,6 +2064,25 @@ only the last n rows.  Appropriate for time series transformations, only.</p>
 <dt class="sig sig-object py" id="tsfeast.utils.plot_diag">
 <span class="sig-prename descclassname"><span class="pre">tsfeast.utils.</span></span><span class="sig-name descname"><span class="pre">plot_diag</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">residuals</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">pandas.core.frame.DataFrame</span><span class="p"><span class="pre">,</span> </span><span class="pre">pandas.core.series.Series</span><span class="p"><span class="pre">,</span> </span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">estimator</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">sklearn.linear_model._base.LinearModel</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">X</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">pandas.core.frame.DataFrame</span><span class="p"><span class="pre">,</span> </span><span class="pre">pandas.core.series.Series</span><span class="p"><span class="pre">,</span> </span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">pandas.core.frame.DataFrame</span><span class="p"><span class="pre">,</span> </span><span class="pre">pandas.core.series.Series</span><span class="p"><span class="pre">,</span> </span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tsfeast/utils.html#plot_diag"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tsfeast.utils.plot_diag" title="Permalink to this definition">¶</a></dt>
 <dd><p>Plot regression diagnostics.</p>
+<p>Generate residuals plot, QQ plot, ACF plot and PACF plot, given either an array-like object
+of residuals or and estimator and X and y data arrays.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>residuals</strong> (<em>Data</em>) – Model residual errors.</p></li>
+<li><p><strong>estimator</strong> (<em>LinearModel</em>) – Scikit-Learn generalized linear model.</p></li>
+<li><p><strong>X</strong> (<em>array of shape [n_samples, n_features]</em>) – The input samples.</p></li>
+<li><p><strong>y</strong> (<em>array-like of shape (n_samples,) or (n_samples, n_outputs), default=None</em>) – Target values (None for unsupervised transformations).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>ValueError</strong> – <ul class="simple">
+<li><p>If neither residuals or estimator provider.
+    - If estimator provided without X and y data.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
 </dd></dl>
 </section>
 <section id="module-tsfeast">

@@ -15,7 +15,7 @@ from tsfeast.utils import Data
 
 
 class ARMARegressor(BaseContainer):
-    """Estimator for Scikit-Learn estimator with ARMA residuals."""
+    """Estimator for Scikit-Learn estimator with ARMA residuals."""  # todo complete class docstring
     def __init__(
             self, estimator: LinearModel = LinearRegression(),
             order: Tuple[int, int, int] = (1, 0, 0)

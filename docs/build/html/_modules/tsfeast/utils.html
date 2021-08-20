@@ -220,7 +220,29 @@
         <span class="n">residuals</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Data</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">estimator</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">LinearModel</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">X</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Data</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Data</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="p">):</span>
-    <span class="sd">"""Plot regression diagnostics."""</span>
+    <span class="sd">"""</span>
+<span class="sd">    Plot regression diagnostics.</span>
+
+<span class="sd">    Generate residuals plot, QQ plot, ACF plot and PACF plot, given either an array-like object</span>
+<span class="sd">    of residuals or and estimator and X and y data arrays.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    residuals: Data</span>
+<span class="sd">        Model residual errors.</span>
+<span class="sd">    estimator: LinearModel</span>
+<span class="sd">        Scikit-Learn generalized linear model.</span>
+<span class="sd">    X: array of shape [n_samples, n_features]</span>
+<span class="sd">            The input samples.</span>
+<span class="sd">    y :  array-like of shape (n_samples,) or (n_samples, n_outputs), default=None</span>
+<span class="sd">        Target values (None for unsupervised transformations).</span>
+
+<span class="sd">    Raises</span>
+<span class="sd">    ------</span>
+<span class="sd">    ValueError</span>
+<span class="sd">        - If neither residuals or estimator provider.</span>
+<span class="sd">        - If estimator provided without X and y data.</span>
+<span class="sd">    """</span>
     <span class="k">if</span> <span class="n">residuals</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">estimator</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">'Either residuals or estimator and X, y must be given.'</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">estimator</span> <span class="ow">and</span> <span class="p">(</span><span class="n">X</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">y</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">):</span>
