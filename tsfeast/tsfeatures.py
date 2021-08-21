@@ -45,6 +45,9 @@ class TimeSeriesFeatures(BaseTransformer):
 
     def _transform(self, X, y=None):
         """Fit transformer to data."""
+        if not hasattr(self, 'freq_'):
+            self.freq_ = pd.infer_freq(pd.DatetimeIndex(pd.to_datetime(X[self.datetime])))
+
         transforms = {
             'lags': LagFeatures(self.lags),
             'rolling': RollingFeatures(self.rolling),
@@ -61,13 +64,13 @@ class TimeSeriesFeatures(BaseTransformer):
             union = FeatureUnion([(k, v) for k, v in transforms.items() if k in self.steps_])
             transformer = ColumnTransformer([
                 ('original', OriginalFeatures(), numeric),
-                ('datetime', DateTimeFeatures(), self.datetime),
+                ('datetime', DateTimeFeatures(freq=self.freq_), self.datetime),
                 ('features', union, numeric)
             ])
         except ValueError:
             transformer = ColumnTransformer([
                 ('original', OriginalFeatures(), numeric),
-                ('datetime', DateTimeFeatures(), self.datetime)
+                ('datetime', DateTimeFeatures(freq=self.freq_), self.datetime)
             ])
 
         features = pd.DataFrame(

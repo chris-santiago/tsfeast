@@ -219,7 +219,10 @@ class Scaler(BaseTransformer):
 class DateTimeFeatures(BaseTransformer):
     """Generate datetime features."""
 
-    def __init__(self, date_col: Optional[str] = None, dt_format: Optional[str] = None):
+    def __init__(
+            self, date_col: Optional[str] = None, dt_format: Optional[str] = None,
+            freq: Optional[str] = None
+    ):
         """
         Instantiate transformer object.
 
@@ -231,6 +234,7 @@ class DateTimeFeatures(BaseTransformer):
         super().__init__()
         self.date_col = date_col
         self.dt_format = dt_format
+        self.freq = freq
 
     def fit(self, X: Data, y=None) -> "DateTimeFeatures":
         _ = y
@@ -240,9 +244,10 @@ class DateTimeFeatures(BaseTransformer):
             dates = X
         else:
             raise ValueError('`data` must be a DataFrame or Series.')
-        self.freq_ = pd.infer_freq(
-            pd.DatetimeIndex(pd.to_datetime(dates, format=self.dt_format))
-        )
+        if not self.freq:
+            self.freq = pd.infer_freq(
+                pd.DatetimeIndex(pd.to_datetime(dates, format=self.dt_format))
+            )
         return self
 
     def _transform(self, X: pd.DataFrame, y=None) -> Data:
@@ -261,7 +266,7 @@ class DateTimeFeatures(BaseTransformer):
         Data
             Transformed features.
         """
-        return get_datetime_features(X, self.date_col, dt_format=self.dt_format, freq=self.freq_)
+        return get_datetime_features(X, self.date_col, dt_format=self.dt_format, freq=self.freq)
 
 
 class LagFeatures(BaseTransformer):

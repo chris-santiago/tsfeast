@@ -15,7 +15,33 @@ from tsfeast.utils import Data
 
 
 class ARMARegressor(BaseContainer):
-    """Estimator for Scikit-Learn estimator with ARMA residuals."""
+    """
+    Estimator for Scikit-Learn estimator with ARMA residuals.
+
+    Parameters
+    ----------
+    estimator: LinearModel
+        Scikit-Learn linear estimator.
+    order: Tuple[int, int, int]
+        ARIMA order for residuals.
+
+    Attributes
+    ----------
+    estimator: LinearModel
+        The Scikit-Learn regressor.
+    order: Tuple[int, int, int]
+        The (p,d,q,) order of the ARMA model.
+    intercept_: float
+        The fitted estimator's intercept.
+    coef_: np.ndarray
+        The fitted estimator's coefficients.
+    arma_: ARIMA
+        The fitted ARMA model.
+    fitted_values_: np.ndarray
+        The combined estimator and ARMA fitted values.
+    resid_: np.ndarray
+        The combined estimator and ARMA residual values.
+    """
     def __init__(
             self, estimator: LinearModel = LinearRegression(),
             order: Tuple[int, int, int] = (1, 0, 0)
@@ -73,14 +99,41 @@ class ARMARegressor(BaseContainer):
         -------
         np.ndarray
             Array of predicted values.
+
+        Notes
+        -----
+        The `predict` method should not be used to get fitted values from the training set; rather,
+        users should access this same data using the `fitted_values_` attribute.  The `predict`
+        method calls the ARMA regresor's forecast method, which generates predictions from the last
+        time step in the training data, thus does not match, temporally, with the training data.
         """
         estimator_pred = self.estimator.predict(X)
+        # todo this won't work for in-sample predictions
         arma_pred = self.arma_.forecast(steps=estimator_pred.shape[0])
         return estimator_pred + arma_pred
 
 
 class TSARegressor(BaseContainer):
-    """Estimator for StatsModels TSA model."""
+    """
+    Estimator for StatsModels TSA model.
+
+    Parameters
+    ----------
+    model: Model
+        An uninstantiated Statsmodels TSA model.
+    use_exog: bool
+        Whether to use exogenous features; default False.
+    kwargs:
+        Additional kwargs for Statsmodels model.
+
+    Attributes
+    ----------
+    fitted_model_: Model
+        The fitted Statmodels model object.
+    summary_:
+        The fitted Statmodels model summary results.
+
+    """
     def __init__(self, model: Model, use_exog: bool = False, **kwargs):
         """
         Instantiate TSARegressor object.
