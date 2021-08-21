@@ -480,8 +480,7 @@ y_train, y_test = y.iloc[:-40], y.iloc[-40:]
 |`DateTimeFeatures`|date_col: `str`, dt_format: `str`, freq: `str`|Generates datetime features from a given date column.|
 |`LaggedFeatures`|n_lags: `int`, fillna: `bool`|Generate lag features.|
 |`RollingFeatures`|window_lengths: `List[int]`, fillna: `bool`|Generate rolling features (mean, std, min, max) for each specified window length.|
-|`EwmaFeatures`|window_lengths: `List[int]`, fillna: `bool`|Generate exponentially-weighted moving average for each specified window length.
-|
+|`EwmaFeatures`|window_lengths: `List[int]`, fillna: `bool`|Generate exponentially-weighted moving average for each specified window length.|
 |`ChangeFeatures`|period_lengths: `List[int]`, fillna: `bool`|Generate percent change for all features for each specified period length.|
 |`DifferenceFeatures`|n_diffs: `int`, fillna: `bool`|Generate `n` differences for all features.|
 |`PolyFeatures`|degree: `int`|Generate polynomial features.|
