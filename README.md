@@ -1,5 +1,6 @@
 # tsfeast
-![build](https://travis-ci.com/chris-santiago/tsfeast.svg?branch=master)
+[![image](https://img.shields.io/badge/python-3.6--3.10-blue.svg)](https://www.python.org)
+[![build](https://travis-ci.com/chris-santiago/tsfeast.svg?branch=master)](https://github.com/psf/black)
 [![codecov](https://codecov.io/gh/chris-santiago/tsfeast/branch/master/graph/badge.svg?token=MSO9ZBH6UD)](https://codecov.io/gh/chris-santiago/tsfeast)
 
 A collection of Scikit-Learn compatible time series transformers and tools.
