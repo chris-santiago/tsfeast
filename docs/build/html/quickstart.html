@@ -2,50 +2,46 @@
 <html class="no-js">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="tsfeast" href="modules.html" /><link rel="prev" title="tsfeast Documentation" href="index.html" />
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="tsfeast" href="modules.html" /><link rel="prev" title="tsfeast Documentation" href="index.html" />
 
-    <meta name="generator" content="sphinx-4.1.2, furo 2021.07.05.beta38"/>
+    <meta name="generator" content="sphinx-4.1.2, furo 2021.07.31.beta41"/>
         <title>Quickstart - tsfeast</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css" />
-
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=daa650a7760fac3eee23aa959745d2c866b74cb3" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=93475b62d1c3bc01323a0eefdc14a62d77b12690" />
+    
+    
 
 
 <style>
-  :root {
+  body {
     --color-code-background: #f8f8f8;
   --color-code-foreground: black;
-
+  
   }
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --color-code-background: #202020;
-  --color-code-foreground: #d0d0d0;
-
-    }
-  }
-
-  /* For allowing end-user-specific overrides */
-  .override-light {
-    --color-code-background: #f8f8f8;
-  --color-code-foreground: black;
-
-  }
-  .override-dark {
+  body[data-theme="dark"] {
     --color-code-background: #202020;
   --color-code-foreground: #d0d0d0;
-
+  
   }
-</style><link media="(prefers-color-scheme: dark)" rel="stylesheet" href="_static/pygments_dark.css"></head>
-  <body dir="">
-
+  @media (prefers-color-scheme: dark) {
+    body:not([data-theme="light"]) {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+  }
+</style>
+    <link media="(prefers-color-scheme: dark)" rel="stylesheet" href="_static/pygments_dark.css"></head>
+  <body>
+    
 <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
   <symbol id="svg-toc" viewBox="0 0 24 24">
     <title>Contents</title>
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-      stroke-width="1.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-      <path stroke="none" d="M0 0h24v24H0z"/>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z" />
       <line x1="4" y1="6" x2="20" y2="6" />
       <line x1="10" y1="12" x2="20" y2="12" />
       <line x1="6" y1="18" x2="20" y2="18" />
@@ -53,9 +49,8 @@
   </symbol>
   <symbol id="svg-menu" viewBox="0 0 24 24">
     <title>Menu</title>
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-      class="feather feather-menu">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
       <line x1="3" y1="12" x2="21" y2="12"></line>
       <line x1="3" y1="6" x2="21" y2="6"></line>
       <line x1="3" y1="18" x2="21" y2="18"></line>
@@ -63,18 +58,57 @@
   </symbol>
   <symbol id="svg-arrow-right" viewBox="0 0 24 24">
     <title>Expand</title>
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-      class="feather feather-chevron-right">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
       <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-half" viewBox="0 0 24 24">
+    <title>Auto light/dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M13 12h5" />
+      <path d="M13 15h4" />
+      <path d="M13 18h1" />
+      <path d="M13 9h4" />
+      <path d="M13 6h1" />
     </svg>
   </symbol>
 </svg>
 
 <input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
 <input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
-<label class="overlay sidebar-overlay" for="__navigation"></label>
-<label class="overlay toc-overlay" for="__toc"></label>
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
 
 
 
@@ -82,6 +116,7 @@
   <header class="mobile-header">
     <div class="header-left">
       <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
         <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
       </label>
     </div>
@@ -89,29 +124,39 @@
       <a href="index.html"><div class="brand">tsfeast</div></a>
     </div>
     <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
       <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
     </div>
   </header>
   <aside class="sidebar-drawer">
     <div class="sidebar-container">
-
+      
       <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
-
-
+  
+  
   <span class="sidebar-brand-text">tsfeast</span>
-
-</a><form class="sidebar-search-container" method="get" action="search.html">
-  <input class="sidebar-search" placeholder=Search name="q">
+  
+</a><form class="sidebar-search-container" method="get" action="search.html" role="search">
+  <input class="sidebar-search" placeholder=Search name="q" aria-label="Search">
   <input type="hidden" name="check_keywords" value="yes">
   <input type="hidden" name="area" value="default">
-</form><div class="sidebar-scroll"><div class="sidebar-tree">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
   <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
 <ul class="current">
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Quickstart</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#tsfeast">tsfeast</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="modules.html">tsfeast</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label for="toctree-checkbox-1"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="modules.html">tsfeast</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="tsfeast.html">tsfeast package</a></li>
 </ul>
 </li>
@@ -121,35 +166,1506 @@
 </div>
 </div>
       </div>
-
+      
     </div>
   </aside>
-  <main class="main">
+  <div class="main">
     <div class="content">
       <article role="main">
-        <label class="toc-overlay-icon toc-content-icon" for="__toc">
-          <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
-        </label>
-        <div class="tex2jax_ignore mathjax_ignore section" id="quickstart">
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <section class="tex2jax_ignore mathjax_ignore" id="quickstart">
 <h1>Quickstart<a class="headerlink" href="#quickstart" title="Permalink to this headline">¶</a></h1>
-</div>
-<div class="tex2jax_ignore mathjax_ignore section" id="tsfeast">
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="tsfeast">
 <h1>tsfeast<a class="headerlink" href="#tsfeast" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="install">
-<h2>Install<a class="headerlink" href="#install" title="Permalink to this headline">¶</a></h2>
-<p>Create a virtual environment with Python 3.8 and install from git:</p>
+<p><img alt="build" src="https://travis-ci.com/chris-santiago/tsfeast.svg?branch=master"/>
+<a class="reference external" href="https://codecov.io/gh/chris-santiago/tsfeast"><img alt="codecov" src="https://codecov.io/gh/chris-santiago/tsfeast/branch/master/graph/badge.svg?token=MSO9ZBH6UD"/></a></p>
+<p>A collection of Scikit-Learn compatible time series transformers and tools.</p>
+<section id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<p>Create a virtual environment and install:</p>
+<section id="from-pypi">
+<h3>From PyPi<a class="headerlink" href="#from-pypi" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install tsfeast
+</pre></div>
+</div>
+</section>
+<section id="from-this-repo">
+<h3>From this repo<a class="headerlink" href="#from-this-repo" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install git+https://github.com/chris-santiago/tsfeast.git
 </pre></div>
 </div>
-</div>
-<div class="section" id="use">
+</section>
+</section>
+<section id="use">
 <h2>Use<a class="headerlink" href="#use" title="Permalink to this headline">¶</a></h2>
+<section id="preliminaries">
+<h3>Preliminaries<a class="headerlink" href="#preliminaries" title="Permalink to this headline">¶</a></h3>
+<p>This example shows both the use of individual transformers and the <code class="docutils literal notranslate"><span class="pre">TimeSeriesFeatures</span></code> convenience class that wraps multiple transformers. Both methods are compatible with Scikit-Learn <code class="docutils literal notranslate"><span class="pre">Pipeline</span></code> objects.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">"ignore"</span><span class="p">)</span>  <span class="c1"># ignore pandas concat warnings from statsmodels</span>
+
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span><span class="p">,</span> <span class="n">Lasso</span><span class="p">,</span> <span class="n">PoissonRegressor</span>
+<span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <span class="n">Pipeline</span>
+<span class="kn">from</span> <span class="nn">sklearn.feature_selection</span> <span class="kn">import</span> <span class="n">SelectKBest</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">mean_squared_error</span><span class="p">,</span> <span class="n">mean_absolute_percentage_error</span><span class="p">,</span> <span class="n">mean_absolute_error</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">MinMaxScaler</span><span class="p">,</span> <span class="n">StandardScaler</span>
+<span class="kn">from</span> <span class="nn">statsmodels.tsa.arima_process</span> <span class="kn">import</span> <span class="n">arma_generate_sample</span>
+<span class="kn">from</span> <span class="nn">steps.forward</span> <span class="kn">import</span> <span class="n">ForwardSelector</span>
+
+<span class="kn">from</span> <span class="nn">tsfeast.transformers</span> <span class="kn">import</span> <span class="n">DateTimeFeatures</span><span class="p">,</span> <span class="n">InteractionFeatures</span><span class="p">,</span> <span class="n">LagFeatures</span>
+<span class="kn">from</span> <span class="nn">tsfeast.tsfeatures</span> <span class="kn">import</span> <span class="n">TimeSeriesFeatures</span>
+<span class="kn">from</span> <span class="nn">tsfeast.funcs</span> <span class="kn">import</span> <span class="n">get_datetime_features</span>
+<span class="kn">from</span> <span class="nn">tsfeast.utils</span> <span class="kn">import</span> <span class="n">plot_diag</span>
+<span class="kn">from</span> <span class="nn">tsfeast.models</span> <span class="kn">import</span> <span class="n">ARMARegressor</span>
+</pre></div>
 </div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">make_dummy_data</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">200</span><span class="p">):</span>
+    <span class="n">n_lags</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="n">coefs</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'ar'</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.85</span><span class="p">],</span> <span class="s1">'ma'</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="s1">'trend'</span><span class="p">:</span> <span class="mf">3.2</span><span class="p">,</span> <span class="s1">'bdays_in_month'</span><span class="p">:</span> <span class="mi">231</span><span class="p">,</span> <span class="s1">'marketing'</span><span class="p">:</span> <span class="mf">0.0026</span><span class="p">}</span>
+    <span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+    
+    <span class="n">sales</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+        <span class="s1">'date'</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="n">end</span><span class="o">=</span><span class="s1">'2020-08-31'</span><span class="p">,</span> <span class="n">periods</span><span class="o">=</span><span class="n">n</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s1">'M'</span><span class="p">),</span>
+        <span class="s1">'sales_base'</span><span class="p">:</span> <span class="n">rng</span><span class="o">.</span><span class="n">poisson</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="n">n</span><span class="p">),</span>
+        <span class="s1">'sales_ar'</span><span class="p">:</span> <span class="n">arma_generate_sample</span><span class="p">(</span><span class="n">ar</span><span class="o">=</span><span class="n">coefs</span><span class="p">[</span><span class="s1">'ar'</span><span class="p">],</span> <span class="n">ma</span><span class="o">=</span><span class="n">coefs</span><span class="p">[</span><span class="s1">'ma'</span><span class="p">],</span> <span class="n">nsample</span><span class="o">=</span><span class="n">n</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">100</span><span class="p">),</span>
+        <span class="s1">'sales_trend'</span><span class="p">:</span> <span class="p">[</span><span class="n">x</span> <span class="o">*</span> <span class="n">coefs</span><span class="p">[</span><span class="s1">'trend'</span><span class="p">]</span> <span class="o">+</span> <span class="n">rng</span><span class="o">.</span><span class="n">poisson</span><span class="p">(</span><span class="mi">300</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)],</span>
+    <span class="p">})</span>
+    
+    <span class="n">sales</span> <span class="o">=</span> <span class="n">sales</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">get_datetime_features</span><span class="p">(</span><span class="n">sales</span><span class="p">[</span><span class="s1">'date'</span><span class="p">])[[</span><span class="s1">'bdays_in_month'</span><span class="p">,</span> <span class="s1">'quarter'</span><span class="p">]])</span>
+    <span class="n">sales</span><span class="p">[</span><span class="s1">'sales_per_day'</span><span class="p">]</span> <span class="o">=</span> <span class="n">sales</span><span class="p">[</span><span class="s1">'bdays_in_month'</span><span class="p">]</span> <span class="o">*</span> <span class="n">coefs</span><span class="p">[</span><span class="s1">'bdays_in_month'</span><span class="p">]</span> <span class="o">+</span> <span class="n">rng</span><span class="o">.</span><span class="n">poisson</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+    
+    <span class="n">sales</span><span class="p">[</span><span class="s1">'mkt_base'</span><span class="p">]</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mf">1e6</span><span class="p">,</span> <span class="mf">1e4</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+    <span class="n">sales</span><span class="p">[</span><span class="s1">'mkt_trend'</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">x</span> <span class="o">*</span> <span class="mf">5e3</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)])</span> <span class="o">+</span> <span class="n">rng</span><span class="o">.</span><span class="n">poisson</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+    <span class="n">sales</span><span class="p">[</span><span class="s1">'mkt_season'</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">sales</span><span class="p">[</span><span class="s1">'quarter'</span><span class="p">]</span> <span class="o">==</span> <span class="mi">3</span><span class="p">,</span> <span class="n">sales</span><span class="p">[</span><span class="s1">'mkt_base'</span><span class="p">]</span> <span class="o">*</span> <span class="mf">.35</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">sales</span><span class="p">[</span><span class="s1">'mkt_total'</span><span class="p">]</span> <span class="o">=</span> <span class="n">sales</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">'mkt_base'</span><span class="p">:</span> <span class="s1">'mkt_season'</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">rng</span><span class="o">.</span><span class="n">poisson</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+    <span class="n">sales</span><span class="p">[</span><span class="s1">'sales_mkting'</span><span class="p">]</span> <span class="o">=</span> <span class="n">sales</span><span class="p">[</span><span class="s1">'mkt_total'</span><span class="p">]</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="n">n_lags</span><span class="p">)</span> <span class="o">*</span> <span class="n">coefs</span><span class="p">[</span><span class="s1">'marketing'</span><span class="p">]</span>
+    
+    <span class="n">final</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+        <span class="s1">'y'</span><span class="p">:</span> <span class="n">sales</span><span class="p">[[</span><span class="s1">'sales_base'</span><span class="p">,</span> <span class="s1">'sales_ar'</span><span class="p">,</span> <span class="s1">'sales_trend'</span><span class="p">,</span> <span class="s1">'sales_per_day'</span><span class="p">,</span> <span class="s1">'sales_mkting'</span><span class="p">]]</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">),</span>
+        <span class="s1">'date'</span><span class="p">:</span> <span class="n">sales</span><span class="p">[</span><span class="s1">'date'</span><span class="p">],</span>
+        <span class="s1">'marketing'</span><span class="p">:</span> <span class="n">sales</span><span class="p">[</span><span class="s1">'mkt_total'</span><span class="p">],</span>
+        <span class="s1">'x2'</span><span class="p">:</span> <span class="n">rng</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="n">n</span><span class="p">),</span>
+        <span class="s1">'x3'</span><span class="p">:</span> <span class="n">rng</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mi">320</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
+    <span class="p">})</span>
+    <span class="k">return</span> <span class="n">sales</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">2</span><span class="p">:,</span> <span class="p">:],</span> <span class="n">final</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">2</span><span class="p">:,</span> <span class="p">:]</span>
+</pre></div>
 </div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_results</span><span class="p">(</span><span class="n">estimator</span><span class="p">,</span> <span class="n">x_train</span><span class="p">,</span> <span class="n">x_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+        <span class="p">{</span>
+            <span class="s1">'training'</span><span class="p">:</span> <span class="p">[</span>
+                <span class="n">mean_absolute_error</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="n">estimator</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x_train</span><span class="p">)),</span> 
+                <span class="n">mean_absolute_percentage_error</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="n">estimator</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x_train</span><span class="p">))</span>
+            <span class="p">],</span>
+            <span class="s1">'testing'</span><span class="p">:</span>  <span class="p">[</span>
+                <span class="n">mean_absolute_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">estimator</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x_test</span><span class="p">)),</span> 
+                <span class="n">mean_absolute_percentage_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">estimator</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x_test</span><span class="p">))</span>
+            <span class="p">],</span>
+        <span class="p">},</span>
+        <span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'MAE'</span><span class="p">,</span> <span class="s1">'MAPE'</span><span class="p">]</span>
+    <span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="example-data">
+<h3>Example Data<a class="headerlink" href="#example-data" title="Permalink to this headline">¶</a></h3>
+<p>The dummy dataset in this example includes trend, seasonal, autoregressive and other factor components. Below, we visualize the individual components (<code class="docutils literal notranslate"><span class="pre">comps</span></code>) and features of the dummy dataset <code class="docutils literal notranslate"><span class="pre">data</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">comps</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">make_dummy_data</span><span class="p">()</span>
+</pre></div>
+</div>
+<section id="sales-components">
+<h4>Sales Components<a class="headerlink" href="#sales-components" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">comps</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+<div>
+<div class="table-wrapper"><table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>date</th>
+<th>sales_base</th>
+<th>sales_ar</th>
+<th>sales_trend</th>
+<th>bdays_in_month</th>
+<th>quarter</th>
+<th>sales_per_day</th>
+<th>mkt_base</th>
+<th>mkt_trend</th>
+<th>mkt_season</th>
+<th>mkt_total</th>
+<th>sales_mkting</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>2</th>
+<td>2004-03-31</td>
+<td>211</td>
+<td>153.620257</td>
+<td>285.6</td>
+<td>23</td>
+<td>1</td>
+<td>5402</td>
+<td>1.012456e+06</td>
+<td>15128.0</td>
+<td>0.000000</td>
+<td>1.027692e+06</td>
+<td>2584.285914</td>
+</tr>
+<tr>
+<th>3</th>
+<td>2004-04-30</td>
+<td>181</td>
+<td>18.958345</td>
+<td>300.8</td>
+<td>22</td>
+<td>2</td>
+<td>5180</td>
+<td>1.009596e+06</td>
+<td>20128.0</td>
+<td>0.000000</td>
+<td>1.029835e+06</td>
+<td>2661.116408</td>
+</tr>
+<tr>
+<th>4</th>
+<td>2004-05-31</td>
+<td>195</td>
+<td>54.420246</td>
+<td>312.0</td>
+<td>20</td>
+<td>2</td>
+<td>4726</td>
+<td>9.848525e+05</td>
+<td>25128.0</td>
+<td>0.000000</td>
+<td>1.010071e+06</td>
+<td>2672.000109</td>
+</tr>
+<tr>
+<th>5</th>
+<td>2004-06-30</td>
+<td>206</td>
+<td>31.100042</td>
+<td>326.2</td>
+<td>22</td>
+<td>2</td>
+<td>5195</td>
+<td>1.008291e+06</td>
+<td>30128.0</td>
+<td>0.000000</td>
+<td>1.038529e+06</td>
+<td>2677.570754</td>
+</tr>
+<tr>
+<th>6</th>
+<td>2004-07-31</td>
+<td>198</td>
+<td>34.283905</td>
+<td>317.4</td>
+<td>21</td>
+<td>3</td>
+<td>4952</td>
+<td>1.004049e+06</td>
+<td>35128.0</td>
+<td>351416.992807</td>
+<td>1.390691e+06</td>
+<td>2626.185776</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">comps</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Column: </span><span class="si">{</span><span class="n">col</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">comps</span><span class="p">[</span><span class="n">col</span><span class="p">])</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Column: date
+</pre></div>
+</div>
+<p><img alt="png" src="_images/output_8_1.png"/></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Column: sales_base
+</pre></div>
+</div>
+<p><img alt="png" src="_images/output_8_3.png"/></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Column: sales_ar
+</pre></div>
+</div>
+<p><img alt="png" src="_images/output_8_5.png"/></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Column: sales_trend
+</pre></div>
+</div>
+<p><img alt="png" src="_images/output_8_7.png"/></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Column: bdays_in_month
+</pre></div>
+</div>
+<p><img alt="png" src="_images/output_8_9.png"/></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Column: quarter
+</pre></div>
+</div>
+<p><img alt="png" src="_images/output_8_11.png"/></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Column: sales_per_day
+</pre></div>
+</div>
+<p><img alt="png" src="_images/output_8_13.png"/></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Column: mkt_base
+</pre></div>
+</div>
+<p><img alt="png" src="_images/output_8_15.png"/></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Column: mkt_trend
+</pre></div>
+</div>
+<p><img alt="png" src="_images/output_8_17.png"/></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Column: mkt_season
+</pre></div>
+</div>
+<p><img alt="png" src="_images/output_8_19.png"/></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Column: mkt_total
+</pre></div>
+</div>
+<p><img alt="png" src="_images/output_8_21.png"/></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Column: sales_mkting
+</pre></div>
+</div>
+<p><img alt="png" src="_images/output_8_23.png"/></p>
+</section>
+<section id="dummy-dataset">
+<h4>Dummy Dataset<a class="headerlink" href="#dummy-dataset" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+<div>
+<div class="table-wrapper"><table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>y</th>
+<th>date</th>
+<th>marketing</th>
+<th>x2</th>
+<th>x3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>2</th>
+<td>8636</td>
+<td>2004-03-31</td>
+<td>1.027692e+06</td>
+<td>0.716752</td>
+<td>316.389974</td>
+</tr>
+<tr>
+<th>3</th>
+<td>8341</td>
+<td>2004-04-30</td>
+<td>1.029835e+06</td>
+<td>0.466509</td>
+<td>318.780107</td>
+</tr>
+<tr>
+<th>4</th>
+<td>7959</td>
+<td>2004-05-31</td>
+<td>1.010071e+06</td>
+<td>0.361299</td>
+<td>324.917503</td>
+</tr>
+<tr>
+<th>5</th>
+<td>8435</td>
+<td>2004-06-30</td>
+<td>1.038529e+06</td>
+<td>0.852623</td>
+<td>316.776026</td>
+</tr>
+<tr>
+<th>6</th>
+<td>8127</td>
+<td>2004-07-31</td>
+<td>1.390691e+06</td>
+<td>0.571951</td>
+<td>314.425310</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Column: </span><span class="si">{</span><span class="n">col</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">col</span><span class="p">])</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Column: y
+</pre></div>
+</div>
+<p><img alt="png" src="_images/output_11_1.png"/></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Column: date
+</pre></div>
+</div>
+<p><img alt="png" src="_images/output_11_3.png"/></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Column: marketing
+</pre></div>
+</div>
+<p><img alt="png" src="_images/output_11_5.png"/></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Column: x2
+</pre></div>
+</div>
+<p><img alt="png" src="_images/output_11_7.png"/></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Column: x3
+</pre></div>
+</div>
+<p><img alt="png" src="_images/output_11_9.png"/></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">:]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">x_train</span><span class="p">,</span> <span class="n">x_test</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="o">-</span><span class="mi">40</span><span class="p">,</span> <span class="p">:],</span> <span class="n">X</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">40</span><span class="p">:,</span> <span class="p">:]</span>
+<span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="o">-</span><span class="mi">40</span><span class="p">],</span> <span class="n">y</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">40</span><span class="p">:]</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="individual-transformers">
+<h3>Individual Transformers<a class="headerlink" href="#individual-transformers" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">tsfeast</span></code> provides individual time series transformers that can be used by themselves or within Scikit-Learn <code class="docutils literal notranslate"><span class="pre">Pipeline</span></code> objects:</p>
+<div class="table-wrapper"><table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Transformer</p></th>
+<th class="head"><p>Parameters</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">OriginalFeatures</span></code></p></td>
+<td><p>None</p></td>
+<td><p>Passes original features through pipeline.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Scaler</span></code></p></td>
+<td><p>None</p></td>
+<td><p>Wraps Scikit-Learn <code class="docutils literal notranslate"><span class="pre">StandardScaler</span></code> to maintain DataFrame columns.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">DateTimeFeatures</span></code></p></td>
+<td><p>date_col: <code class="docutils literal notranslate"><span class="pre">str</span></code>, dt_format: <code class="docutils literal notranslate"><span class="pre">str</span></code>, freq: <code class="docutils literal notranslate"><span class="pre">str</span></code></p></td>
+<td><p>Generates datetime features from a given date column.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">LaggedFeatures</span></code></p></td>
+<td><p>n_lags: <code class="docutils literal notranslate"><span class="pre">int</span></code>, fillna: <code class="docutils literal notranslate"><span class="pre">bool</span></code></p></td>
+<td><p>Generate lag features.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">RollingFeatures</span></code></p></td>
+<td><p>window_lengths: <code class="docutils literal notranslate"><span class="pre">List[int]</span></code>, fillna: <code class="docutils literal notranslate"><span class="pre">bool</span></code></p></td>
+<td><p>Generate rolling features (mean, std, min, max) for each specified window length.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">EwmaFeatures</span></code></p></td>
+<td><p>window_lengths: <code class="docutils literal notranslate"><span class="pre">List[int]</span></code>, fillna: <code class="docutils literal notranslate"><span class="pre">bool</span></code></p></td>
+<td><p>Generate exponentially-weighted moving average for each specified window length.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">ChangeFeatures</span></code></p></td>
+<td><p>period_lengths: <code class="docutils literal notranslate"><span class="pre">List[int]</span></code>, fillna: <code class="docutils literal notranslate"><span class="pre">bool</span></code></p></td>
+<td><p>Generate percent change for all features for each specified period length.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">DifferenceFeatures</span></code></p></td>
+<td><p>n_diffs: <code class="docutils literal notranslate"><span class="pre">int</span></code>, fillna: <code class="docutils literal notranslate"><span class="pre">bool</span></code></p></td>
+<td><p>Generate <code class="docutils literal notranslate"><span class="pre">n</span></code> differences for all features.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">PolyFeatures</span></code></p></td>
+<td><p>degree: <code class="docutils literal notranslate"><span class="pre">int</span></code></p></td>
+<td><p>Generate polynomial features.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">InteractionFeatures</span></code></p></td>
+<td><p>None</p></td>
+<td><p>Wraps Scikit-Learn <code class="docutils literal notranslate"><span class="pre">PolynomialFeatures</span></code> to generate interaction features and maintain DataFrame columns.</p></td>
+</tr>
+</tbody>
+</table></div>
+<section id="notes-on-pipeline-use">
+<h4>Notes on Pipeline Use<a class="headerlink" href="#notes-on-pipeline-use" title="Permalink to this headline">¶</a></h4>
+<p>Behavior of Scikit-Learn <code class="docutils literal notranslate"><span class="pre">Pipeline</span></code> objects is appropriate and intended for <strong>independent</strong> data observations, but not necessarily appropriate for the <strong>temporal dependencies</strong> inherent in time series.</p>
+<p>Scikit-Learn pipelines only call the <code class="docutils literal notranslate"><span class="pre">.transform()</span></code> method during the <code class="docutils literal notranslate"><span class="pre">.predict()</span></code> method, which is appropriate to prevent data leakage in predictions.  However, most of the transformers in this package take a set of features and generate new features; there’s no inherent method to transform some time series features given a fitted estimator.</p>
+<p>For time series lags, changes, etc., we have access to past data for feature generation without risk of data leakage; certain features (e.g. lags) require this to avoid NaNs or zeros. This behavior is appropriate for time series transformations, only.</p>
+</section>
+<section id="generate-datetime-features">
+<h4>Generate DateTime Features<a class="headerlink" href="#generate-datetime-features" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dt</span> <span class="o">=</span> <span class="n">DateTimeFeatures</span><span class="p">(</span><span class="n">date_col</span><span class="o">=</span><span class="s1">'date'</span><span class="p">)</span>
+<span class="n">dt</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+<div>
+<div class="table-wrapper"><table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>year</th>
+<th>quarter</th>
+<th>month</th>
+<th>days_in_month</th>
+<th>bdays_in_month</th>
+<th>leap_year</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>2</th>
+<td>2004</td>
+<td>1</td>
+<td>3</td>
+<td>31</td>
+<td>23</td>
+<td>1</td>
+</tr>
+<tr>
+<th>3</th>
+<td>2004</td>
+<td>2</td>
+<td>4</td>
+<td>30</td>
+<td>22</td>
+<td>1</td>
+</tr>
+<tr>
+<th>4</th>
+<td>2004</td>
+<td>2</td>
+<td>5</td>
+<td>31</td>
+<td>20</td>
+<td>1</td>
+</tr>
+<tr>
+<th>5</th>
+<td>2004</td>
+<td>2</td>
+<td>6</td>
+<td>30</td>
+<td>22</td>
+<td>1</td>
+</tr>
+<tr>
+<th>6</th>
+<td>2004</td>
+<td>3</td>
+<td>7</td>
+<td>31</td>
+<td>21</td>
+<td>1</td>
+</tr>
+<tr>
+<th>...</th>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr>
+<th>195</th>
+<td>2020</td>
+<td>2</td>
+<td>4</td>
+<td>30</td>
+<td>22</td>
+<td>1</td>
+</tr>
+<tr>
+<th>196</th>
+<td>2020</td>
+<td>2</td>
+<td>5</td>
+<td>31</td>
+<td>20</td>
+<td>1</td>
+</tr>
+<tr>
+<th>197</th>
+<td>2020</td>
+<td>2</td>
+<td>6</td>
+<td>30</td>
+<td>22</td>
+<td>1</td>
+</tr>
+<tr>
+<th>198</th>
+<td>2020</td>
+<td>3</td>
+<td>7</td>
+<td>31</td>
+<td>22</td>
+<td>1</td>
+</tr>
+<tr>
+<th>199</th>
+<td>2020</td>
+<td>3</td>
+<td>8</td>
+<td>31</td>
+<td>21</td>
+<td>1</td>
+</tr>
+</tbody>
+</table></div>
+<p>198 rows × 6 columns</p>
+</div>
+</section>
+<section id="generate-interaction-features">
+<h4>Generate Interaction Features<a class="headerlink" href="#generate-interaction-features" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">feat</span> <span class="o">=</span> <span class="n">LagFeatures</span><span class="p">(</span><span class="n">n_lags</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">feat</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">:],</span> <span class="n">y</span><span class="p">)</span>  <span class="c1"># skipping date column</span>
+</pre></div>
+</div>
+<div>
+<div class="table-wrapper"><table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>marketing_lag_1</th>
+<th>x2_lag_1</th>
+<th>x3_lag_1</th>
+<th>marketing_lag_2</th>
+<th>x2_lag_2</th>
+<th>x3_lag_2</th>
+<th>marketing_lag_3</th>
+<th>x2_lag_3</th>
+<th>x3_lag_3</th>
+<th>marketing_lag_4</th>
+<th>x2_lag_4</th>
+<th>x3_lag_4</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>2</th>
+<td>0.000000e+00</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000e+00</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000e+00</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000e+00</td>
+<td>0.000000</td>
+<td>0.000000</td>
+</tr>
+<tr>
+<th>3</th>
+<td>1.027692e+06</td>
+<td>0.716752</td>
+<td>316.389974</td>
+<td>0.000000e+00</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000e+00</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000e+00</td>
+<td>0.000000</td>
+<td>0.000000</td>
+</tr>
+<tr>
+<th>4</th>
+<td>1.029835e+06</td>
+<td>0.466509</td>
+<td>318.780107</td>
+<td>1.027692e+06</td>
+<td>0.716752</td>
+<td>316.389974</td>
+<td>0.000000e+00</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000e+00</td>
+<td>0.000000</td>
+<td>0.000000</td>
+</tr>
+<tr>
+<th>5</th>
+<td>1.010071e+06</td>
+<td>0.361299</td>
+<td>324.917503</td>
+<td>1.029835e+06</td>
+<td>0.466509</td>
+<td>318.780107</td>
+<td>1.027692e+06</td>
+<td>0.716752</td>
+<td>316.389974</td>
+<td>0.000000e+00</td>
+<td>0.000000</td>
+<td>0.000000</td>
+</tr>
+<tr>
+<th>6</th>
+<td>1.038529e+06</td>
+<td>0.852623</td>
+<td>316.776026</td>
+<td>1.010071e+06</td>
+<td>0.361299</td>
+<td>324.917503</td>
+<td>1.029835e+06</td>
+<td>0.466509</td>
+<td>318.780107</td>
+<td>1.027692e+06</td>
+<td>0.716752</td>
+<td>316.389974</td>
+</tr>
+<tr>
+<th>...</th>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr>
+<th>195</th>
+<td>1.971301e+06</td>
+<td>0.420222</td>
+<td>313.911203</td>
+<td>1.968782e+06</td>
+<td>0.648398</td>
+<td>327.288221</td>
+<td>1.973312e+06</td>
+<td>0.860346</td>
+<td>319.932653</td>
+<td>1.967943e+06</td>
+<td>0.216269</td>
+<td>317.692606</td>
+</tr>
+<tr>
+<th>196</th>
+<td>1.981624e+06</td>
+<td>0.188104</td>
+<td>324.110324</td>
+<td>1.971301e+06</td>
+<td>0.420222</td>
+<td>313.911203</td>
+<td>1.968782e+06</td>
+<td>0.648398</td>
+<td>327.288221</td>
+<td>1.973312e+06</td>
+<td>0.860346</td>
+<td>319.932653</td>
+</tr>
+<tr>
+<th>197</th>
+<td>1.977056e+06</td>
+<td>0.339024</td>
+<td>315.926738</td>
+<td>1.981624e+06</td>
+<td>0.188104</td>
+<td>324.110324</td>
+<td>1.971301e+06</td>
+<td>0.420222</td>
+<td>313.911203</td>
+<td>1.968782e+06</td>
+<td>0.648398</td>
+<td>327.288221</td>
+</tr>
+<tr>
+<th>198</th>
+<td>1.978757e+06</td>
+<td>0.703778</td>
+<td>320.409889</td>
+<td>1.977056e+06</td>
+<td>0.339024</td>
+<td>315.926738</td>
+<td>1.981624e+06</td>
+<td>0.188104</td>
+<td>324.110324</td>
+<td>1.971301e+06</td>
+<td>0.420222</td>
+<td>313.911203</td>
+</tr>
+<tr>
+<th>199</th>
+<td>2.332540e+06</td>
+<td>0.204360</td>
+<td>319.029524</td>
+<td>1.978757e+06</td>
+<td>0.703778</td>
+<td>320.409889</td>
+<td>1.977056e+06</td>
+<td>0.339024</td>
+<td>315.926738</td>
+<td>1.981624e+06</td>
+<td>0.188104</td>
+<td>324.110324</td>
+</tr>
+</tbody>
+</table></div>
+<p>198 rows × 12 columns</p>
+</div>
+</section>
+</section>
+<section id="timeseriesfeatures-class">
+<h3>TimeSeriesFeatures Class<a class="headerlink" href="#timeseriesfeatures-class" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">tsfeast</span></code> also includes a <code class="docutils literal notranslate"><span class="pre">TimeSeriesFeatures</span></code> class that generates multiple time series features in one transformer. The only required parameter is the column of datetimes; the optional parameters control what additional transformers are included.</p>
+<div class="table-wrapper"><table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>datetime</p></td>
+<td><p>str</p></td>
+<td><p>Column that holds datetime information</p></td>
+</tr>
+<tr class="row-odd"><td><p>trend</p></td>
+<td><p>str</p></td>
+<td><p>Trend to include, options are {‘n’: no trend, ‘c’: constant only, ‘t’: linear trend, ‘ct’: constant and linear trend, ‘ctt’: constant, linear and quadratric trend}; defaults to no trend</p></td>
+</tr>
+<tr class="row-even"><td><p>lags</p></td>
+<td><p>int</p></td>
+<td><p>Number of lags to include (optional).</p></td>
+</tr>
+<tr class="row-odd"><td><p>rolling</p></td>
+<td><p>List[int]</p></td>
+<td><p>Number of rolling windows to include (optional).</p></td>
+</tr>
+<tr class="row-even"><td><p>ewma</p></td>
+<td><p>List[int]</p></td>
+<td><p>Number of ewma windows to include (optional).</p></td>
+</tr>
+<tr class="row-odd"><td><p>pct_chg</p></td>
+<td><p>List[int]</p></td>
+<td><p>Periods to use for percent change features (optional).</p></td>
+</tr>
+<tr class="row-even"><td><p>diffs</p></td>
+<td><p>int</p></td>
+<td><p>Number of differences to include (optional).</p></td>
+</tr>
+<tr class="row-odd"><td><p>polynomial</p></td>
+<td><p>int</p></td>
+<td><p>Polynomial(s) to include (optional).</p></td>
+</tr>
+<tr class="row-even"><td><p>interactions</p></td>
+<td><p>bool</p></td>
+<td><p>Whether to include interactions of original featutes; deault True.</p></td>
+</tr>
+<tr class="row-odd"><td><p>fillna</p></td>
+<td><p>bool</p></td>
+<td><p>Whether to fill NaN values with zero; default True.</p></td>
+</tr>
+</tbody>
+</table></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">feat</span> <span class="o">=</span> <span class="n">TimeSeriesFeatures</span><span class="p">(</span>
+    <span class="n">datetime</span><span class="o">=</span><span class="s1">'date'</span><span class="p">,</span>
+    <span class="n">trend</span><span class="o">=</span><span class="s1">'t'</span><span class="p">,</span>
+    <span class="n">lags</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+    <span class="n">interactions</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">polynomial</span><span class="o">=</span><span class="mi">3</span>
+<span class="p">)</span>
+<span class="n">features</span> <span class="o">=</span> <span class="n">feat</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">features</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+<div>
+<div class="table-wrapper"><table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>trend</th>
+<th>original__marketing</th>
+<th>original__x2</th>
+<th>original__x3</th>
+<th>datetime__year</th>
+<th>datetime__quarter</th>
+<th>datetime__month</th>
+<th>datetime__days_in_month</th>
+<th>datetime__bdays_in_month</th>
+<th>datetime__leap_year</th>
+<th>...</th>
+<th>features__lags__x3_lag_3</th>
+<th>features__lags__marketing_lag_4</th>
+<th>features__lags__x2_lag_4</th>
+<th>features__lags__x3_lag_4</th>
+<th>features__polynomial__marketing^2</th>
+<th>features__polynomial__x2^2</th>
+<th>features__polynomial__x3^2</th>
+<th>features__polynomial__marketing^3</th>
+<th>features__polynomial__x2^3</th>
+<th>features__polynomial__x3^3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>0</th>
+<td>1.0</td>
+<td>1.027692e+06</td>
+<td>0.716752</td>
+<td>316.389974</td>
+<td>2004.0</td>
+<td>1.0</td>
+<td>3.0</td>
+<td>31.0</td>
+<td>23.0</td>
+<td>1.0</td>
+<td>...</td>
+<td>0.000000</td>
+<td>0.000000e+00</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>1.056152e+12</td>
+<td>0.513733</td>
+<td>100102.615631</td>
+<td>1.085399e+18</td>
+<td>0.368219</td>
+<td>3.167146e+07</td>
+</tr>
+<tr>
+<th>1</th>
+<td>2.0</td>
+<td>1.029835e+06</td>
+<td>0.466509</td>
+<td>318.780107</td>
+<td>2004.0</td>
+<td>2.0</td>
+<td>4.0</td>
+<td>30.0</td>
+<td>22.0</td>
+<td>1.0</td>
+<td>...</td>
+<td>0.000000</td>
+<td>0.000000e+00</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>1.060560e+12</td>
+<td>0.217631</td>
+<td>101620.756699</td>
+<td>1.092202e+18</td>
+<td>0.101527</td>
+<td>3.239468e+07</td>
+</tr>
+<tr>
+<th>2</th>
+<td>3.0</td>
+<td>1.010071e+06</td>
+<td>0.361299</td>
+<td>324.917503</td>
+<td>2004.0</td>
+<td>2.0</td>
+<td>5.0</td>
+<td>31.0</td>
+<td>20.0</td>
+<td>1.0</td>
+<td>...</td>
+<td>0.000000</td>
+<td>0.000000e+00</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>1.020244e+12</td>
+<td>0.130537</td>
+<td>105571.383672</td>
+<td>1.030520e+18</td>
+<td>0.047163</td>
+<td>3.430199e+07</td>
+</tr>
+<tr>
+<th>3</th>
+<td>4.0</td>
+<td>1.038529e+06</td>
+<td>0.852623</td>
+<td>316.776026</td>
+<td>2004.0</td>
+<td>2.0</td>
+<td>6.0</td>
+<td>30.0</td>
+<td>22.0</td>
+<td>1.0</td>
+<td>...</td>
+<td>316.389974</td>
+<td>0.000000e+00</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>1.078543e+12</td>
+<td>0.726966</td>
+<td>100347.050373</td>
+<td>1.120098e+18</td>
+<td>0.619827</td>
+<td>3.178754e+07</td>
+</tr>
+<tr>
+<th>4</th>
+<td>5.0</td>
+<td>1.390691e+06</td>
+<td>0.571951</td>
+<td>314.425310</td>
+<td>2004.0</td>
+<td>3.0</td>
+<td>7.0</td>
+<td>31.0</td>
+<td>21.0</td>
+<td>1.0</td>
+<td>...</td>
+<td>318.780107</td>
+<td>1.027692e+06</td>
+<td>0.716752</td>
+<td>316.389974</td>
+<td>1.934020e+12</td>
+<td>0.327128</td>
+<td>98863.275608</td>
+<td>2.689624e+18</td>
+<td>0.187101</td>
+<td>3.108512e+07</td>
+</tr>
+</tbody>
+</table></div>
+<p>5 rows × 28 columns</p>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">features</span><span class="o">.</span><span class="n">columns</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>['trend',
+ 'original__marketing',
+ 'original__x2',
+ 'original__x3',
+ 'datetime__year',
+ 'datetime__quarter',
+ 'datetime__month',
+ 'datetime__days_in_month',
+ 'datetime__bdays_in_month',
+ 'datetime__leap_year',
+ 'features__lags__marketing_lag_1',
+ 'features__lags__x2_lag_1',
+ 'features__lags__x3_lag_1',
+ 'features__lags__marketing_lag_2',
+ 'features__lags__x2_lag_2',
+ 'features__lags__x3_lag_2',
+ 'features__lags__marketing_lag_3',
+ 'features__lags__x2_lag_3',
+ 'features__lags__x3_lag_3',
+ 'features__lags__marketing_lag_4',
+ 'features__lags__x2_lag_4',
+ 'features__lags__x3_lag_4',
+ 'features__polynomial__marketing^2',
+ 'features__polynomial__x2^2',
+ 'features__polynomial__x3^2',
+ 'features__polynomial__marketing^3',
+ 'features__polynomial__x2^3',
+ 'features__polynomial__x3^3']
+</pre></div>
+</div>
+</section>
+<section id="pipeline-example">
+<h3>Pipeline Example<a class="headerlink" href="#pipeline-example" title="Permalink to this headline">¶</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">TimeSeriesFeatures</span></code> class can be used as a feature generation step within a Scikit-Learn <code class="docutils literal notranslate"><span class="pre">Pipeline</span></code>. Given the temporal nature of the data and models, this may not be appropriate for all use cases– though the class remains <em>fully compatible</em> with <code class="docutils literal notranslate"><span class="pre">Pipeline</span></code> objects.</p>
+<p>We’ll instantiate a <code class="docutils literal notranslate"><span class="pre">TimeSeriesFeatures</span></code> object with a linear trend, four lags and no interactions.  Our pipeline will include feature generation, feature scaling and feature selection steps, before modeling with ordinary least squares.</p>
+<p><em>Note: the <code class="docutils literal notranslate"><span class="pre">ForwardSelector</span></code> class is available in the <code class="docutils literal notranslate"><span class="pre">step-select</span></code> package (https://pypi.org/project/step-select/).</em></p>
+<p>The pipeline creates a total of 22 features, before selecting only four to use in the final model. Note that 3 of the 4 final features corresponed with features from our “true model” that created the dummy dataset (‘trend’, ‘datetime__bdays_in_month’ and ‘marketing_lag_2’).</p>
+<p>Regression diagnostic plots show evidence of slightly non-normal residuals and (1) autoregressive term (again, as specified in the “true model”).  We’ll address the autoregressive term in the next example.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">feat</span> <span class="o">=</span> <span class="n">TimeSeriesFeatures</span><span class="p">(</span>
+    <span class="n">datetime</span><span class="o">=</span><span class="s1">'date'</span><span class="p">,</span>
+    <span class="n">trend</span><span class="o">=</span><span class="s1">'t'</span><span class="p">,</span>
+    <span class="n">lags</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+    <span class="n">interactions</span><span class="o">=</span><span class="kc">False</span>
+<span class="p">)</span>
+
+<span class="n">pl</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([</span>
+    <span class="p">(</span><span class="s1">'feature_extraction'</span><span class="p">,</span> <span class="n">feat</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">'scaler'</span><span class="p">,</span> <span class="n">StandardScaler</span><span class="p">()),</span>
+    <span class="p">(</span><span class="s1">'feature_selection'</span><span class="p">,</span> <span class="n">ForwardSelector</span><span class="p">(</span><span class="n">metric</span><span class="o">=</span><span class="s1">'bic'</span><span class="p">)),</span>
+    <span class="p">(</span><span class="s1">'regression'</span><span class="p">,</span> <span class="n">LinearRegression</span><span class="p">())</span>
+<span class="p">])</span>
+
+<span class="n">pl</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Pipeline(steps=[('feature_extraction',
+                 TimeSeriesFeatures(datetime='date', interactions=False, lags=4,
+                                    trend='t')),
+                ('scaler', StandardScaler()),
+                ('feature_selection', ForwardSelector(metric='bic')),
+                ('regression', LinearRegression())])
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pl</span><span class="o">.</span><span class="n">named_steps</span><span class="o">.</span><span class="n">feature_extraction</span><span class="o">.</span><span class="n">output_features_</span>
+</pre></div>
+</div>
+<div>
+<div class="table-wrapper"><table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>trend</th>
+<th>original__marketing</th>
+<th>original__x2</th>
+<th>original__x3</th>
+<th>datetime__year</th>
+<th>datetime__quarter</th>
+<th>datetime__month</th>
+<th>datetime__days_in_month</th>
+<th>datetime__bdays_in_month</th>
+<th>datetime__leap_year</th>
+<th>...</th>
+<th>features__lags__x3_lag_1</th>
+<th>features__lags__marketing_lag_2</th>
+<th>features__lags__x2_lag_2</th>
+<th>features__lags__x3_lag_2</th>
+<th>features__lags__marketing_lag_3</th>
+<th>features__lags__x2_lag_3</th>
+<th>features__lags__x3_lag_3</th>
+<th>features__lags__marketing_lag_4</th>
+<th>features__lags__x2_lag_4</th>
+<th>features__lags__x3_lag_4</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>0</th>
+<td>1.0</td>
+<td>1.027692e+06</td>
+<td>0.716752</td>
+<td>316.389974</td>
+<td>2004.0</td>
+<td>1.0</td>
+<td>3.0</td>
+<td>31.0</td>
+<td>23.0</td>
+<td>1.0</td>
+<td>...</td>
+<td>0.000000</td>
+<td>0.000000e+00</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000e+00</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000e+00</td>
+<td>0.000000</td>
+<td>0.000000</td>
+</tr>
+<tr>
+<th>1</th>
+<td>2.0</td>
+<td>1.029835e+06</td>
+<td>0.466509</td>
+<td>318.780107</td>
+<td>2004.0</td>
+<td>2.0</td>
+<td>4.0</td>
+<td>30.0</td>
+<td>22.0</td>
+<td>1.0</td>
+<td>...</td>
+<td>316.389974</td>
+<td>0.000000e+00</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000e+00</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000e+00</td>
+<td>0.000000</td>
+<td>0.000000</td>
+</tr>
+<tr>
+<th>2</th>
+<td>3.0</td>
+<td>1.010071e+06</td>
+<td>0.361299</td>
+<td>324.917503</td>
+<td>2004.0</td>
+<td>2.0</td>
+<td>5.0</td>
+<td>31.0</td>
+<td>20.0</td>
+<td>1.0</td>
+<td>...</td>
+<td>318.780107</td>
+<td>1.027692e+06</td>
+<td>0.716752</td>
+<td>316.389974</td>
+<td>0.000000e+00</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000e+00</td>
+<td>0.000000</td>
+<td>0.000000</td>
+</tr>
+<tr>
+<th>3</th>
+<td>4.0</td>
+<td>1.038529e+06</td>
+<td>0.852623</td>
+<td>316.776026</td>
+<td>2004.0</td>
+<td>2.0</td>
+<td>6.0</td>
+<td>30.0</td>
+<td>22.0</td>
+<td>1.0</td>
+<td>...</td>
+<td>324.917503</td>
+<td>1.029835e+06</td>
+<td>0.466509</td>
+<td>318.780107</td>
+<td>1.027692e+06</td>
+<td>0.716752</td>
+<td>316.389974</td>
+<td>0.000000e+00</td>
+<td>0.000000</td>
+<td>0.000000</td>
+</tr>
+<tr>
+<th>4</th>
+<td>5.0</td>
+<td>1.390691e+06</td>
+<td>0.571951</td>
+<td>314.425310</td>
+<td>2004.0</td>
+<td>3.0</td>
+<td>7.0</td>
+<td>31.0</td>
+<td>21.0</td>
+<td>1.0</td>
+<td>...</td>
+<td>316.776026</td>
+<td>1.010071e+06</td>
+<td>0.361299</td>
+<td>324.917503</td>
+<td>1.029835e+06</td>
+<td>0.466509</td>
+<td>318.780107</td>
+<td>1.027692e+06</td>
+<td>0.716752</td>
+<td>316.389974</td>
+</tr>
+<tr>
+<th>...</th>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr>
+<th>153</th>
+<td>154.0</td>
+<td>1.752743e+06</td>
+<td>0.060631</td>
+<td>322.823879</td>
+<td>2016.0</td>
+<td>4.0</td>
+<td>12.0</td>
+<td>31.0</td>
+<td>21.0</td>
+<td>1.0</td>
+<td>...</td>
+<td>312.156618</td>
+<td>1.750890e+06</td>
+<td>0.537173</td>
+<td>319.820019</td>
+<td>2.110972e+06</td>
+<td>0.368344</td>
+<td>324.492379</td>
+<td>2.127929e+06</td>
+<td>0.320161</td>
+<td>322.674221</td>
+</tr>
+<tr>
+<th>154</th>
+<td>155.0</td>
+<td>1.782890e+06</td>
+<td>0.368878</td>
+<td>313.360448</td>
+<td>2017.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>31.0</td>
+<td>20.0</td>
+<td>0.0</td>
+<td>...</td>
+<td>322.823879</td>
+<td>1.762560e+06</td>
+<td>0.296868</td>
+<td>312.156618</td>
+<td>1.750890e+06</td>
+<td>0.537173</td>
+<td>319.820019</td>
+<td>2.110972e+06</td>
+<td>0.368344</td>
+<td>324.492379</td>
+</tr>
+<tr>
+<th>155</th>
+<td>156.0</td>
+<td>1.788336e+06</td>
+<td>0.254549</td>
+<td>321.235197</td>
+<td>2017.0</td>
+<td>1.0</td>
+<td>2.0</td>
+<td>28.0</td>
+<td>19.0</td>
+<td>0.0</td>
+<td>...</td>
+<td>313.360448</td>
+<td>1.752743e+06</td>
+<td>0.060631</td>
+<td>322.823879</td>
+<td>1.762560e+06</td>
+<td>0.296868</td>
+<td>312.156618</td>
+<td>1.750890e+06</td>
+<td>0.537173</td>
+<td>319.820019</td>
+</tr>
+<tr>
+<th>156</th>
+<td>157.0</td>
+<td>1.790967e+06</td>
+<td>0.385921</td>
+<td>316.450145</td>
+<td>2017.0</td>
+<td>1.0</td>
+<td>3.0</td>
+<td>31.0</td>
+<td>23.0</td>
+<td>0.0</td>
+<td>...</td>
+<td>321.235197</td>
+<td>1.782890e+06</td>
+<td>0.368878</td>
+<td>313.360448</td>
+<td>1.752743e+06</td>
+<td>0.060631</td>
+<td>322.823879</td>
+<td>1.762560e+06</td>
+<td>0.296868</td>
+<td>312.156618</td>
+</tr>
+<tr>
+<th>157</th>
+<td>158.0</td>
+<td>1.811012e+06</td>
+<td>0.196960</td>
+<td>315.360643</td>
+<td>2017.0</td>
+<td>2.0</td>
+<td>4.0</td>
+<td>30.0</td>
+<td>20.0</td>
+<td>0.0</td>
+<td>...</td>
+<td>316.450145</td>
+<td>1.788336e+06</td>
+<td>0.254549</td>
+<td>321.235197</td>
+<td>1.782890e+06</td>
+<td>0.368878</td>
+<td>313.360448</td>
+<td>1.752743e+06</td>
+<td>0.060631</td>
+<td>322.823879</td>
+</tr>
+</tbody>
+</table></div>
+<p>158 rows × 22 columns</p>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">new_features</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">named_steps</span><span class="o">.</span><span class="n">feature_extraction</span><span class="o">.</span><span class="n">feature_names_</span>
+<span class="n">mask</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">named_steps</span><span class="o">.</span><span class="n">feature_selection</span><span class="o">.</span><span class="n">get_support</span><span class="p">()</span>
+<span class="n">new_features</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Index(['trend', 'datetime__bdays_in_month', 'features__lags__marketing_lag_2',
+       'features__lags__x3_lag_2'],
+      dtype='object')
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">get_results</span><span class="p">(</span><span class="n">pl</span><span class="p">,</span> <span class="n">x_train</span><span class="p">,</span> <span class="n">x_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+</pre></div>
+</div>
+<div>
+<div class="table-wrapper"><table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>training</th>
+<th>testing</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>MAE</th>
+<td>373.819325</td>
+<td>201.999695</td>
+</tr>
+<tr>
+<th>MAPE</th>
+<td>0.040046</td>
+<td>0.017827</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">resid</span> <span class="o">=</span> <span class="p">(</span><span class="n">y_train</span> <span class="o">-</span> <span class="n">pl</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x_train</span><span class="p">))</span>
+<span class="n">plot_diag</span><span class="p">(</span><span class="n">resid</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">2</span><span class="p">:])</span>  <span class="c1"># throw out first two residuals b/c of lags</span>
+</pre></div>
+</div>
+<p><img alt="png" src="_images/output_26_0.png"/></p>
+</section>
+<section id="arma-regressor">
+<h3>ARMA Regressor<a class="headerlink" href="#arma-regressor" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">tsfeast</span></code> includes a <code class="docutils literal notranslate"><span class="pre">models</span></code> module that provides an <code class="docutils literal notranslate"><span class="pre">ARMARegressor</span></code> class for extending Scikit-Learn regressors by adding support for AR/MA or ARIMA residuals. It accepts an arbitrary Scikit-Learn regressor and a tuple indicating the <code class="docutils literal notranslate"><span class="pre">(p,d,q)</span></code> order for the residuals model.</p>
+<div class="table-wrapper"><table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Attribute</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">estimator</span></code></p></td>
+<td><p>The Scikit-Learn regressor.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">order</span></code></p></td>
+<td><p>The (p,d,q,) order of the ARMA model.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">intercept_</span></code></p></td>
+<td><p>The fitted estimator’s intercept.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">coef_</span></code></p></td>
+<td><p>The fitted estimator’s coefficients.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">arma_</span></code></p></td>
+<td><p>The fitted ARMA model.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">fitted_values_</span></code></p></td>
+<td><p>The combined estimator and ARMA fitted values.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">resid_</span></code></p></td>
+<td><p>The combined estimator and ARMA residual values.</p></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Note</strong>
+The <code class="docutils literal notranslate"><span class="pre">predict</span></code> method should not be used to get fitted values from the training set; rather, users should access this same data using the <code class="docutils literal notranslate"><span class="pre">fitted_values_</span></code> attribute.  The <code class="docutils literal notranslate"><span class="pre">predict</span></code> method calls the ARMA regresor’s forecast method, which generates predictions from the last time step in the training data, thus would not match, temporally, in a <code class="docutils literal notranslate"><span class="pre">predict</span></code> call with training data.</p>
+<p>The pipeline follows the same steps as the previous example, with the only change beging the regression model– in this case, the <code class="docutils literal notranslate"><span class="pre">ARMARegressor</span></code>.  Metrics on test set slightly improve and we no longer see evidence of autoregressive term in the residuals.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">feat</span> <span class="o">=</span> <span class="n">TimeSeriesFeatures</span><span class="p">(</span>
+    <span class="n">datetime</span><span class="o">=</span><span class="s1">'date'</span><span class="p">,</span>
+    <span class="n">trend</span><span class="o">=</span><span class="s1">'t'</span><span class="p">,</span>
+    <span class="n">lags</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+    <span class="n">interactions</span><span class="o">=</span><span class="kc">False</span>
+<span class="p">)</span>
+
+<span class="n">mod</span> <span class="o">=</span> <span class="n">ARMARegressor</span><span class="p">(</span>
+    <span class="n">estimator</span><span class="o">=</span><span class="n">PoissonRegressor</span><span class="p">(),</span>
+    <span class="n">order</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">pl</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([</span>
+    <span class="p">(</span><span class="s1">'feature_extraction'</span><span class="p">,</span> <span class="n">feat</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">'scaler'</span><span class="p">,</span> <span class="n">StandardScaler</span><span class="p">()),</span>
+    <span class="p">(</span><span class="s1">'feature_selection'</span><span class="p">,</span> <span class="n">ForwardSelector</span><span class="p">(</span><span class="n">metric</span><span class="o">=</span><span class="s1">'bic'</span><span class="p">)),</span>
+    <span class="p">(</span><span class="s1">'regression'</span><span class="p">,</span> <span class="n">mod</span><span class="p">)</span>
+<span class="p">])</span>
+
+<span class="n">pl</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Pipeline(steps=[('feature_extraction',
+                 TimeSeriesFeatures(datetime='date', interactions=False, lags=4,
+                                    trend='t')),
+                ('scaler', StandardScaler()),
+                ('feature_selection', ForwardSelector(metric='bic')),
+                ('regression', ARMARegressor(estimator=PoissonRegressor()))])
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">new_features</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">named_steps</span><span class="o">.</span><span class="n">feature_extraction</span><span class="o">.</span><span class="n">feature_names_</span>
+<span class="n">mask</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">named_steps</span><span class="o">.</span><span class="n">feature_selection</span><span class="o">.</span><span class="n">get_support</span><span class="p">()</span>
+<span class="n">new_features</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Index(['trend', 'datetime__bdays_in_month', 'features__lags__marketing_lag_2',
+       'features__lags__x3_lag_2'],
+      dtype='object')
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">get_results</span><span class="p">(</span><span class="n">pl</span><span class="p">,</span> <span class="n">x_train</span><span class="p">,</span> <span class="n">x_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+</pre></div>
+</div>
+<div>
+<div class="table-wrapper"><table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>training</th>
+<th>testing</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>MAE</th>
+<td>409.572082</td>
+<td>143.269046</td>
+</tr>
+<tr>
+<th>MAPE</th>
+<td>0.043573</td>
+<td>0.012745</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">plot_diag</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">named_steps</span><span class="o">.</span><span class="n">regression</span><span class="o">.</span><span class="n">resid_</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><img alt="png" src="_images/output_31_0.png"/></p>
+</section>
+</section>
+</section>
 
       </article>
       <footer>
-
+        
         <div class="related-pages">
           <a class="next-page" href="modules.html">
               <div class="page-info">
@@ -166,9 +1682,9 @@
                 <div class="context">
                   <span>Previous</span>
                 </div>
-
+                
                 <div class="title">Home</div>
-
+                
               </div>
             </a>
         </div>
@@ -186,12 +1702,12 @@
               Show Source
             </a>
         </div>
-
+        
       </footer>
     </div>
     <aside class="toc-drawer">
-
-
+      
+      
       <div class="toc-sticky toc-scroll">
         <div class="toc-title-container">
           <span class="toc-title">
@@ -203,8 +1719,29 @@
             <ul>
 <li><a class="reference internal" href="#">Quickstart</a></li>
 <li><a class="reference internal" href="#tsfeast">tsfeast</a><ul>
-<li><a class="reference internal" href="#install">Install</a></li>
-<li><a class="reference internal" href="#use">Use</a></li>
+<li><a class="reference internal" href="#installation">Installation</a><ul>
+<li><a class="reference internal" href="#from-pypi">From PyPi</a></li>
+<li><a class="reference internal" href="#from-this-repo">From this repo</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#use">Use</a><ul>
+<li><a class="reference internal" href="#preliminaries">Preliminaries</a></li>
+<li><a class="reference internal" href="#example-data">Example Data</a><ul>
+<li><a class="reference internal" href="#sales-components">Sales Components</a></li>
+<li><a class="reference internal" href="#dummy-dataset">Dummy Dataset</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#individual-transformers">Individual Transformers</a><ul>
+<li><a class="reference internal" href="#notes-on-pipeline-use">Notes on Pipeline Use</a></li>
+<li><a class="reference internal" href="#generate-datetime-features">Generate DateTime Features</a></li>
+<li><a class="reference internal" href="#generate-interaction-features">Generate Interaction Features</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#timeseriesfeatures-class">TimeSeriesFeatures Class</a></li>
+<li><a class="reference internal" href="#pipeline-example">Pipeline Example</a></li>
+<li><a class="reference internal" href="#arma-regressor">ARMA Regressor</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -212,10 +1749,10 @@
           </div>
         </div>
       </div>
-
-
+      
+      
     </aside>
-  </main>
+  </div>
 </div><script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>

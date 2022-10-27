@@ -1,18 +1,34 @@
 """Time series features module."""
+from typing import List, Optional
+
+import pandas as pd
 from sklearn.compose import ColumnTransformer
 from sklearn.pipeline import FeatureUnion
 from statsmodels.tsa.tsatools import add_trend
 
-from tsfeast.transformers import *  # pylint: disable=wildcard-import
+from tsfeast.transformers import (
+    BaseTransformer,
+    ChangeFeatures,
+    DateTimeFeatures,
+    DifferenceFeatures,
+    EwmaFeatures,
+    InteractionFeatures,
+    LagFeatures,
+    OriginalFeatures,
+    PolyFeatures,
+    RollingFeatures,
+)
 
 
 class TimeSeriesFeatures(BaseTransformer):
     """Generate multiple time series feature in one transformer."""
+
     def __init__(
             self, datetime: str, trend: str = 'n', lags: Optional[int] = None,
             rolling: Optional[List[int]] = None, ewma: Optional[List[int]] = None,
             pct_chg: Optional[List[int]] = None, diffs: Optional[int] = None,
-            polynomial: Optional[int] = None, interactions: bool = True
+            polynomial: Optional[int] = None, interactions: bool = True,
+            fillna: bool = True
     ):
         """Instanatiate transformer object."""
         super().__init__()
@@ -25,9 +41,13 @@ class TimeSeriesFeatures(BaseTransformer):
         self.diffs = diffs
         self.polynomial = polynomial
         self.interactions = interactions
+        self.fillna = fillna
 
-    def _fit(self, X, y=None):
+    def _transform(self, X, y=None):
         """Fit transformer to data."""
+        if not hasattr(self, 'freq_'):
+            self.freq_ = pd.infer_freq(pd.DatetimeIndex(pd.to_datetime(X[self.datetime])))
+
         transforms = {
             'lags': LagFeatures(self.lags),
             'rolling': RollingFeatures(self.rolling),
@@ -44,13 +64,13 @@ class TimeSeriesFeatures(BaseTransformer):
             union = FeatureUnion([(k, v) for k, v in transforms.items() if k in self.steps_])
             transformer = ColumnTransformer([
                 ('original', OriginalFeatures(), numeric),
-                ('datetime', DateTimeFeatures(), self.datetime),
+                ('datetime', DateTimeFeatures(freq=self.freq_), self.datetime),
                 ('features', union, numeric)
             ])
         except ValueError:
             transformer = ColumnTransformer([
                 ('original', OriginalFeatures(), numeric),
-                ('datetime', DateTimeFeatures(), self.datetime)
+                ('datetime', DateTimeFeatures(freq=self.freq_), self.datetime)
             ])
 
         features = pd.DataFrame(
@@ -58,4 +78,6 @@ class TimeSeriesFeatures(BaseTransformer):
         )
         if self.trend:
             features = add_trend(features, trend=self.trend, prepend=True, has_constant='add')
+        if self.fillna:
+            return features.fillna(0)
         return features

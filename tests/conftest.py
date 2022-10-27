@@ -33,16 +33,17 @@ def exog():
     return X
 
 
+@pytest.fixture()
+def exog_dt():
+    return X.reset_index()
+
+
 @pytest.fixture
 def date_col():
     return dates
 
 
-# @pytest.fixture
-# def tsfe_uni():
-#     return TSFeatureExtractor(y)
-#
-#
-# @pytest.fixture
-# def tsfe_multi():
-#     return TSFeatureExtractor(X)
+def train_test():
+    x_train, x_test = X.iloc[:10, :], X.iloc[-2:, :]
+    y_train, y_test = y.iloc[:10], y.iloc[-2]
+    return x_train, y_train, x_test, y_test
