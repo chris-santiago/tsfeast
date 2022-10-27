@@ -7,6 +7,7 @@ from statsmodels.tsa.statespace.sarimax import SARIMAX
 
 from tsfeast.models import ARMARegressor, TSARegressor
 
+RTOL = 1e-5
 VALID = {
     'arma': {
         'fit': np.array([
@@ -87,7 +88,7 @@ class TestTsaRegressor:
         mod.fit(exog, endog_uni)
         actual = mod.fitted_values_
         expected = VALID['tsa']['fit']
-        np.testing.assert_allclose(actual, expected)
+        np.testing.assert_allclose(actual, expected, rtol=RTOL)
 
     def test_fit_kwargs(self, exog, endog_uni):
         mod = TSARegressor(
@@ -98,7 +99,7 @@ class TestTsaRegressor:
         mod.fit(exog, endog_uni)
         actual = mod.fitted_values_
         expected = VALID['tsa']['with_kwargs']
-        np.testing.assert_allclose(actual, expected)
+        np.testing.assert_allclose(actual, expected, rtol=RTOL)
 
     def test_with_exog(self, exog, endog_uni):
         mod = TSARegressor(
