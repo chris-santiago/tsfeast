@@ -3,12 +3,12 @@ import nox
 PROJECT = 'tsfeast'
 
 
-@nox.session(reuse_venv=True, venv_backend='conda', python=3.6)
-def test36(session):
-    """Run unit tests in current Python 3.6 environment."""
-    session.install('pytest', 'pytest-cov')
-    session.install('.')
-    session.run('pytest')
+# @nox.session(reuse_venv=True, venv_backend='conda', python=3.6)
+# def test36(session):
+#     """Run unit tests in current Python 3.6 environment."""
+#     session.install('pytest', 'pytest-cov')
+#     session.install('.')
+#     session.run('pytest')
 
 
 @nox.session(reuse_venv=True)

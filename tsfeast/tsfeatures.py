@@ -62,11 +62,17 @@ class TimeSeriesFeatures(BaseTransformer):
         numeric = X.select_dtypes('number').columns
         try:
             union = FeatureUnion([(k, v) for k, v in transforms.items() if k in self.steps_])
-            transformer = ColumnTransformer([
-                ('original', OriginalFeatures(), numeric),
-                ('datetime', DateTimeFeatures(freq=self.freq_), self.datetime),
-                ('features', union, numeric)
-            ])
+            if len(union.transformer_list) > 0:
+                transformer = ColumnTransformer([
+                    ('original', OriginalFeatures(), numeric),
+                    ('datetime', DateTimeFeatures(freq=self.freq_), self.datetime),
+                    ('features', union, numeric)
+                ])
+            else:
+                transformer = ColumnTransformer([
+                    ('original', OriginalFeatures(), numeric),
+                    ('datetime', DateTimeFeatures(freq=self.freq_), self.datetime),
+                ])
         except ValueError:
             transformer = ColumnTransformer([
                 ('original', OriginalFeatures(), numeric),

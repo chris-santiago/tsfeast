@@ -7,7 +7,7 @@ from statsmodels.tsa.statespace.sarimax import SARIMAX
 
 from tsfeast.models import ARMARegressor, TSARegressor
 
-RTOL = 1e-5
+RTOL = 1e-3
 VALID = {
     'arma': {
         'fit': np.array([
